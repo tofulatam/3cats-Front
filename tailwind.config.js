@@ -85,13 +85,13 @@ const config = {
 	important: true,
 	theme: {
 		screens: {
-			xs: '375px',
-			xm: '480px',
+			'2xs': '375px',
+			xs: '480px',
 			sm: '600px',
-			ms: '768px',
-			md: '960px',
-			lg: '1280px',
-			xl: '1440px'
+			md: '768px',
+			lg: '1024px',
+			xl: '1280px',
+			'2xl': '1536px'
 		},
 		extend: {
 			colors: {

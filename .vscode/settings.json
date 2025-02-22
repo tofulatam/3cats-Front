@@ -63,10 +63,5 @@
 		"**/package-lock.json": true,
 		"**/node_modules": true,
 		"**/public/icons": true
-	},
-	"cSpell.words": [
-		"apexcharts",
-		"Luxon",
-		"Recuérdame"
-	]
+	}
 }
