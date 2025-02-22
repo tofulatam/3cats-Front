@@ -1,0 +1,72 @@
+{
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.formatOnSave": true
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.formatOnSave": true
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.formatOnSave": true
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "vscode.css-language-features",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.formatOnSave": true
+	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.formatOnSave": true
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.formatOnSave": true
+	},
+	"editor.bracketPairColorization.enabled": true,
+	"editor.detectIndentation": false,
+	"editor.indentSize": "tabSize",
+	"editor.inlineSuggest.enabled": true,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"editor.rulers": [100],
+	"prettier.singleAttributePerLine": true,
+	"prettier.tabWidth": 2,
+	"eslint.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"eslint.validate": ["javascript", "typescript"],
+	"diffEditor.ignoreTrimWhitespace": false,
+	"css.customData": [".vscode/tailwind.json"],
+	"scss.validate": false,
+	"search.exclude": {
+		"**/dist": true,
+		"**/package-lock.json": true,
+		"**/node_modules": true,
+		"**/public/icons": true
+	},
+	"cSpell.words": [
+		"apexcharts",
+		"Luxon",
+		"Recuérdame"
+	]
+}
