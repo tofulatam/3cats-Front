@@ -1,0 +1,53 @@
+<section
+	id="faqs"
+	class="bg-gradient-to-br from-[#151920] to-landing p-8 text-white sm:p-16 lg:px-8"
+>
+	<div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:items-start">
+		<!-- Left Column -->
+		<div class="text-center lg:text-left">
+			<h2 class="mb-4 text-5xl font-bold">¿Tienes preguntas?<br />Tenemos respuestas.</h2>
+			<p class="text-lg text-[#8CA2C0]">
+				Queremos que todo sea claro como el agua. Si tienes alguna pregunta, seguro la resolvemos
+				aquí.
+			</p>
+		</div>
+
+		<!-- Right Column -->
+		<div class="space-y-4">
+			@for (faq of faqs; track $index) {
+				<div class="bg-card overflow-hidden rounded-xl">
+					<button
+						class="flex w-full items-center justify-between p-6 text-left text-black"
+						(click)="faq.isOpen = !faq.isOpen"
+					>
+						<span class="text-lg font-bold text-landing">{{ faq.question }}</span>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5 transform text-slate-600 transition-transform"
+							[class.rotate-180]="faq.isOpen"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M19 9l-7 7-7-7"
+							/>
+						</svg>
+					</button>
+
+					<div
+						class="overflow-hidden transition-all duration-300"
+						[class.h-0]="!faq.isOpen"
+						[class.p-6]="faq.isOpen"
+						[class.pt-0]="faq.isOpen"
+					>
+						<div class="text-base text-[#3C3C43D9]/85" [innerHTML]="faq.answer"></div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>

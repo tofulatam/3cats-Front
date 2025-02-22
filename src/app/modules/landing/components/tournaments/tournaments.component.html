@@ -1,0 +1,31 @@
+<!-- Tournaments Section -->
+<section id="torneos" class="p-6 lg:p-16">
+	<div class="flex flex-col items-center justify-center text-center">
+		<h2 class="mb-4 text-3xl font-bold text-landing sm:text-5xl">
+			Torneos que están en boca de todos
+		</h2>
+		<p class="mb-8 max-w-128 sm:text-lg">
+			Conoce los eventos más emocionantes de 3Cats. ¡Únete y empieza tu historia!
+		</p>
+	</div>
+
+	<div
+		class="grid gap-6 lg:grid-flow-row lg:grid-cols-[repeat(auto-fill,37.5rem)] lg:justify-center"
+	>
+		@for (tournament of tournaments; track $index) {
+			<landing-tournament-card [tournament]="tournament" />
+		}
+	</div>
+
+	<div class="mt-10 flex justify-center gap-3">
+		<button
+			class="rounded-full border-2 border-landing bg-white px-3 py-2 text-landing hover:bg-landing hover:text-white"
+		>
+			Saber más
+		</button>
+
+		<button class="rounded-full bg-landing px-3 py-2 text-white hover:bg-landing/90">
+			Crear mi propio torneo
+		</button>
+	</div>
+</section>

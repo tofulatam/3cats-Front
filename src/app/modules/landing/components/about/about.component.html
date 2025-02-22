@@ -1,0 +1,96 @@
+<section id="sobre-nosotros" class="px-4 py-16 text-center">
+	<div class="mx-auto flex max-w-200 flex-col items-center justify-center">
+		<div class="mx-auto mb-4 flex max-w-lg flex-col items-center justify-center">
+			<h2 class="mb-4 text-3xl font-bold text-landing sm:text-5xl">Lo que nos mueve</h2>
+
+			<p class="text-base sm:text-xl">
+				No somos solo una plataforma, somos ese impulso que necesitas para llevar tu pasión al
+				siguiente nivel.
+			</p>
+		</div>
+
+		<div class="mb-12 flex flex-col items-center justify-center p-8">
+			<div class="h-auto w-full sm:h-128 sm:w-116">
+				<img
+					src="images/landing/zulmayalber.webp"
+					alt="Sobre nosotros"
+					class="h-full w-full object-cover"
+				/>
+			</div>
+
+			<p class="mb-6 text-base sm:text-xl">
+				En 3Cats creemos que el talento merece ser visto y las conexiones son clave para lograrlo.
+				Desde torneos hasta equipos destacados, nuestra misión es sencilla: ayudarte a crecer,
+				destacar y disfrutar cada paso del camino.
+			</p>
+
+			<p class="mb-8 text-base font-semibold text-[#1A535C] sm:text-2xl">
+				Ya seas un jugador, un equipo, o un organizador, estamos aquí para darte las herramientas
+				que necesitas y crear algo increíble juntos.
+			</p>
+		</div>
+	</div>
+
+	<div class="flex flex-wrap items-center justify-center gap-6">
+		@for (card of cards; track card) {
+			<div
+				class="h-84 w-84 space-y-3 rounded-3xl bg-white p-6 text-center shadow-[0_0_10px_rgba(0,0,0,0.05)] shadow-primary-300"
+			>
+				<!-- Icono -->
+				<div class="flex justify-center">
+					<img src="{{ card.image }}" class="h-28 w-32" />
+				</div>
+
+				<!-- Título -->
+				<h3 class="text-2xl font-bold text-[#1A535C]">{{ card.title }}</h3>
+
+				<!-- Descripción -->
+				<p class="text-slate-600">{{ card.description }}</p>
+
+				<!-- Botón -->
+				<button
+					class="rounded-full bg-primary px-4 py-2 text-white transition-colors hover:bg-primary/90"
+				>
+					{{ card.button }}
+				</button>
+			</div>
+		}
+	</div>
+</section>
+
+<section class="p-6 lg:p-10">
+	<div class="about-container">
+		<div #aboutScroll class="about-scroll">
+			@for (feature of features; track feature) {
+				<div
+					class="w-62 gap-4 rounded-2xl p-6 text-center shadow-lg"
+					[class]="feature.isActive ? 'bg-white' : 'bg-slate-100 opacity-60'"
+				>
+					@if (feature.comingSoon) {
+						<span class="rounded-full bg-white px-2 py-1 text-slate-500">Próximamente</span>
+					}
+
+					<h3
+						class="text-xl font-semibold"
+						[class.text-primary]="!feature.comingSoon"
+						[class.text-slate-500]="feature.comingSoon"
+					>
+						{{ feature.title }}
+					</h3>
+
+					<p class="text-sm text-slate-600">
+						{{ feature.description }}
+					</p>
+				</div>
+			}
+		</div>
+
+		<!-- Scroll Buttons -->
+		<scroll-buttons
+			[showLeftButton]="showLeftButton()"
+			[showRightButton]="showRightButton()"
+			(scrollLeft)="handleScrollLeft()"
+			(scrollRight)="handleScrollRight()"
+		></scroll-buttons>
+	</div>
+</section>

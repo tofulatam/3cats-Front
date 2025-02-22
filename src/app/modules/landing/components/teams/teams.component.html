@@ -1,0 +1,79 @@
+<section
+	id="equipos"
+	class="2xs:rounded-[6rem] rounded-[2rem] bg-gradient-to-br from-[#151920] to-landing p-20 text-white max-lg:px-12"
+>
+	<div class="mb-24 max-w-200 space-y-3 text-center sm:text-start">
+		<p class="font-medium text-landingText sm:text-lg">
+			¿Prefieres liderar u unirte? Aquí, cada jugador encuentra su lugar.
+		</p>
+		<h2 class="text-2xl font-bold sm:text-5xl">
+			Somos la comunidad que impulsa tu pasión por el juego
+		</h2>
+		<p class="font-medium text-landingText sm:text-lg">
+			Conoce a los equipos más destacados, crea conexiones y construye tu propio legado en la
+			plataforma. ¡Juntos llegamos más lejos!
+		</p>
+
+		<button
+			class="rounded-full bg-white px-3 py-2 text-lg font-semibold text-landing hover:bg-landing hover:text-white"
+		>
+			Crea tu equipo
+		</button>
+	</div>
+
+	<div class="teams-container">
+		<div #teamsScroll class="teams-scroll">
+			@for (team of teams; track $index) {
+				<div
+					class="2xs:w-64 flex flex-col items-center justify-center gap-4 rounded-xl p-6 text-center text-white"
+				>
+					<!-- Team Logo -->
+					<div class="flex h-52 justify-center">
+						<img
+							[src]="team.urlTeamPhoto"
+							[alt]="team.teamName"
+							class="h-full w-full object-contain"
+						/>
+					</div>
+
+					<!-- Team Info -->
+					<div class="flex flex-col items-center gap-1">
+						<h3 class="font-medium">{{ team.teamName }}</h3>
+						<p class="text-xs text-landingText">Est. {{ team.createdSince | date: 'yyyy' }}</p>
+						<p class="text-sm text-landingText">{{ team.aboutTeam }}</p>
+
+						<div class="flex w-fit items-center gap-1 border border-landingText px-2">
+							<p class="text-lg font-bold">{{ team.played }}</p>
+							<p class="text-xs text-landingText">Torneos jugados</p>
+						</div>
+					</div>
+
+					<!-- Stats -->
+					<div class="flex flex-col items-center justify-center gap-3">
+						<div class="flex items-center gap-1">
+							<img src="images/cards/trophy.svg" alt="Trophy" class="h-8 w-8" />
+							<span class="text-2xl font-bold">{{ team.won }}</span>
+						</div>
+					</div>
+
+					<!-- Followers -->
+					<p class="text-xs text-landingText">{{ team.followersCount }} fans incondicionales</p>
+
+					<!-- Join Button -->
+					<button
+						class="rounded-full bg-white px-3 py-0.5 text-landing transition-colors hover:bg-landing/60 hover:text-white"
+					>
+						Únete
+					</button>
+				</div>
+			}
+		</div>
+
+		<scroll-buttons
+			[showLeftButton]="showLeftButton"
+			[showRightButton]="showRightButton"
+			(scrollLeft)="handleScrollLeft()"
+			(scrollRight)="handleScrollRight()"
+		/>
+	</div>
+</section>

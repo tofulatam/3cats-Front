@@ -1,0 +1,27 @@
+.tournaments-container {
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.tournaments-scroll {
+  @media (max-width: 768px) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-left: calc((100% - 19rem) / 2);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    >div {
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+  }
+}

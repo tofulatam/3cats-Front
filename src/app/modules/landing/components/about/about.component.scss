@@ -1,0 +1,25 @@
+.about-container {
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.about-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 1.5rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  >div {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+}
