@@ -1,0 +1,151 @@
+<div
+	class="mx-auto flex max-h-256 min-w-0 max-w-480 flex-auto flex-col items-center md:flex-row md:justify-center"
+>
+	<div
+		class="relative h-full w-full flex-auto items-center justify-center overflow-hidden md:w-1/2 lg:flex dark:border-r"
+	>
+		<!-- Content -->
+		<div
+			class="flex h-100 w-full flex-col max-lg:items-center max-lg:justify-center md:h-full xl:relative"
+		>
+			<!-- banner image -->
+			<div class="banner absolute h-full w-full max-md:h-100 lg:left-0 lg:right-0"></div>
+
+			<div
+				class="flex h-full flex-col justify-center gap-4 p-6 max-md:items-center md:justify-between md:p-12"
+			>
+				<!-- Logo -->
+				<div class="relative z-80 w-38 md:w-48">
+					<img class="cursor-pointer" src="images/logo/logo.svg" routerLink="/" />
+				</div>
+
+				<div class="relative z-80 max-w-96 space-y-4 text-white max-md:text-center md:mb-12">
+					<div class="text-3xl font-bold leading-none md:text-5xl">
+						El lugar donde el fútbol vive contigo
+					</div>
+					<div class="text-base leading-6 tracking-tight md:mt-6 md:text-2xl">
+						Conecta, compite y crece dentro de una plataforma diseñada para que tu pasión deje
+						huella.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Form -->
+	<div
+		class="bg-card z-10 w-full rounded-3xl p-8 shadow max-md:-mt-6 md:flex md:h-full md:w-1/2 md:items-center md:justify-center md:rounded-none md:p-16 md:shadow-none"
+	>
+		<div class="mx-auto w-full max-w-96 md:mx-0">
+			<!-- Title -->
+			<div
+				class="text-center text-2xl font-extrabold leading-tight tracking-tight md:mt-8 md:text-4xl"
+			>
+				Bienvenido de vuelta a la comunidad de 3CATS
+			</div>
+
+			<!-- Google button -->
+			<!-- <button class="mt-8 w-full" mat-stroked-button [color]="'primary'">
+				<div class="flex items-center justify-center">
+					<img src="images/auth/google.svg" class="h-5 w-5" />
+					<span class="ml-2"> Iniciar sesión con Google </span>
+				</div>
+			</button> -->
+
+			<!-- Alert -->
+			@if (showAlert) {
+				<div class="mt-8 w-full rounded-md bg-red-100 p-2 text-center font-bold text-red-500">
+					{{ alert }}
+				</div>
+			}
+
+			<!-- Sign in form -->
+			<form class="mt-8 space-y-4" [formGroup]="signInForm" #signInNgForm="ngForm">
+				<!-- Email field -->
+				<mat-form-field class="w-full">
+					<mat-label>Email</mat-label>
+					<input id="email" matInput [formControlName]="'email'" />
+
+					@if (signInForm.get('email').hasError('required')) {
+						<mat-error> Email es requerido </mat-error>
+					}
+
+					@if (
+						signInForm.get('email').hasError('email') || signInForm.get('email').hasError('pattern')
+					) {
+						<mat-error> Por favor ingrese un email válido </mat-error>
+					}
+				</mat-form-field>
+
+				<!-- Password field -->
+				<mat-form-field class="w-full">
+					<mat-label>Contraseña</mat-label>
+					<input
+						id="password"
+						matInput
+						type="password"
+						[formControlName]="'password'"
+						#passwordField
+					/>
+					<button
+						mat-icon-button
+						type="button"
+						(click)="
+							passwordField.type === 'password'
+								? (passwordField.type = 'text')
+								: (passwordField.type = 'password')
+						"
+						matSuffix
+					>
+						@if (passwordField.type === 'password') {
+							<mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+						}
+
+						@if (passwordField.type === 'text') {
+							<mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye-slash'"></mat-icon>
+						}
+					</button>
+					<mat-error> Contraseña es requerida </mat-error>
+				</mat-form-field>
+
+				<!-- Actions -->
+				<!-- <div class="mt-1.5 inline-flex w-full items-center justify-between">
+					<mat-checkbox class="-ml-2" [color]="'primary'" [formControlName]="'rememberMe'">
+						Recuérdame
+					</mat-checkbox>
+					<a
+						class="text-md font-medium text-primary-600 hover:underline"
+						[routerLink]="['/forgot-password']"
+					>
+						Olvidé mi contraseña
+					</a>
+				</div> -->
+
+				<!-- Submit button -->
+				<button
+					class="app-mat-button-large mt-6 w-full"
+					mat-flat-button
+					[color]="'primary'"
+					[disabled]="signInForm.disabled"
+					(click)="signIn()"
+				>
+					@if (!signInForm.disabled) {
+						<span> Iniciar sesión </span>
+					}
+
+					@if (signInForm.disabled) {
+						<mat-progress-spinner [diameter]="24" [mode]="'indeterminate'"></mat-progress-spinner>
+					}
+				</button>
+
+				<!-- Sign up link -->
+				<!-- <div class="mt-8 flex items-baseline justify-center font-medium">
+					<div>¿Aún no tienes cuenta?</div>
+					<a class="ml-1 font-bold text-primary-600 hover:underline" [routerLink]="['/sign-up']">
+						Regístrate aquí
+					</a>
+				</div> -->
+			</form>
+		</div>
+	</div>
+</div>
