@@ -1,8 +1,8 @@
-<section class="relative mt-20 overflow-hidden bg-white">
+<section class="relative mt-20 overflow-hidden">
 	<div class="mx-auto max-w-[120rem] px-6 xl:px-8">
 		<!-- Header -->
 		<div class="mb-8 flex flex-col items-center justify-center gap-3 text-center">
-			<h2 class="text-3xl font-bold tracking-tight text-landing sm:text-5xl">
+			<h2 class="text-3xl font-bold tracking-tight text-landing sm:text-5xl dark:text-primary">
 				Organiza tu propio torneo
 			</h2>
 
@@ -13,7 +13,7 @@
 		</div>
 
 		<!-- Content grid -->
-		<div class="relative min-h-[60rem] sm:min-h-[50rem]">
+		<div class="relative min-h-[60rem] sm:min-h-[50rem] dark:min-h-[40rem]">
 			<div class="relative z-10 grid grid-cols-1 items-center gap-x-8 gap-y-16 md:grid-cols-2">
 				<!-- Image section -->
 				<div class="relative sm:h-132">
@@ -35,7 +35,9 @@
 							</div>
 
 							<div class="flex flex-col gap-2">
-								<h3 class="text-xl font-semibold text-landing">{{ feature.title }}</h3>
+								<h3 class="text-xl font-semibold text-landing dark:text-primary">
+									{{ feature.title }}
+								</h3>
 								<p class="text-sm">{{ feature.description }}</p>
 							</div>
 						</div>
@@ -44,7 +46,7 @@
 			</div>
 
 			<!-- Background grass -->
-			<div class="grass"></div>
+			<div class="grass dark:hidden"></div>
 		</div>
 	</div>
 </section>

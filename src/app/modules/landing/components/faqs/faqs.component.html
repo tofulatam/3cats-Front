@@ -20,10 +20,10 @@
 						class="flex w-full items-center justify-between p-6 text-left text-black"
 						(click)="faq.isOpen = !faq.isOpen"
 					>
-						<span class="text-lg font-bold text-landing">{{ faq.question }}</span>
+						<span class="text-lg font-bold text-landing dark:text-primary">{{ faq.question }}</span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5 transform text-slate-600 transition-transform"
+							class="h-5 w-5 transform text-slate-600 transition-transform dark:text-white"
 							[class.rotate-180]="faq.isOpen"
 							fill="none"
 							viewBox="0 0 24 24"
@@ -44,7 +44,10 @@
 						[class.p-6]="faq.isOpen"
 						[class.pt-0]="faq.isOpen"
 					>
-						<div class="text-base text-[#3C3C43D9]/85" [innerHTML]="faq.answer"></div>
+						<div
+							class="text-base text-[#3C3C43D9]/85 dark:text-white"
+							[innerHTML]="faq.answer"
+						></div>
 					</div>
 				</div>
 			}

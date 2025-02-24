@@ -98,6 +98,7 @@ const config = {
 				landing: '#1A535C',
 				landingText: '#D2D2D2',
 				background: '#F8F9FA',
+				dashboardGrayText: '#A0AEC0',
 				primary: PRIMARY_COLORS,
 				accent: {
 					...colors.slate,

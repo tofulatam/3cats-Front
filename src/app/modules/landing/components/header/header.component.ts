@@ -3,7 +3,6 @@ import { Component, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 // Material
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 // Interfaces
 import { LandingNavigationItem } from '../../interfaces/nav-item.interface';
@@ -11,7 +10,7 @@ import { LandingNavigationItem } from '../../interfaces/nav-item.interface';
 @Component({
 	selector: 'landing-header',
 	templateUrl: './header.component.html',
-	imports: [MatButtonModule, MatIconModule, RouterLink]
+	imports: [MatIconModule, RouterLink]
 })
 export class LandingHeaderComponent implements OnDestroy {
 	// Injections
