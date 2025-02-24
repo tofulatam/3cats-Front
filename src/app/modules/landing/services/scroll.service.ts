@@ -19,8 +19,8 @@ export class ScrollService implements OnDestroy {
 				});
 			},
 			{
-				threshold: 0.5,
-				rootMargin: '-10px 0px 0px 0px'
+				threshold: 0.2,
+				rootMargin: '-80px 0px 0px 0px'
 			}
 		);
 	}
