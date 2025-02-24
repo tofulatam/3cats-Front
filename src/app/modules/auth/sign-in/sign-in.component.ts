@@ -92,11 +92,11 @@ export class AuthSignInComponent implements OnInit {
 		this._authService.signIn(this.signInForm.value).subscribe({
 			next: () => {
 				// Get the redirect url.
-				// The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
+				// The '/redireccion-inicio' is a dummy url to catch the request and redirect the user
 				// to the correct page after a successful sign in. This way, that url can be set via
 				// routing file and we don't have to touch here.
 				const redirectURL =
-					this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
+					this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/redireccion-inicio';
 
 				// Navigate to the redirect url
 				this._router.navigateByUrl(redirectURL);

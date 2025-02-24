@@ -11,9 +11,4 @@ import { RouterLink } from '@angular/router';
 		class: 'flex flex-col flex-auto items-center justify-center h-full p-6 sm:p-10'
 	}
 })
-export class Error404Component {
-	/**
-	 * Constructor
-	 */
-	constructor() {}
-}
+export class Error404Component {}

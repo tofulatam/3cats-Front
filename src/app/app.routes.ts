@@ -47,9 +47,9 @@ export const appRoutes: Route[] = [
 
 	// Redirect to home after sign in
 	{
-		path: 'signed-in-redirect',
+		path: 'redireccion-inicio',
 		pathMatch: 'full',
-		redirectTo: 'home'
+		redirectTo: 'dashboard'
 	},
 
 	// Dashboards routes
@@ -59,49 +59,64 @@ export const appRoutes: Route[] = [
 		canActivateChild: [AuthGuard],
 		component: LayoutComponent,
 		children: [
-			// Home
+			// Dashboard
 			{
-				path: 'home',
-				loadComponent: () => import('@app/modules/dashboard/home/pages/home/home.component')
-			},
-
-			// Player routes
-			{
-				path: 'jugador',
+				path: 'dashboard',
 				children: [
-					// {
-					// 	path: 'partidos',
-					// 	loadChildren: () => import('@app/modules/dashboard/project/project.routes')
-					// },
-					// {
-					// 	path: 'estadisticas',
-					// 	loadChildren: () => import('@app/modules/dashboard/analytics/analytics.routes')
-					// },
-					// {
-					// 	path: 'torneos',
-					// 	loadComponent: () => import('@app/modules/dashboard/tournaments/tournaments.component')
-					// }
-				]
-			},
+					// Home
+					{
+						path: '',
+						pathMatch: 'full',
+						loadComponent: () => import('@app/modules/dashboard/home/pages/home/home.component')
+					},
 
-			// Organizer routes
-			{
-				path: 'organizador',
-				children: [
-					// {
-					// 	path: 'tournaments',
-					// 	loadChildren: () => import('@app/modules/dashboard/home/pages/home/home.component')
-					// }
-				]
-			},
+					// Player routes
+					{
+						path: 'jugador',
+						children: [
+							// {
+							// 	path: 'partidos',
+							// 	loadChildren: () => import('@app/modules/dashboard/project/project.routes')
+							// },
+							// {
+							// 	path: 'estadisticas',
+							// 	loadChildren: () => import('@app/modules/dashboard/analytics/analytics.routes')
+							// },
+							// {
+							// 	path: 'torneos',
+							// 	loadComponent: () => import('@app/modules/dashboard/tournaments/tournaments.component')
+							// }
+						]
+					},
 
-			// 404
-			{
-				path: '404-not-found',
-				pathMatch: 'full',
-				loadChildren: () => import('app/shared/pages/error/error-404/error-404.routes')
-			},
-			{ path: '**', redirectTo: '404-not-found' }
+					// Organizer routes
+					{
+						path: 'organizador',
+						children: [
+							// {
+							// 	path: 'tournaments',
+							// 	loadChildren: () => import('@app/modules/dashboard/home/pages/home/home.component')
+							// }
+						]
+					},
+
+					// 404
+					{
+						path: '404',
+						pathMatch: 'full',
+						loadChildren: () => import('app/shared/pages/error/error-404/error-404.routes')
+					},
+					{ path: '**', redirectTo: '404' }
+				]
+			}
 		]
-	}
+	},
+
+	// 404
+	{
+		path: '404-not-found',
+		pathMatch: 'full',
+		loadChildren: () => import('app/shared/pages/error/error-404/error-404.routes')
+	},
+	{ path: '**', redirectTo: '404-not-found' }
 ];

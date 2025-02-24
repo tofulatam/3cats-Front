@@ -15,7 +15,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 				title: 'Inicio',
 				type: 'basic',
 				fontIcon: 'home',
-				link: '/home'
+				link: '/dashboard'
 			}
 		]
 	},
@@ -30,28 +30,28 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 				title: 'Estadísticas',
 				type: 'basic',
 				fontIcon: 'bar_chart',
-				link: '/jugador/estadisticas'
+				link: '/dashboard/jugador/estadisticas'
 			},
 			{
 				id: 'player.matches',
 				title: 'Partidos',
 				type: 'basic',
 				fontIcon: 'sports_soccer',
-				link: '/jugador/partidos'
+				link: '/dashboard/jugador/partidos'
 			},
 			{
 				id: 'player.tournaments',
 				title: 'Torneos',
 				type: 'basic',
 				fontIcon: 'emoji_events',
-				link: '/jugador/torneos'
+				link: '/dashboard/jugador/torneos'
 			},
 			{
 				id: 'players.teams',
 				title: 'Equipos',
 				type: 'basic',
 				fontIcon: 'security',
-				link: '/jugadores/equipos'
+				link: '/dashboard/jugador/equipos'
 			}
 		]
 	},
@@ -66,21 +66,21 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 				title: 'Dashboard',
 				type: 'basic',
 				fontIcon: 'dashboard',
-				link: '/organizador/dashboard'
+				link: '/dashboard/organizador/dashboard'
 			},
 			{
 				id: 'organizer.create-tournament',
 				title: 'Crear Torneo',
 				type: 'basic',
 				fontIcon: 'add_circle',
-				link: '/organizador/crear-torneo'
+				link: '/dashboard/organizador/crear-torneo'
 			},
 			{
 				id: 'organizer.tournaments',
 				title: 'Mis Torneos',
 				type: 'basic',
 				fontIcon: 'emoji_events',
-				link: '/organizador/torneos'
+				link: '/dashboard/organizador/torneos'
 			}
 		]
 	}
