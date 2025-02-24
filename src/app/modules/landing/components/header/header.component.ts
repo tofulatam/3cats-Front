@@ -1,21 +1,23 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 // Interfaces
 import { LandingNavigationItem } from '../../interfaces/nav-item.interface';
+import { ScrollService } from '../../services/scroll.service';
 
 @Component({
 	selector: 'landing-header',
 	templateUrl: './header.component.html',
 	imports: [MatIconModule, RouterLink]
 })
-export class LandingHeaderComponent implements OnDestroy {
+export class LandingHeaderComponent implements OnInit, OnDestroy {
 	// Injections
 	private readonly _activatedRoute = inject(ActivatedRoute);
 	private readonly _viewportScroller = inject(ViewportScroller);
+	private readonly _scrollService = inject(ScrollService);
 
 	// Private
 	private readonly _unsubscribeAll = new Subject<void>();
@@ -28,6 +30,7 @@ export class LandingHeaderComponent implements OnDestroy {
 		{ id: 'home', href: '#home', label: 'Inicio' },
 		{ id: 'torneos', href: '#torneos', label: 'Torneos' },
 		{ id: 'equipos', href: '#equipos', label: 'Equipos' },
+		// { id: 'organizar', href: '#organizar', label: 'Organizar' },
 		{ id: 'sobre-nosotros', href: '#sobre-nosotros', label: 'Sobre 3cats' }
 	];
 
@@ -37,6 +40,23 @@ export class LandingHeaderComponent implements OnDestroy {
 	constructor() {
 		// Set offset to scroll to the header
 		this._viewportScroller.setOffset([0, 80]);
+	}
+
+	ngOnInit(): void {
+		// Observe the sections
+		this.landingNavigationItems.forEach((item) => {
+			const element = document.getElementById(item.id);
+			if (element) {
+				this._scrollService.observeSection(element);
+			}
+		});
+
+		// Subscribe to the section changes
+		this._scrollService.currentSection$
+			.pipe(takeUntil(this._unsubscribeAll))
+			.subscribe((section) => {
+				this.currentHash = section;
+			});
 
 		// Subscribe to the fragment to scroll to the section
 		this._activatedRoute.fragment.pipe(takeUntil(this._unsubscribeAll)).subscribe((fragment) => {
