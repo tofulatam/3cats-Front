@@ -70,9 +70,9 @@ html {
 	/* TYPOGRAPHY SYSTEM VARIABLES */
 
 	/* Typography variables. Only used in the different typescale system variables. */
-	/* --mat-sys-brand-font-family: Roboto; */
+	--mat-sys-brand-font-family: 'Montserrat', sans-serif;
 	/* The font-family to use for brand text. */
-	/* --mat-sys-plain-font-family: Roboto; */
+	--mat-sys-plain-font-family: 'Montserrat', sans-serif;
 	/* The font-family to use for plain text. */
 	--mat-sys-bold-font-weight: 700;
 	/* The font-weight to use for bold text. */

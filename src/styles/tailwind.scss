@@ -20,9 +20,9 @@
 	/* HTML and Body default styles */
 	html,
 	body {
-		font-family:
-			'Inter var',
-			sans-serif;
+		// font-family:
+		// 	'Inter var',
+		// 	sans-serif;
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;
@@ -120,7 +120,7 @@
 
 	/* Background color for navigation */
 	.bg-navigation {
-		@apply bg-background dark:bg-[#1e293b];
+		@apply bg-[#F8F9FA] dark:bg-[#1e293b];
 	}
 }
 

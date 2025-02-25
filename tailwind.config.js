@@ -93,6 +93,9 @@ const config = {
 			xl: '1280px',
 			'2xl': '1536px'
 		},
+		fontFamily: {
+			sans: ['Montserrat', 'sans-serif']
+		},
 		extend: {
 			colors: {
 				dashboardGrayText: '#A0AEC0',
