@@ -97,10 +97,15 @@ export default class HomeComponent implements OnInit {
 	// Configuración del gráfico de área
 	areaChartOptions: ApexOptions = {
 		chart: {
-			height: 350,
 			type: 'area',
-			toolbar: { show: false },
+			height: 350,
+			toolbar: {
+				show: false
+			},
 			animations: {
+				enabled: true
+			},
+			zoom: {
 				enabled: false
 			}
 		},
