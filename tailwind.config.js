@@ -160,7 +160,7 @@ const config = {
 			},
 			boxShadow: {
 				card: '0px 4px 10.4px rgba(0, 0, 0, 0.15)',
-				cardFeature: '0 0 6.4px 0 rgba(0, 0, 0, 0.24);'
+				cardFeature: '0 0 6.4px 0 rgba(0, 0, 0, 0.24)'
 			}
 		}
 	},
