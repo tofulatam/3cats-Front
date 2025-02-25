@@ -63,7 +63,7 @@ const SIZES = {
 /**
  * Primary theme colors
  */
-const PRIMARY_COLORS = {
+const THEME_PALETTE = {
 	DEFAULT: '#4ecdc4',
 	50: '#f1faf9',
 	100: '#e5f5f4',
@@ -95,11 +95,23 @@ const config = {
 		},
 		extend: {
 			colors: {
-				landing: '#1A535C',
-				landingText: '#D2D2D2',
-				background: '#F8F9FA',
 				dashboardGrayText: '#A0AEC0',
-				primary: PRIMARY_COLORS,
+				colorAmarilloSuave: '#F3F781',
+				colorAzulFacebook: '#3b5998',
+				colorBotonFlotante: '#FF0040',
+				colorContrasenia: '#FF6B6B',
+				colorEnglishGreen: '#1A535C',
+				colorFondoVivo: '#01DF74',
+				colorGris: '#70534B',
+				colorLetraAzul: '#2196F3',
+				colorLetraCampFav: '#1A535C',
+				colorLetraGroupView: '#F7FFF7',
+				colorLetraTabLayout: '#1A535C',
+				colorLetraToolBar: '#1A535C',
+				colorMentaCrema: '#F7FFF7',
+				colorNegroGris: '#424242',
+				colorRojo: '#FF6B6B',
+				primary: THEME_PALETTE,
 				accent: {
 					...colors.slate,
 					DEFAULT: colors.slate[800]
@@ -144,7 +156,8 @@ const config = {
 				drawer: 'cubic-bezier(0.25, 0.8, 0.25, 1)'
 			},
 			boxShadow: {
-				card: '0px 4px 10.4px rgba(0, 0, 0, 0.15)'
+				card: '0px 4px 10.4px rgba(0, 0, 0, 0.15)',
+				cardFeature: '0 0 6.4px 0 rgba(0, 0, 0, 0.24);'
 			}
 		}
 	},
@@ -154,4 +167,4 @@ const config = {
 	]
 };
 
-module.exports = config;
+export default config;
