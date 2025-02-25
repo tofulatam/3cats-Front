@@ -1,0 +1,60 @@
+<!-- Team Logo -->
+<div class="flex h-52 justify-center">
+	<img [src]="team().urlTeamPhoto" [alt]="team().teamName" class="h-full w-full object-contain" />
+</div>
+
+<!-- Team Info -->
+<div class="flex flex-col items-center gap-1">
+	<!-- Team Name -->
+	<h3 class="line-clamp-1 text-lg font-bold text-colorMentaCrema">{{ team().teamName }}</h3>
+
+	<!-- Team Creation Date -->
+	<p class="text-base font-normal italic text-colorMentaCrema">
+		Est. {{ team().createdSince | date: 'yyyy' }}
+	</p>
+
+	<!-- Team Description -->
+	<p class="line-clamp-2 text-base font-normal text-colorMentaCrema">
+		{{ team().aboutTeam }}
+	</p>
+
+	<div class="flex w-fit items-center gap-2 border border-colorMentaCrema px-2">
+		<p class="text-lg font-bold text-colorMentaCrema">{{ team().played }}</p>
+		<p class="text-sm text-colorMentaCrema">Torneos jugados</p>
+	</div>
+</div>
+
+<!-- Achievements -->
+<!-- TODO: change propertier for the right one -->
+<div class="flex flex-col items-center justify-center gap-3">
+	<!-- First Position -->
+	<div class="flex items-center gap-1">
+		<img src="images/cards/trophy.svg" alt="Trophy" class="h-9 w-9" />
+		<span class="text-2xl font-bold">{{ team().won || '-' }}</span>
+	</div>
+
+	<div class="flex items-center gap-3">
+		<!-- Second Position -->
+		<div class="flex items-center gap-1">
+			<img src="images/cards/second.svg" alt="Medalla segunda posición" class="h-7 w-7" />
+			<span class="text-xl">{{ team().goalsFor || '-' }}</span>
+		</div>
+
+		<!-- Divider -->
+		<mat-divider class="h-full bg-colorMentaCrema" [vertical]="true"></mat-divider>
+
+		<!-- Third Position -->
+		<div class="flex items-center gap-1">
+			<img src="images/cards/third.svg" alt="Medalla tercera posición" class="h-7 w-7" />
+			<span class="text-xl">{{ team().goalsAgainst || '-' }}</span>
+		</div>
+	</div>
+</div>
+
+<!-- Followers -->
+<p class="text-xs text-colorMentaCrema">{{ team().followersCount }} fans incondicionales</p>
+
+<!-- Join Button -->
+<button class="btn-landing-outline">
+	<span class="text-base font-semibold">Únete</span>
+</button>

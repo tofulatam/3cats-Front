@@ -11,8 +11,8 @@
 			<nav class="hidden items-center gap-8 lg:flex">
 				@for (item of landingNavigationItems; track item.id) {
 					<a
-						class="transition-colors hover:text-primary-500"
-						[class.text-primary-500]="currentHash === item.href"
+						class="text-base text-colorEnglishGreen transition-colors hover:text-primary"
+						[class.text-primary]="currentHash === item.href"
 						[attr.aria-label]="'Ir a la sección ' + item.label"
 						[href]="item.href"
 						tabindex="0"
@@ -28,7 +28,7 @@
 		<div class="flex items-center gap-3">
 			<!-- Sign In Button -->
 			<button
-				class="w-fit max-w-80 rounded-full bg-primary px-4 py-2 text-white hover:bg-primary-700 max-xs:hidden"
+				class="btn-primary w-fit max-xs:hidden"
 				aria-label="Iniciar sesión"
 				routerLink="/sign-in"
 			>
@@ -67,11 +67,7 @@
 			}
 
 			<!-- Sign In Button -->
-			<button
-				class="w-fit max-w-80 rounded-full bg-primary px-4 py-2 text-white hover:bg-primary-700 xs:hidden"
-				routerLink="/sign-in"
-				aria-label="Iniciar sesión"
-			>
+			<button class="btn-primary w-fit xs:hidden" routerLink="/sign-in" aria-label="Iniciar sesión">
 				Iniciar Sesión
 			</button>
 		</div>

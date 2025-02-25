@@ -1,6 +1,6 @@
 <section
 	id="faqs"
-	class="bg-gradient-to-br from-[#151920] to-landing p-8 text-white sm:p-16 lg:px-8"
+	class="bg-gradient-to-br from-[#151920] to-colorEnglishGreen p-8 text-colorMentaCrema sm:p-16 lg:px-8"
 >
 	<div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:items-start">
 		<!-- Left Column -->
@@ -20,10 +20,12 @@
 						class="flex w-full items-center justify-between p-6 text-left text-black"
 						(click)="faq.isOpen = !faq.isOpen"
 					>
-						<span class="text-lg font-bold text-landing dark:text-primary">{{ faq.question }}</span>
+						<span class="text-lg font-bold text-colorEnglishGreen dark:text-primary">
+							{{ faq.question }}
+						</span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5 transform text-slate-600 transition-transform dark:text-white"
+							class="h-5 w-5 transform text-slate-600 transition-transform dark:text-colorMentaCrema"
 							[class.rotate-180]="faq.isOpen"
 							fill="none"
 							viewBox="0 0 24 24"
@@ -45,7 +47,7 @@
 						[class.pt-0]="faq.isOpen"
 					>
 						<div
-							class="text-base text-[#3C3C43D9]/85 dark:text-white"
+							class="text-base text-colorEnglishGreen dark:text-colorMentaCrema"
 							[innerHTML]="faq.answer"
 						></div>
 					</div>

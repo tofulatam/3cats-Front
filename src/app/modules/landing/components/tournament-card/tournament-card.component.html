@@ -2,20 +2,18 @@
 	class="bg-card flex w-full flex-col justify-between overflow-hidden rounded-xl shadow-card lg:h-100 lg:w-150"
 >
 	<!-- Header with Name and Favorite -->
-	<div
-		class="flex items-center justify-between gap-4 bg-slate-100 p-4 dark:bg-black dark:bg-opacity-20"
-	>
+	<div class="flex items-center justify-between gap-4 bg-[#F6F6F6] p-4 dark:bg-slate-900">
 		<div class="flex flex-col gap-1">
 			<!-- Name -->
 			<h3 class="text-2xl font-bold">{{ tournament().tournamentName }}</h3>
 
 			<!-- Chips -->
-			<div class="flex gap-2">
-				<span class="rounded-full bg-primary px-3 py-0.5 text-xs text-white">
+			<div class="flex gap-2 text-xs text-colorMentaCrema">
+				<span class="rounded-full bg-primary px-3 py-0.5">
 					{{ tournament().statusTournament }}
 				</span>
 
-				<span class="rounded-full bg-primary px-3 py-0.5 text-xs text-white">
+				<span class="rounded-full bg-primary px-3 py-0.5">
 					{{ tournament().mainCity }}
 				</span>
 			</div>
@@ -35,13 +33,11 @@
 	</div>
 
 	<!-- Footer -->
-	<div
-		class="flex items-center justify-between gap-4 bg-slate-100 p-4 dark:bg-black dark:bg-opacity-20"
-	>
+	<div class="flex items-center justify-between gap-4 bg-[#F6F6F6] p-4 dark:bg-slate-900">
 		<div class="flex flex-wrap items-center justify-between gap-3">
 			<div class="flex items-center gap-2">
 				<img src="images/cards/soccer-field.svg" alt="Cancha" class="h-5 w-5" />
-				<span class="font-semibold text-primary">{{ tournament().teams }} equipos</span>
+				<span class="font-semibold text-primary">{{ tournament().mainCity }}</span>
 			</div>
 
 			<div class="flex items-center gap-2">
@@ -51,10 +47,8 @@
 		</div>
 
 		<div class="flex flex-col items-end gap-1">
-			<button
-				class="rounded-full bg-white px-3 py-1 font-semibold text-landing hover:bg-landing hover:text-white"
-			>
-				Saber más
+			<button class="btn-landing-outline border-none">
+				<span class="text-sm font-semibold">Saber más</span>
 			</button>
 
 			<p class="text-end text-xs">

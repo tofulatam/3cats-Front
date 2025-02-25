@@ -1,14 +1,15 @@
-import { DatePipe } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
 import { ScrollButtonsComponent } from '@app/shared/components/buttons/scroll-buttons/scroll-buttons.component';
 import { TEAMS } from '@app/shared/constants/teams.constant';
 import { Team } from '@app/shared/interfaces/team.interface';
+import { LandingTeamCardComponent } from '../team-card/team-card.component';
 
 @Component({
 	selector: 'landing-teams',
 	templateUrl: './teams.component.html',
 	styleUrls: ['./teams.component.scss'],
-	imports: [DatePipe, ScrollButtonsComponent]
+	imports: [MatDividerModule, ScrollButtonsComponent, LandingTeamCardComponent]
 })
 export class LandingTeamsComponent implements AfterViewInit {
 	@ViewChild('teamsScroll') teamsScroll?: ElementRef;
@@ -19,7 +20,7 @@ export class LandingTeamsComponent implements AfterViewInit {
 
 	teams: Team[] = TEAMS;
 
-	constructor(private cdr: ChangeDetectorRef) {}
+	constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
 	ngAfterViewInit(): void {
 		setTimeout(() => {
@@ -39,7 +40,7 @@ export class LandingTeamsComponent implements AfterViewInit {
 
 		this.showLeftButton = scrollPosition > 0;
 		this.showRightButton = scrollPosition < maxScroll;
-		this.cdr.detectChanges();
+		this._changeDetectorRef.detectChanges();
 	}
 
 	handleScrollLeft(): void {

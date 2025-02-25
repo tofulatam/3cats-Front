@@ -1,3 +1,15 @@
-/* ----------------------------------------------------------------------------------------------------- */
-/*  @ Import third party library styles here.
-/* ----------------------------------------------------------------------------------------------------- */
+.btn-primary {
+	@apply rounded-full bg-primary px-4 py-2 text-white transition-colors hover:bg-primary-700;
+}
+
+.btn-outline {
+	@apply rounded-full border border-primary bg-white px-4 py-2 text-primary transition-colors hover:bg-primary hover:text-white;
+}
+
+.btn-landing {
+	@apply rounded-full bg-colorEnglishGreen px-4 py-2 text-white transition-colors hover:bg-colorEnglishGreen/90;
+}
+
+.btn-landing-outline {
+	@apply rounded-full border border-colorEnglishGreen bg-white px-4 py-2 text-colorEnglishGreen transition-colors hover:bg-colorEnglishGreen hover:text-white;
+}
