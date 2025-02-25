@@ -1,17 +1,17 @@
 <header class="bg-card fixed top-0 z-50 w-full shadow-sm">
-	<div class="flex w-full items-center justify-between px-1 py-3 xs:px-6 sm:px-12">
+	<div class="flex w-full items-center justify-between px-6 py-3 sm:px-12">
 		<!-- Logo and Desktop Navigation -->
 		<div class="flex items-center gap-4">
 			<!-- Logo -->
-			<a href="/" class="rounded-lg p-2">
-				<img src="images/logo/logo.svg" alt="3cats Logo" class="h-10 w-38" />
+			<a href="/" class="-ml-4 p-2">
+				<mat-icon aria-label="3cats Logo" svgIcon="logo" class="h-10 w-38 text-primary"></mat-icon>
 			</a>
 
 			<!-- Desktop Navigation -->
 			<nav class="hidden items-center gap-8 lg:flex">
 				@for (item of landingNavigationItems; track item.id) {
 					<a
-						class="text-base text-colorEnglishGreen transition-colors hover:text-primary"
+						class="text-base transition-colors hover:text-primary"
 						[class.text-primary]="currentHash === item.href"
 						[attr.aria-label]="'Ir a la sección ' + item.label"
 						[href]="item.href"

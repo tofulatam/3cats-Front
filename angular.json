@@ -42,7 +42,18 @@
 							"src/styles/styles.scss",
 							"src/styles/tailwind.scss"
 						],
-						"scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
+						"scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"],
+						"optimization": {
+							"scripts": true,
+							"styles": {
+								"minify": true,
+								"inlineCritical": true
+							},
+							"fonts": true
+						},
+						"sourceMap": false,
+						"namedChunks": false,
+						"aot": true
 					},
 					"configurations": {
 						"production": {
@@ -58,7 +69,12 @@
 									"maximumError": "40kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"optimization": true,
+							"sourceMap": false,
+							"namedChunks": false,
+							"extractLicenses": true,
+							"deleteOutputPath": true
 						},
 						"development": {
 							"optimization": false,

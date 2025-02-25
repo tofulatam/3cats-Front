@@ -623,6 +623,17 @@
 	font-size: 24px;
 	line-height: 24px;
 	-webkit-appearance: none !important;
+
+	/* Fix mat-icon spacing */
+	&[svgIcon] {
+		display: flex !important;
+		line-height: 0 !important;
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
 }
 
 /* -------------------------------------------------------------------------- */

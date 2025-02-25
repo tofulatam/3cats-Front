@@ -4,25 +4,31 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({ providedIn: 'root' })
 export class IconsService {
+	private readonly _domSanitizer = inject(DomSanitizer);
+	private readonly _matIconRegistry = inject(MatIconRegistry);
+
 	/**
 	 * Constructor
 	 */
 	constructor() {
-		const domSanitizer = inject(DomSanitizer);
-		const matIconRegistry = inject(MatIconRegistry);
-
-		// Register icon sets
-		matIconRegistry.addSvgIconSetInNamespace(
+		// Register heroicons icon sets
+		this._matIconRegistry.addSvgIconSetInNamespace(
 			'heroicons_outline',
-			domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-outline.svg')
+			this._domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-outline.svg')
 		);
-		matIconRegistry.addSvgIconSetInNamespace(
+		this._matIconRegistry.addSvgIconSetInNamespace(
 			'heroicons_solid',
-			domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-solid.svg')
+			this._domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-solid.svg')
 		);
-		matIconRegistry.addSvgIconSetInNamespace(
+		this._matIconRegistry.addSvgIconSetInNamespace(
 			'heroicons_mini',
-			domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-mini.svg')
+			this._domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-mini.svg')
+		);
+
+		// Register logo
+		this._matIconRegistry.addSvgIcon(
+			'logo',
+			this._domSanitizer.bypassSecurityTrustResourceUrl('images/logo/logo.svg')
 		);
 	}
 }

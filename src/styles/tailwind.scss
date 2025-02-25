@@ -20,22 +20,21 @@
 	/* HTML and Body default styles */
 	html,
 	body {
-		// font-family:
-		// 	'Inter var',
-		// 	sans-serif;
+		font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;
 		width: 100%;
 		min-height: 100%;
 		scroll-behavior: smooth;
-		-webkit-font-smoothing: auto;
-		-moz-osx-font-smoothing: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
 	/* Font size */
 	html {
 		font-size: 16px;
+		font-display: swap;
 	}
 
 	/* Body font size */
@@ -112,6 +111,38 @@
 	/* -------------------------------------------------------------------------------------------- */
 	/*  @ Custom classes
 	/* -------------------------------------------------------------------------------------------- */
+
+	/* High-priority background images */
+	.bg-high-priority {
+		@apply relative;
+		background-size: cover !important;
+		background-position: center !important;
+		background-repeat: no-repeat !important;
+		contain: paint;
+		content-visibility: auto;
+		will-change: transform;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		-webkit-transform: translateZ(0) scale(1.0, 1.0);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: inherit;
+			@apply z-[-1];
+
+			/* Preload hint for browsers */
+			@media (prefers-reduced-motion: no-preference) {
+				link-preload: high;
+				fetch-priority: high;
+			}
+		}
+	}
 
 	/* Background color for cards */
 	.bg-card {
