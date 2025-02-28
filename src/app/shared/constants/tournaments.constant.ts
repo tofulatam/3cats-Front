@@ -24,7 +24,12 @@ export const TOURNAMENTS: Tournament[] = [
 		totalReds: 3,
 		totalTeams: 16,
 		totalFollowers: 1050,
-		popularityScore: 98
+		popularityScore: 98,
+		gender: 'masculino',
+		minAge: 15,
+		maxAge: 19,
+		fields: ['Cancha Marte', 'cancha oriental', 'cancha sur'],
+		formatSoccer: 'Futbol 11'
 	},
 	{
 		tournamentName: 'Liga Futbol 8',
@@ -49,7 +54,12 @@ export const TOURNAMENTS: Tournament[] = [
 		totalReds: 2,
 		totalTeams: 12,
 		totalFollowers: 890,
-		popularityScore: 85
+		popularityScore: 85,
+		gender: 'Femenino',
+		minAge: 21,
+		maxAge: 30,
+		fields: ['Cancha Bolívar', 'Cancha Santander'],
+		formatSoccer: 'Futbol 8'
 	},
 	{
 		tournamentName: 'Torneo Juvenil Sub-17',
@@ -74,7 +84,11 @@ export const TOURNAMENTS: Tournament[] = [
 		totalReds: 5,
 		totalTeams: 20,
 		totalFollowers: 750,
-		popularityScore: 82
+		popularityScore: 82,
+		minAge: 15,
+		maxAge: 17,
+		fields: ['Cancha del Bosque'],
+		formatSoccer: 'Futbol 5'
 	},
 	{
 		tournamentName: 'Copa del Caribe',
@@ -99,7 +113,11 @@ export const TOURNAMENTS: Tournament[] = [
 		totalReds: 1,
 		totalTeams: 10,
 		totalFollowers: 670,
-		popularityScore: 78
+		popularityScore: 78,
+		minAge: 25,
+		maxAge: 40,
+		fields: ['Cancha Mutis', 'Cancha El Bueno'],
+		formatSoccer: 'Futbol 7'
 	},
 	{
 		tournamentName: 'Fútbol Master Senior',
@@ -124,6 +142,10 @@ export const TOURNAMENTS: Tournament[] = [
 		totalReds: 2,
 		totalTeams: 14,
 		totalFollowers: 630,
-		popularityScore: 75
+		popularityScore: 75,
+		minAge: 41,
+		maxAge: 55,
+		fields: ['Cancha Mutis', 'Cancha El Bueno'],
+		formatSoccer: 'Futbol 11'
 	}
-] as const;
+];

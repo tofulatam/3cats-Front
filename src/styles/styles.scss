@@ -7,9 +7,9 @@
 }
 
 .btn-landing {
-	@apply rounded-full bg-colorEnglishGreen px-4 py-2 text-white transition-colors hover:bg-colorEnglishGreen/90;
+	@apply rounded-full bg-colorSecundario px-4 py-2 text-white transition-colors hover:bg-colorSecundario/90;
 }
 
 .btn-landing-outline {
-	@apply rounded-full border border-colorEnglishGreen bg-white px-4 py-2 text-colorEnglishGreen transition-colors hover:bg-colorEnglishGreen hover:text-white;
+	@apply rounded-full border border-colorSecundario bg-white px-4 py-2 text-colorSecundario transition-colors hover:bg-colorSecundario hover:text-white;
 }

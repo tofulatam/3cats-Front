@@ -205,7 +205,7 @@
 		/* Apply accent color */
 		&.mat-accent {
 			.mat-icon {
-				@apply text-accent #{'!important'};
+				@apply text-colorSecundario #{'!important'};
 			}
 		}
 

@@ -2,12 +2,12 @@
 	<div #aboutScroll class="about-scroll">
 		@for (feature of aboutFeatures; track feature) {
 			<div
-				class="shadow-cardFeature flex h-62 w-62 flex-col items-center justify-center gap-2 rounded-2xl px-8 py-6 text-center"
+				class="flex h-62 w-62 flex-col items-center justify-center gap-2 rounded-2xl px-8 py-6 text-center shadow-cardFeature"
 				[class]="feature.isActive ? 'bg-card' : 'bg-[#F6F6F6] dark:bg-slate-800'"
 			>
 				@if (feature.comingSoon) {
 					<span
-						class="bg-card rounded-full px-2 py-1 font-semibold text-[#B5B5B5] dark:text-colorMentaCrema"
+						class="bg-card dark:text-colorBlancoMenta rounded-full px-2 py-1 font-semibold text-[#B5B5B5]"
 					>
 						Próximamente
 					</span>
@@ -21,7 +21,7 @@
 					{{ feature.title }}
 				</h3>
 
-				<p class="text-sm text-[#B5B5B5] dark:text-colorMentaCrema">
+				<p class="dark:text-colorBlancoMenta text-sm text-[#B5B5B5]">
 					{{ feature.description }}
 				</p>
 			</div>

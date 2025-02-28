@@ -21,4 +21,9 @@ export interface Tournament {
 	totalTeams: number;
 	totalFollowers: number;
 	popularityScore: number;
+	gender?: string;
+	minAge: number;
+	maxAge: number;
+	fields: string[];
+	formatSoccer: string;
 }

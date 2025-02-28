@@ -10,7 +10,7 @@ import { Team } from '@app/shared/interfaces/team.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: {
 		class:
-			'flex flex-col items-center justify-center gap-4 rounded-xl p-6 text-center text-colorMentaCrema 2xs:w-64'
+			'flex flex-col items-center justify-center gap-4 rounded-xl p-6 text-center text-colorBlancoMenta 2xs:w-64'
 	}
 })
 export class LandingTeamCardComponent {

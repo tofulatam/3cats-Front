@@ -3,7 +3,7 @@
 	<img
 		[src]="team().urlTeamPhoto"
 		[alt]="team().teamName"
-		class="h-full w-full object-contain"
+		class="h-full w-full rounded-full object-contain"
 		loading="lazy"
 		decoding="async"
 		fetchpriority="low"
@@ -13,21 +13,21 @@
 <!-- Team Info -->
 <div class="flex flex-col items-center gap-1">
 	<!-- Team Name -->
-	<h3 class="line-clamp-1 text-lg font-bold text-colorMentaCrema">{{ team().teamName }}</h3>
+	<h3 class="text-colorBlancoMenta line-clamp-1 text-lg font-bold">{{ team().teamName }}</h3>
 
 	<!-- Team Creation Date -->
-	<p class="text-base font-normal italic text-colorMentaCrema">
+	<p class="text-colorBlancoMenta text-base font-normal italic">
 		Est. {{ team().createdSince | date: 'yyyy' }}
 	</p>
 
 	<!-- Team Description -->
-	<p class="line-clamp-2 text-base font-normal text-colorMentaCrema">
+	<p class="text-colorBlancoMenta line-clamp-2 text-base font-normal">
 		{{ team().aboutTeam }}
 	</p>
 
-	<div class="flex w-fit items-center gap-2 border border-colorMentaCrema px-2">
-		<p class="text-lg font-bold text-colorMentaCrema">{{ team().played }}</p>
-		<p class="text-sm text-colorMentaCrema">Torneos jugados</p>
+	<div class="border-colorBlancoMenta flex w-fit items-center gap-2 border px-2">
+		<p class="text-colorBlancoMenta text-lg font-bold">{{ team().played }}</p>
+		<p class="text-colorBlancoMenta text-sm">Torneos jugados</p>
 	</div>
 </div>
 
@@ -48,7 +48,7 @@
 		</div>
 
 		<!-- Divider -->
-		<mat-divider class="h-full bg-colorMentaCrema" [vertical]="true"></mat-divider>
+		<mat-divider class="bg-colorBlancoMenta h-full" [vertical]="true"></mat-divider>
 
 		<!-- Third Position -->
 		<div class="flex items-center gap-1">
@@ -59,7 +59,7 @@
 </div>
 
 <!-- Followers -->
-<p class="text-xs text-colorMentaCrema">{{ team().followersCount }} fans incondicionales</p>
+<p class="text-colorBlancoMenta text-xs">{{ team().followersCount }} fans incondicionales</p>
 
 <!-- Join Button -->
 <button class="btn-landing-outline">

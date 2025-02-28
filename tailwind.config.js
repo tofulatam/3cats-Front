@@ -99,26 +99,15 @@ const config = {
 		extend: {
 			colors: {
 				dashboardGrayText: '#A0AEC0',
-				colorAmarilloSuave: '#F3F781',
-				colorAzulFacebook: '#3b5998',
-				colorBotonFlotante: '#FF0040',
-				colorContrasenia: '#FF6B6B',
-				colorEnglishGreen: '#1A535C',
-				colorFondoVivo: '#01DF74',
-				colorGris: '#70534B',
-				colorLetraAzul: '#2196F3',
-				colorLetraCampFav: '#1A535C',
-				colorLetraGroupView: '#F7FFF7',
-				colorLetraTabLayout: '#1A535C',
-				colorLetraToolBar: '#1A535C',
-				colorMentaCrema: '#F7FFF7',
-				colorNegroGris: '#424242',
+				//
+				colorSecundario: '#1A535C',
+				colorBlancoMenta: '#F7FFF7',
+				colorGrisClaro: '#BFBFBF',
+				colorGris: '#424242',
 				colorRojo: '#FF6B6B',
+				colorAmarillo: '#F3F781',
+				colorAzul: '#3B5998',
 				primary: THEME_PALETTE,
-				accent: {
-					...colors.slate,
-					DEFAULT: colors.slate[800]
-				},
 				warn: {
 					...colors.red,
 					DEFAULT: colors.red[600]
