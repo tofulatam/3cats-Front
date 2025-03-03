@@ -1,27 +1,28 @@
-<div class="bg-card h-full rounded-lg p-6 shadow">
+<div class="dashboard-card">
 	<div class="mb-6">
-		<h2 class="mb-1 text-xl font-semibold">Estadísticas</h2>
-		<p class="text-sm text-dashboardGrayText">
+		<h2 class="text-adaptive-title mb-1 text-xl font-semibold">Estadísticas</h2>
+		<p class="text-adaptive-secondary text-sm">
 			<span class="font-bold text-green-500">(+{{ increasePercentage }}%)</span>
 			que la semana pasada
 		</p>
-		<div class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
-			<div class="text-center">
-				<span class="text-2xl font-bold text-primary">{{ statistics.partidosJugados }}</span>
-				<p class="text-sm text-dashboardGrayText">Partidos jugados</p>
-			</div>
-			<div class="text-center">
-				<span class="text-2xl font-bold text-primary">{{ statistics.partidosGanados }}</span>
-				<p class="text-sm text-dashboardGrayText">Partidos ganados</p>
-			</div>
-			<div class="text-center">
-				<span class="text-2xl font-bold text-primary">{{ statistics.golesTotal }}</span>
-				<p class="text-sm text-dashboardGrayText">Goles totales</p>
-			</div>
-			<div class="text-center">
-				<span class="text-2xl font-bold text-primary">{{ statistics.tarjetasTotal }}</span>
-				<p class="text-sm text-dashboardGrayText">Tarjetas totales</p>
-			</div>
+
+		<div class="mt-4 grid grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] gap-4">
+			@for (item of statItems; track item.key) {
+				<div class="text-start">
+					<div class="mb-2 flex items-center justify-center gap-2">
+						<mat-icon
+							class="rounded-md bg-primary-500 p-3 text-white icon-size-5"
+							[fontIcon]="item.icon"
+						></mat-icon>
+
+						<p class="text-sm text-colorGrisClaro">{{ item.label }}</p>
+					</div>
+
+					<span class="text-adaptive-secondary text-2xl font-bold">
+						{{ statistics[item.key] }}
+					</span>
+				</div>
+			}
 		</div>
 	</div>
 
@@ -37,6 +38,7 @@
 			[yaxis]="barChartOptions.yaxis"
 			[legend]="barChartOptions.legend"
 			[tooltip]="barChartOptions.tooltip"
+			[grid]="barChartOptions.grid"
 		>
 		</apx-chart>
 	</div>
