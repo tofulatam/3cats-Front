@@ -1,0 +1,11 @@
+<div class="bg-card h-full rounded-lg p-6 shadow">
+	<h2 class="mb-4 text-xl font-semibold">{{ title }}</h2>
+	<apx-chart
+		[series]="areaChartOptions.series"
+		[chart]="areaChartOptions.chart"
+		[xaxis]="areaChartOptions.xaxis"
+		[colors]="areaChartOptions.colors"
+		[fill]="areaChartOptions.fill"
+	>
+	</apx-chart>
+</div>

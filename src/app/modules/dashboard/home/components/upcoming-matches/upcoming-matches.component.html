@@ -1,0 +1,43 @@
+<div class="dashboard-card">
+	<h2 class="mb-6 text-xl font-semibold">Próximos Partidos</h2>
+
+	@if (upcomingMatches.length === 0) {
+		<app-empty-tournaments />
+	} @else {
+		<div class="space-y-6">
+			@for (match of upcomingMatches; track $index) {
+				<div class="space-y-4">
+					<div class="text-sm">{{ match.torneo }}</div>
+					<div class="flex flex-wrap items-center justify-between">
+						<div class="flex items-center gap-3">
+							<img
+								[src]="match.equipoLocal.imagen"
+								[alt]="match.equipoLocal.nombre"
+								class="h-10 w-10"
+							/>
+							<span class="text-lg font-bold">{{ match.equipoLocal.abreviatura }}</span>
+						</div>
+
+						<div class="text-center text-primary">
+							<div class="bg-card mb-1 rounded-full px-3 py-1 font-bold shadow-md">
+								{{ match.fecha }}
+							</div>
+							<div class="text-sm">{{ match.hora }}</div>
+						</div>
+
+						<div class="flex items-center gap-3">
+							<span class="text-lg font-bold">{{ match.equipoVisitante.abreviatura }}</span>
+							<img
+								[src]="match.equipoVisitante.imagen"
+								[alt]="match.equipoVisitante.nombre"
+								class="h-10 w-10"
+							/>
+						</div>
+
+						<button class="btn-outline bg-card px-4 py-1 text-sm">Ver más</button>
+					</div>
+				</div>
+			}
+		</div>
+	}
+</div>
