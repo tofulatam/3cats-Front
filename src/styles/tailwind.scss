@@ -112,38 +112,6 @@
 	/*  @ Custom classes
 	/* -------------------------------------------------------------------------------------------- */
 
-	/* High-priority background images */
-	.bg-high-priority {
-		@apply relative;
-		background-size: cover !important;
-		background-position: center !important;
-		background-repeat: no-repeat !important;
-		contain: paint;
-		content-visibility: auto;
-		will-change: transform;
-		transform: translateZ(0);
-		backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		-webkit-transform: translateZ(0) scale(1.0, 1.0);
-
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: inherit;
-			@apply z-[-1];
-
-			/* Preload hint for browsers */
-			@media (prefers-reduced-motion: no-preference) {
-				link-preload: high;
-				fetch-priority: high;
-			}
-		}
-	}
-
 	/* Background color for cards */
 	.bg-card {
 		@apply bg-white dark:bg-[#1e293b];
@@ -152,6 +120,19 @@
 	/* Background color for navigation */
 	.bg-navigation {
 		@apply bg-[#F8F9FA] dark:bg-[#1e293b];
+	}
+
+	.dashboard-card {
+		@apply bg-card rounded-2xl p-6 shadow;
+	}
+
+	/* Adaptive text colors */
+	.text-adaptive-title {
+		@apply text-colorSecundario dark:text-primary;
+	}
+
+	.text-adaptive-secondary {
+		@apply text-colorGris dark:text-colorBlancoMenta;
 	}
 }
 
