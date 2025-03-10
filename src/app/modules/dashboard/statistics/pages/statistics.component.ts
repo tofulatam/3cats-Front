@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TEAMS } from '@app/shared/constants/teams.constant';
+import ConstructionComponent from '@app/shared/pages/construction/construction.component';
 import { StatisticsFairPlayComponent } from '../components/fair-play/fair-play.component';
 import { StatisticsGoalEfficiencyComponent } from '../components/goal-efficiency/goal-efficiency.component';
 import { StatisticsMatchResultsComponent } from '../components/match-results/match-results.component';
@@ -12,7 +13,8 @@ import { StatItem } from '../interfaces/statistics.interface';
 		StatsCardComponent,
 		StatisticsMatchResultsComponent,
 		StatisticsGoalEfficiencyComponent,
-		StatisticsFairPlayComponent
+		StatisticsFairPlayComponent,
+		ConstructionComponent
 	],
 	templateUrl: './statistics.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
