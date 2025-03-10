@@ -9,8 +9,7 @@ interface Feature {
 @Component({
 	selector: 'landing-organize',
 	templateUrl: './organize.component.html',
-	styleUrl: './organize.component.scss',
-	standalone: true
+	styleUrl: './organize.component.scss'
 })
 export class LandingOrganizeComponent {
 	features: Feature[] = [

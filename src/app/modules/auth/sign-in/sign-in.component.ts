@@ -33,7 +33,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 		MatProgressSpinnerModule
 	]
 })
-export class AuthSignInComponent implements OnInit {
+export default class AuthSignInComponent implements OnInit {
 	@ViewChild('signInNgForm') signInNgForm: NgForm;
 
 	public alert: string = '';

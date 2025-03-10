@@ -27,7 +27,10 @@ export const appRoutes: Route[] = [
 			layout: 'empty'
 		},
 		children: [
-			{ path: 'sign-in', loadChildren: () => import('app/modules/auth/sign-in/sign-in.routes') }
+			{
+				path: 'sign-in',
+				loadComponent: () => import('app/modules/auth/sign-in/sign-in.component')
+			}
 		]
 	},
 
@@ -41,7 +44,10 @@ export const appRoutes: Route[] = [
 			layout: 'empty'
 		},
 		children: [
-			{ path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.routes') }
+			{
+				path: 'sign-out',
+				loadComponent: () => import('app/modules/auth/sign-out/sign-out.component')
+			}
 		]
 	},
 
@@ -49,7 +55,7 @@ export const appRoutes: Route[] = [
 	{
 		path: 'redireccion-inicio',
 		pathMatch: 'full',
-		redirectTo: 'dashboard'
+		redirectTo: 'dashboard/home'
 	},
 
 	// Dashboards routes
@@ -67,7 +73,7 @@ export const appRoutes: Route[] = [
 					{
 						path: 'home',
 						pathMatch: 'full',
-						loadComponent: () => import('@app/modules/dashboard/home/pages/home/home.component')
+						loadComponent: () => import('@app/modules/dashboard/home/pages/home.component')
 					},
 
 					// Player routes
@@ -77,17 +83,26 @@ export const appRoutes: Route[] = [
 							{
 								path: 'equipos',
 								pathMatch: 'full',
-								loadComponent: () => import('@app/modules/dashboard/teams/teams.component')
+								loadComponent: () => import('@app/modules/dashboard/teams/pages/teams.component')
 							},
-							// {
-							// 	path: 'estadisticas',
-							// 	loadChildren: () => import('@app/modules/dashboard/analytics/analytics.routes')
-							// },
+							{
+								path: 'estadisticas',
+								pathMatch: 'full',
+								loadComponent: () =>
+									import('@app/modules/dashboard/statistics/pages/statistics.component').then(
+										(m) => m.StatisticsComponent
+									)
+							},
 							{
 								path: 'torneos',
 								pathMatch: 'full',
 								loadComponent: () =>
-									import('@app/modules/dashboard/tournaments/tournaments.component')
+									import('@app/modules/dashboard/tournaments/pages/tournaments.component')
+							},
+							{
+								path: 'partidos',
+								pathMatch: 'full',
+								loadComponent: () => import('@app/modules/dashboard/matches/matches.component')
 							}
 						]
 					},

@@ -9,7 +9,7 @@ import { Subject, finalize, takeUntil, takeWhile, tap, timer } from 'rxjs';
 	templateUrl: './sign-out.component.html',
 	imports: [RouterLink, I18nPluralPipe]
 })
-export class AuthSignOutComponent implements OnInit, OnDestroy {
+export default class AuthSignOutComponent implements OnInit, OnDestroy {
 	public countdown: number = 5;
 	public countdownMapping: Record<string, string> = {
 		'=1': '# segundo',

@@ -15,7 +15,6 @@ export interface TournamentFilter {
 @Component({
 	selector: 'app-dashboard-filter',
 	templateUrl: './filter.component.html',
-	standalone: true,
 	imports: [MatIconModule, MatButtonModule, MatInputModule, MatSelectModule, FormsModule]
 })
 export class FilterComponent {
