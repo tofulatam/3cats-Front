@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 // Components
 import { EmptyTournamentsComponent } from '@app/shared/components/empty-tournaments/empty-tournaments.component';
 import { FilterComponent } from '@app/shared/components/filter/filter.component';
-import { DashboardMyTournamentCardComponent } from './components/my-tournament-card/my-tournament-card.component';
-import { DashboardTournamentCardComponent } from './components/tournament-card/tournament-card.component';
+import { DashboardMyTournamentCardComponent } from '../components/my-tournament-card/my-tournament-card.component';
+import { DashboardTournamentCardComponent } from '../components/tournament-card/tournament-card.component';
 // Constants
 import { TOURNAMENTS } from '@app/shared/constants/tournaments.constant';
 // Interfaces

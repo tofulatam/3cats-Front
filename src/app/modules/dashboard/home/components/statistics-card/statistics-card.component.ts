@@ -1,20 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import {
+	Statistics,
+	StatItem
+} from '@app/modules/dashboard/statistics/interfaces/statistics.interface';
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
-
-export interface Statistics {
-	partidosJugados: number;
-	partidosGanados: number;
-	golesTotal: number;
-	tarjetasTotal: number;
-}
-
-interface StatItem {
-	icon: string;
-	label: string;
-	value: number;
-	key: keyof Statistics;
-}
 
 @Component({
 	selector: 'app-statistics-card',

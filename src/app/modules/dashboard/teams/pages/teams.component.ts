@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 // Components
 import { EmptyTeamsComponent } from '@app/shared/components/empty-teams/empty-teams.component';
 import { FilterComponent } from '@app/shared/components/filter/filter.component';
-import { MyTeamCardComponent } from './components/my-team-card/my-team-card.component';
-import { TeamCardComponent } from './components/team-card/team-card.component';
+import { MyTeamCardComponent } from '../components/my-team-card/my-team-card.component';
+import { TeamCardComponent } from '../components/team-card/team-card.component';
 // Constants
 import { TEAMS } from '@app/shared/constants/teams.constant';
 // Interfaces
