@@ -1,12 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TEAMS } from '@app/shared/constants/teams.constant';
+import { StatisticsFairPlayComponent } from '../components/fair-play/fair-play.component';
+import { StatisticsGoalEfficiencyComponent } from '../components/goal-efficiency/goal-efficiency.component';
 import { StatisticsMatchResultsComponent } from '../components/match-results/match-results.component';
 import { StatsCardComponent } from '../components/stats-card/stats-card.component';
 import { StatItem } from '../interfaces/statistics.interface';
 
 @Component({
 	selector: 'statistics',
-	imports: [StatsCardComponent, StatisticsMatchResultsComponent],
+	imports: [
+		StatsCardComponent,
+		StatisticsMatchResultsComponent,
+		StatisticsGoalEfficiencyComponent,
+		StatisticsFairPlayComponent
+	],
 	templateUrl: './statistics.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

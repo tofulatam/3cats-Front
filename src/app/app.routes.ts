@@ -55,7 +55,7 @@ export const appRoutes: Route[] = [
 	{
 		path: 'redireccion-inicio',
 		pathMatch: 'full',
-		redirectTo: 'dashboard'
+		redirectTo: 'dashboard/home'
 	},
 
 	// Dashboards routes

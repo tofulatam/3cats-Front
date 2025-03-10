@@ -56,7 +56,9 @@ export class StatisticsMatchResultsComponent {
 		this.areaChartOptions = {
 			chart: {
 				type: 'pie',
-				height: 350,
+				height: '100%',
+				fontFamily: 'inherit',
+				foreColor: 'inherit',
 				toolbar: {
 					show: false
 				},
@@ -69,25 +71,25 @@ export class StatisticsMatchResultsComponent {
 			labels: ['Ganados', 'Empatados', 'Perdidos'],
 			series: [this.matchResults().won, this.matchResults().drawn, this.matchResults().lost],
 			legend: {
-				position: 'bottom'
+				position: 'bottom',
+				fontSize: '14px'
+			},
+			title: {
+				text: 'Distribución de resultados de partidos',
+				align: 'center',
+				style: {
+					fontSize: '14px',
+					fontWeight: 500
+				}
 			},
 			tooltip: {
+				followCursor: true,
 				y: {
 					formatter: function (val) {
 						return val + ' partidos';
 					}
 				}
-			},
-			responsive: [
-				{
-					breakpoint: 480,
-					options: {
-						chart: {
-							height: 250
-						}
-					}
-				}
-			]
+			}
 		};
 	}
 }

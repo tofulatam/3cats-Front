@@ -1,0 +1,19 @@
+	/* Media query for dark mode */
+	@media (prefers-color-scheme: dark) {
+
+		.apexcharts-text,
+		.apexcharts-title-text {
+			fill: #fff;
+		}
+
+		.apexcharts-tooltip,
+		.apexcharts-tooltip-title {
+			background-color: #333 !important;
+			color: #fff !important;
+			border: 1px solid #555 !important;
+		}
+
+		.apexcharts-legend-text {
+			color: #fff !important;
+		}
+	}

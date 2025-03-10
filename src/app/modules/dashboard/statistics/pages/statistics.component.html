@@ -19,8 +19,14 @@
 	</div>
 
 	<!-- Charts -->
-	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3">
 		<!-- Match results chart -->
 		<statistics-match-results [matchResults]="team" />
+
+		<!-- Goal efficiency chart -->
+		<statistics-goal-efficiency [matchResults]="team" />
+
+		<!-- Fair play chart -->
+		<statistics-fair-play [cardData]="team" />
 	</div>
 </div>
