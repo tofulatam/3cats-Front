@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 
 @Component({
 	selector: 'scroll-buttons',
-	standalone: true,
 	template: `
 		<button
 			class="scroll-button left"

@@ -95,8 +95,7 @@ const MOCK_MATCH_DATA: MatchData[] = [
 	selector: 'statistics-goal-efficiency',
 	imports: [MatIconModule, NgApexchartsModule],
 	templateUrl: './goal-efficiency.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsGoalEfficiencyComponent {
 	// Inputs

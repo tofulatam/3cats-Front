@@ -10,7 +10,6 @@ interface Achievement {
 
 @Component({
 	selector: 'app-achievements-list',
-	standalone: true,
 	imports: [CommonModule, MatDividerModule],
 	templateUrl: './achievements-list.component.html'
 })

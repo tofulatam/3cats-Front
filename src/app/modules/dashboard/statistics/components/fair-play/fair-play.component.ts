@@ -16,8 +16,7 @@ interface CardData {
 	selector: 'statistics-fair-play',
 	imports: [MatIconModule, NgApexchartsModule],
 	templateUrl: './fair-play.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsFairPlayComponent {
 	// Inputs

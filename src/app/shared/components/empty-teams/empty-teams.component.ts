@@ -4,7 +4,6 @@ import { EmptyStateCardComponent } from '../empty-state-card/empty-state-card.co
 
 @Component({
 	selector: 'app-empty-teams',
-	standalone: true,
 	imports: [EmptyStateCardComponent, MatIconModule],
 	template: `
 		<app-empty-state-card

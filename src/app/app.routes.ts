@@ -98,6 +98,11 @@ export const appRoutes: Route[] = [
 								pathMatch: 'full',
 								loadComponent: () =>
 									import('@app/modules/dashboard/tournaments/pages/tournaments.component')
+							},
+							{
+								path: 'partidos',
+								pathMatch: 'full',
+								loadComponent: () => import('@app/modules/dashboard/matches/matches.component')
 							}
 						]
 					},
