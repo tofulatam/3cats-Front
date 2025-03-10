@@ -1,0 +1,103 @@
+<div class="dashboard-card relative flex flex-col items-center gap-y-2">
+	<!-- Favorite Button -->
+	<div class="absolute right-0 top-0 p-4">
+		<app-favorite-button />
+	</div>
+
+	<!-- Tournament Logo -->
+	<div class="h-32 w-32">
+		<img [src]="team().urlTeamPhoto" [alt]="team().teamName" class="h-full w-full object-contain" />
+	</div>
+
+	<!-- Tournament Name -->
+	<h3 class="text-center text-lg font-semibold">{{ team().teamName }}</h3>
+
+	<!-- Country -->
+	<p class="text-adaptive-secondary text-base font-normal italic">
+		Est. {{ team().createdSince | date: 'yyyy' }}
+	</p>
+
+	<!-- Team Description -->
+	<p class="text-adaptive-secondary line-clamp-2 text-center text-base font-normal">
+		{{ team().aboutTeam }}
+	</p>
+
+	<!-- Tournament Played -->
+	<div
+		class="flex w-fit items-center gap-2 border border-colorGris px-2 dark:border-colorBlancoMenta"
+	>
+		<p class="text-adaptive-secondary line-clamp-1 text-lg font-bold">
+			{{ team().played }}
+			<span class="text-sm font-normal">Torneos jugados</span>
+		</p>
+	</div>
+
+	<!-- TODO: change propertier for the right one -->
+	<div class="flex flex-col items-center justify-center gap-3">
+		<!-- First Position -->
+		<div class="flex items-center gap-1">
+			<img src="images/cards/trophy_dark.svg" alt="Trophy" class="h-9 w-9 dark:hidden" />
+			<img src="images/cards/trophy.svg" alt="Trophy" class="hidden h-9 w-9 dark:block" />
+			<span class="text-2xl font-bold">{{ team().won || '-' }}</span>
+		</div>
+
+		<!-- Second and Third Position -->
+		<div class="flex items-center gap-3">
+			<!-- Second Position -->
+			<div class="flex items-center gap-1">
+				<img
+					src="images/cards/second_dark.svg"
+					alt="Medalla segunda posición"
+					class="h-7 w-7 dark:hidden"
+				/>
+				<img
+					src="images/cards/second.svg"
+					alt="Medalla segunda posición"
+					class="hidden h-7 w-7 dark:block"
+				/>
+				<span class="text-xl">{{ team().goalsFor || '-' }}</span>
+			</div>
+
+			<!-- Divider -->
+			<mat-divider class="h-full bg-colorGris" [vertical]="true"></mat-divider>
+
+			<!-- Third Position -->
+			<div class="flex items-center gap-1">
+				<img
+					src="images/cards/third_dark.svg"
+					alt="Medalla tercera posición"
+					class="h-7 w-7 dark:hidden"
+				/>
+				<img
+					src="images/cards/third.svg"
+					alt="Medalla tercera posición"
+					class="hidden h-7 w-7 dark:block"
+				/>
+				<span class="text-xl">{{ team().goalsAgainst || '-' }}</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- <mat-divider class="w-full bg-colorGris"></mat-divider>
+
+	<div class="flex w-full flex-col items-center justify-center gap-2">
+		<div class="text-xs text-colorGris">Copa Pasión Local</div>
+
+		<div class="flex w-full items-center justify-between">
+			<div class="flex items-center gap-2">
+				<img src="images/madrid.png" alt="UKR" class="h-6 w-6 object-contain" />
+				<span class="text-sm font-medium">UKR</span>
+			</div>
+
+			<div class="text-center text-primary">
+				<div class="bg-card mb-1 rounded-full px-3 py-1 font-bold shadow-md">Martes 20</div>
+				<div class="text-xs">17 horas</div>
+			</div>
+
+			<div class="flex items-center gap-2">
+				<span class="text-sm font-medium">ATM</span>
+				<img src="images/atmadrid.png" alt="ATM" class="h-6 w-6 object-contain" />
+			</div>
+		</div>
+	</div> -->
+</div>

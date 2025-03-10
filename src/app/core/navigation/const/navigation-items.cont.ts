@@ -15,7 +15,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 				title: 'Inicio',
 				type: 'basic',
 				fontIcon: 'home',
-				link: '/dashboard'
+				link: '/dashboard/home'
 			}
 		]
 	},

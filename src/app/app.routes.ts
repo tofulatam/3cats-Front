@@ -65,7 +65,7 @@ export const appRoutes: Route[] = [
 				children: [
 					// Home
 					{
-						path: '',
+						path: 'home',
 						pathMatch: 'full',
 						loadComponent: () => import('@app/modules/dashboard/home/pages/home/home.component')
 					},
@@ -74,18 +74,21 @@ export const appRoutes: Route[] = [
 					{
 						path: 'jugador',
 						children: [
-							// {
-							// 	path: 'partidos',
-							// 	loadChildren: () => import('@app/modules/dashboard/project/project.routes')
-							// },
+							{
+								path: 'equipos',
+								pathMatch: 'full',
+								loadComponent: () => import('@app/modules/dashboard/teams/teams.component')
+							},
 							// {
 							// 	path: 'estadisticas',
 							// 	loadChildren: () => import('@app/modules/dashboard/analytics/analytics.routes')
 							// },
-							// {
-							// 	path: 'torneos',
-							// 	loadComponent: () => import('@app/modules/dashboard/tournaments/tournaments.component')
-							// }
+							{
+								path: 'torneos',
+								pathMatch: 'full',
+								loadComponent: () =>
+									import('@app/modules/dashboard/tournaments/tournaments.component')
+							}
 						]
 					},
 

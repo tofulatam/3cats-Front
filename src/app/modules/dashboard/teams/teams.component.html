@@ -1,0 +1,47 @@
+<div class="container mx-auto p-4">
+	<!-- My Teams -->
+	<section class="mb-8">
+		<!-- Title -->
+		<h2 class="mb-4 text-xl font-bold">Estos son todos tus equipos</h2>
+
+		<!-- Filter -->
+		<app-dashboard-filter
+			(filterChange)="onFilterMyTeamsChange($event)"
+			(clearFilter)="onClearMyTeamsFilter()"
+		/>
+
+		<!-- My Teams List -->
+		<div class="mt-4 grid gap-4 xs:grid-cols-[repeat(auto-fit,minmax(18rem,1fr))]">
+			@for (team of myTeams; track $index) {
+				<!-- Team Card -->
+				<app-my-team-card [team]="team" />
+			} @empty {
+				<!-- Empty Teams -->
+				<app-empty-teams class="col-span-full" />
+			}
+		</div>
+	</section>
+
+	<!-- New Teams -->
+	<section>
+		<!-- Title -->
+		<h2 class="mb-4 text-xl font-bold">Nuevos equipos</h2>
+
+		<!-- Filter -->
+		<app-dashboard-filter
+			(filterChange)="onFilterNewTeamsChange($event)"
+			(clearFilter)="onClearNewTeamsFilter()"
+		/>
+
+		<!-- New Teams List -->
+		<div class="mt-4 grid grid-cols-1 gap-4">
+			@for (team of newTeams; track $index) {
+				<!-- Team Card -->
+				<app-team-card [team]="team" />
+			} @empty {
+				<!-- Empty Teams -->
+				<app-empty-teams class="col-span-full" />
+			}
+		</div>
+	</section>
+</div>

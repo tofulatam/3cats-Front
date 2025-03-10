@@ -1,0 +1,108 @@
+<div
+	class="dashboard-card flex justify-between gap-4 py-2 max-md:flex-col max-md:items-center max-md:justify-center"
+>
+	<!-- Team Shield -->
+	<div class="flex items-center gap-3">
+		<div class="flex-shrink-0">
+			<img
+				[src]="team().urlTeamPhoto || '/assets/images/default-shield.png'"
+				[alt]="team().teamName"
+				class="h-24 w-24 object-contain"
+			/>
+		</div>
+
+		<!-- Team Information -->
+		<div class="flex w-58 flex-col">
+			<!-- Founded Year -->
+			<p class="text-adaptive-secondary text-base font-normal italic">
+				Est. {{ team().createdSince | date: 'yyyy' }}
+			</p>
+			<!-- Team Name -->
+			<h3 class="text-xl font-semibold sm:line-clamp-1">
+				{{ team().teamName }}
+			</h3>
+
+			<!-- About Team -->
+			<div class="line-clamp-2 flex items-center gap-2 text-xs">
+				{{ team().aboutTeam }}
+			</div>
+		</div>
+	</div>
+
+	<!-- Tournament Played, First, Second and Third Position -->
+	<div
+		class="flex min-w-50 flex-1 flex-wrap items-center justify-evenly gap-4 max-md:flex-col max-md:items-center max-md:justify-center"
+	>
+		<!-- Tournament Played -->
+		<div
+			class="flex w-fit items-center gap-2 border border-colorGris px-2 dark:border-colorBlancoMenta"
+		>
+			<p class="text-adaptive-secondary line-clamp-1 text-lg font-bold">
+				{{ team().played }}
+				<span class="text-sm font-normal">Torneos jugados</span>
+			</p>
+		</div>
+
+		<!-- First, Second and Third Position -->
+		<div class="flex flex-col justify-center gap-3 text-center">
+			<div class="flex items-center justify-center gap-3 sm:flex-col">
+				<!-- First Position -->
+				<div class="flex items-center gap-1">
+					<img src="images/cards/trophy_dark.svg" alt="Trophy" class="h-9 w-9 dark:hidden" />
+					<img src="images/cards/trophy.svg" alt="Trophy" class="hidden h-9 w-9 dark:block" />
+					<span class="text-2xl font-bold">{{ team().won || '-' }}</span>
+				</div>
+
+				<!-- Second and Third Position -->
+				<div class="flex items-center gap-3">
+					<!-- Second Position -->
+					<div class="flex items-center gap-1">
+						<img
+							src="images/cards/second_dark.svg"
+							alt="Medalla segunda posición"
+							class="h-7 w-7 dark:hidden"
+						/>
+						<img
+							src="images/cards/second.svg"
+							alt="Medalla segunda posición"
+							class="hidden h-7 w-7 dark:block"
+						/>
+						<span class="text-xl">{{ team().goalsFor || '-' }}</span>
+					</div>
+
+					<!-- Divider -->
+					<mat-divider class="h-full bg-colorGris" [vertical]="true"></mat-divider>
+
+					<!-- Third Position -->
+					<div class="flex items-center gap-1">
+						<img
+							src="images/cards/third_dark.svg"
+							alt="Medalla tercera posición"
+							class="h-7 w-7 dark:hidden"
+						/>
+						<img
+							src="images/cards/third.svg"
+							alt="Medalla tercera posición"
+							class="hidden h-7 w-7 dark:block"
+						/>
+						<span class="text-xl">{{ team().goalsAgainst || '-' }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Join Button and Favorite Button -->
+	<div class="flex flex-wrap-reverse justify-center gap-x-8 gap-y-4 text-center md:items-center">
+		<div class="flex flex-col gap-2">
+			<!-- Join Button -->
+			<button class="btn-primary">Únete</button>
+			<!-- Fans -->
+			<div class="text-xs text-gray-400">
+				{{ team().followersCount || '-' }} fans incondicionales
+			</div>
+		</div>
+		<!-- Favorite Button -->
+		<app-favorite-button size="large"></app-favorite-button>
+	</div>
+</div>
