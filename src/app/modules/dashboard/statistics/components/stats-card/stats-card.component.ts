@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+// Material
 import { MatIconModule } from '@angular/material/icon';
-import { StatItem } from '../../interfaces/statistics.interface';
+// Interfaces
+import { StatItem } from '@statistics/interfaces/statistics.interface';
 
 @Component({
 	selector: 'app-stats-card',
@@ -9,5 +11,6 @@ import { StatItem } from '../../interfaces/statistics.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatsCardComponent {
+	// Inputs
 	public statsCard = input.required<StatItem>();
 }

@@ -144,8 +144,8 @@ export class StatisticsFairPlayComponent {
 				text: 'Tarjetas Recibidas',
 				align: 'center',
 				style: {
-					fontSize: '14px',
-					fontWeight: 500
+					fontSize: '18px',
+					fontWeight: 600
 				}
 			},
 			dataLabels: {

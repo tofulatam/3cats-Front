@@ -248,8 +248,8 @@ export class StatisticsGoalEfficiencyComponent {
 				text: 'Partidos míos y de mi equipo',
 				align: 'center',
 				style: {
-					fontSize: '14px',
-					fontWeight: 500
+					fontSize: '18px',
+					fontWeight: 600
 				}
 			},
 			tooltip: {

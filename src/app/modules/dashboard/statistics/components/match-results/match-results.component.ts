@@ -78,8 +78,8 @@ export class StatisticsMatchResultsComponent {
 				text: 'Distribución de resultados de partidos',
 				align: 'center',
 				style: {
-					fontSize: '14px',
-					fontWeight: 500
+					fontSize: '18px',
+					fontWeight: 600
 				}
 			},
 			tooltip: {

@@ -1,13 +1,16 @@
 <div class="grid h-fit grid-cols-1 gap-6 p-6 md:grid-cols-5">
-	<!-- Estadísticas con gráfico de barras -->
-	<app-statistics-card class="md:col-span-2"></app-statistics-card>
+	<!-- Match results chart -->
+	<statistics-match-results class="md:col-span-3" [matchResults]="team" />
 
-	<!-- Gráfico de Partidos Ganados -->
-	<app-matches-chart class="md:col-span-3"></app-matches-chart>
+	<!-- Fair play chart -->
+	<statistics-fair-play class="md:col-span-2" [cardData]="team" />
 
-	<!-- Lista de Torneos -->
-	<app-tournaments-list class="md:col-span-3"></app-tournaments-list>
+	<!-- Goal efficiency chart -->
+	<statistics-goal-efficiency class="col-span-full" [matchResults]="team" />
 
-	<!-- Próximos Partidos -->
-	<app-upcoming-matches class="md:col-span-2"></app-upcoming-matches>
+	<!-- Tournaments list -->
+	<app-tournaments-list class="md:col-span-3" />
+
+	<!-- Upcoming matches -->
+	<app-upcoming-matches class="md:col-span-2" />
 </div>
