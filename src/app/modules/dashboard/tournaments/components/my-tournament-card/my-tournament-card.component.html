@@ -1,0 +1,49 @@
+<div class="dashboard-card flex flex-col items-center gap-y-2 pt-2">
+	<!-- Header -->
+	<div class="flex w-full items-center justify-between text-center">
+		<!-- Status Badge -->
+		<app-status-badge class="font-bold" [status]="tournament().statusTournament" />
+
+		<!-- Favorite Button -->
+		<app-favorite-button />
+	</div>
+
+	<!-- Tournament Logo -->
+	<div class="h-32 w-32">
+		<img
+			[src]="tournament().urlTournamentShield"
+			[alt]="tournament().tournamentName"
+			class="h-full w-full object-contain"
+		/>
+	</div>
+
+	<!-- Tournament Name -->
+	<h3 class="text-center text-lg font-semibold">{{ tournament().tournamentName }}</h3>
+
+	<!-- Country -->
+	<div class="flex items-center gap-2">
+		<span class="text-adaptive-secondary text-sm">{{ tournament().mainCity }}</span>
+	</div>
+
+	<!-- Gender -->
+	<div class="min-w-36 rounded-md border border-colorGrisClaro px-2 py-1 text-center">
+		{{ (tournament().gender | titlecase) || '-' }}
+	</div>
+
+	<!-- Format -->
+	<div class="font-bold">
+		{{ tournament().formatSoccer }}
+	</div>
+
+	<!-- Venue -->
+	<div class="flex w-50 items-center justify-center gap-1">
+		<img class="w-6" src="images/cards/soccer-field.svg" alt="Soccer field" />
+		<span class="font-bold">{{ tournament().fields[0] }}</span>
+	</div>
+
+	<!-- Start Date -->
+	<div class="">{{ tournament().startTournament | date: 'longDate' }}</div>
+
+	<!-- Fans -->
+	<div class="text-sm text-gray-400">{{ tournament().totalFollowers }} Fans incondicionales</div>
+</div>

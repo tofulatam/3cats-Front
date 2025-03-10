@@ -1,0 +1,45 @@
+<div class="bg-card flex flex-col items-center gap-4 p-4 md:flex-row">
+	<!-- <button mat-icon-button class="text-gray-500">
+		<mat-icon>filter_list</mat-icon>
+	</button> -->
+
+	<!-- Search -->
+	<mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+		<mat-icon matPrefix class="text-gray-400">search</mat-icon>
+		<input
+			matInput
+			[(ngModel)]="filter.search"
+			(ngModelChange)="onFilterChange()"
+			placeholder="Nombre"
+		/>
+	</mat-form-field>
+
+	<div class="flex w-full flex-row gap-4">
+		<!-- City -->
+		<mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+			<mat-select [(ngModel)]="filter.city" (ngModelChange)="onFilterChange()" placeholder="Ciudad">
+				<mat-option [value]="''">Ciudad</mat-option>
+				@for (city of cities; track city) {
+					<mat-option [value]="city"> {{ city }} </mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+
+		<!-- Status -->
+		<mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+			<mat-select
+				[(ngModel)]="filter.status"
+				(ngModelChange)="onFilterChange()"
+				placeholder="Estado"
+			>
+				<mat-option [value]="''">Estado</mat-option>
+				@for (status of statuses; track status) {
+					<mat-option [value]="status"> {{ status }} </mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+	</div>
+
+	<!-- Clear -->
+	<button class="btn-outline-warn w-full whitespace-nowrap md:w-fit">Limpiar filtro</button>
+</div>

@@ -11,7 +11,7 @@ export interface Tournament {
 	mainCity: string;
 	latitude: number;
 	longitude: number;
-	statusTournament: 'En Inscripción' | 'En Curso' | 'Finalizado';
+	statusTournament: TournamentStatus;
 	startTournament: string;
 	teams: number;
 	totalMatches: number;
@@ -26,4 +26,10 @@ export interface Tournament {
 	maxAge: number;
 	fields: string[];
 	formatSoccer: string;
+}
+
+export enum TournamentStatus {
+	EnInscripcion = 'En Inscripción',
+	EnCurso = 'En Curso',
+	Finalizado = 'Finalizado'
 }

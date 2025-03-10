@@ -13,3 +13,7 @@
 .btn-landing-outline {
 	@apply rounded-full border border-colorSecundario bg-white px-4 py-2 text-colorSecundario transition-colors hover:bg-colorSecundario hover:text-white;
 }
+
+.btn-outline-warn {
+	@apply rounded-full border border-colorRojo bg-white px-4 py-2 text-colorRojo transition-colors hover:bg-colorRojo hover:text-white;
+}

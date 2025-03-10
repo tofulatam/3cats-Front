@@ -1,14 +1,14 @@
 <div
-	class="bg-card flex w-full flex-col justify-between overflow-hidden rounded-xl shadow-card lg:h-100 lg:w-150"
+	class="bg-card flex h-112 w-full flex-col justify-between overflow-hidden rounded-xl shadow-card lg:w-80"
 >
 	<!-- Header with Name and Favorite -->
 	<div class="flex items-center justify-between gap-4 bg-[#F6F6F6] p-4 dark:bg-slate-900">
 		<div class="flex flex-col gap-1">
 			<!-- Name -->
-			<h3 class="text-2xl font-bold">{{ tournament().tournamentName }}</h3>
+			<h3 class="text-center text-2xl font-bold">{{ tournament().tournamentName }}</h3>
 
 			<!-- Chips -->
-			<div class="text-colorBlancoMenta flex flex-wrap gap-2 text-xs">
+			<div class="flex flex-wrap gap-2 text-xs text-colorBlancoMenta">
 				@if (tournament().gender) {
 					<span class="rounded-full bg-primary px-3 py-0.5">
 						{{ tournament().gender | titlecase }}
@@ -26,7 +26,7 @@
 		</div>
 
 		<!-- Favorite Button -->
-		<app-favorite-button class="self-start" [size]="'large'" />
+		<!-- <app-favorite-button class="self-start" [size]="'large'" /> -->
 	</div>
 
 	<!-- Tournament Logo -->
@@ -44,25 +44,25 @@
 	<!-- Footer -->
 	<div class="flex items-center justify-between gap-4 bg-[#F6F6F6] p-4 dark:bg-slate-900">
 		<div class="flex flex-wrap items-center justify-between gap-3">
-			<div class="flex items-center gap-2">
-				<img src="images/cards/soccer-field.svg" alt="Cancha" class="h-5 w-5" />
-				<span class="font-semibold text-primary">{{ tournament().fields[0] }}</span>
+			<div class="flex flex-col items-center gap-2">
+				<!-- <img src="images/cards/soccer-field.svg" alt="Cancha" class="h-5 w-5" /> -->
 			</div>
 
 			<div class="flex items-center gap-2">
-				<img src="images/cards/location.svg" alt="Location" class="h-5 w-5" />
-				<span class="font-semibold text-primary">{{ tournament().mainCity }}</span>
+				<!-- <img src="images/cards/location.svg" alt="Location" class="h-5 w-5" /> -->
 			</div>
-		</div>
-
-		<div class="flex flex-col items-end gap-1">
-			<button class="btn-landing-outline border-none">
-				<span class="text-sm font-semibold">Saber más</span>
-			</button>
-
+			<span class="font-semibold text-primary">{{ tournament().fields[0] }}</span>
+			<span class="font-semibold text-primary">{{ tournament().mainCity }}</span>
 			<p class="text-end text-xs">
 				{{ tournament().totalFollowers }} personas ya están hablando de esto.
 			</p>
+		</div>
+
+		<div class="flex flex-col items-end gap-1">
+			<!-- <button class="btn-landing-outline border-none">
+				<span class="text-sm font-semibold">Saber más</span>
+			</button> -->
+			<app-favorite-button class="self-start" [size]="'large'" />
 		</div>
 	</div>
 </div>

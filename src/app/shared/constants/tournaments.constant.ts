@@ -1,4 +1,4 @@
-import { Tournament } from '../interfaces/tournament.interface';
+import { Tournament, TournamentStatus } from '../interfaces/tournament.interface';
 
 export const TOURNAMENTS: Tournament[] = [
 	{
@@ -15,7 +15,7 @@ export const TOURNAMENTS: Tournament[] = [
 		mainCity: 'Bogotá',
 		latitude: 4.711,
 		longitude: -74.072,
-		statusTournament: 'En Inscripción',
+		statusTournament: TournamentStatus.EnInscripcion,
 		startTournament: '2025-03-10',
 		teams: 16,
 		totalMatches: 32,
@@ -45,7 +45,7 @@ export const TOURNAMENTS: Tournament[] = [
 		mainCity: 'Medellín',
 		latitude: 6.2442,
 		longitude: -75.5812,
-		statusTournament: 'En Curso',
+		statusTournament: TournamentStatus.EnCurso,
 		startTournament: '2025-04-05',
 		teams: 12,
 		totalMatches: 24,
@@ -75,7 +75,7 @@ export const TOURNAMENTS: Tournament[] = [
 		mainCity: 'Cali',
 		latitude: 3.4516,
 		longitude: -76.532,
-		statusTournament: 'Finalizado',
+		statusTournament: TournamentStatus.Finalizado,
 		startTournament: '2024-12-20',
 		teams: 20,
 		totalMatches: 40,
@@ -104,7 +104,7 @@ export const TOURNAMENTS: Tournament[] = [
 		mainCity: 'Cartagena',
 		latitude: 10.391,
 		longitude: -75.4794,
-		statusTournament: 'En Curso',
+		statusTournament: TournamentStatus.EnCurso,
 		startTournament: '2025-02-01',
 		teams: 10,
 		totalMatches: 20,
@@ -133,7 +133,7 @@ export const TOURNAMENTS: Tournament[] = [
 		mainCity: 'Barranquilla',
 		latitude: 10.9639,
 		longitude: -74.7964,
-		statusTournament: 'En Inscripción',
+		statusTournament: TournamentStatus.EnInscripcion,
 		startTournament: '2025-05-15',
 		teams: 14,
 		totalMatches: 28,

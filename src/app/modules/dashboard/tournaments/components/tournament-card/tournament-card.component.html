@@ -1,0 +1,65 @@
+<div
+	class="dashboard-card flex justify-between gap-4 py-2 max-lg:flex-col max-lg:items-center max-lg:justify-center"
+>
+	<div class="flex items-center gap-3 max-sm:flex-col max-sm:items-center max-sm:justify-center">
+		<!-- Team Shield -->
+		<div class="flex-shrink-0">
+			<img
+				[src]="tournament().urlTournamentShield || '/assets/images/default-shield.png'"
+				[alt]="tournament().tournamentName"
+				class="h-24 w-24 object-contain"
+			/>
+		</div>
+
+		<!-- Tournament Information -->
+		<div class="flex w-full flex-col gap-4 max-md:text-center md:w-58">
+			<!-- Tournament Name -->
+			<h3 class="line-clamp-2 text-xl font-semibold">
+				{{ tournament().tournamentName }}
+			</h3>
+
+			<!-- Status Badge and Start Date -->
+			<div class="flex flex-wrap items-center gap-2 max-md:justify-center">
+				<!-- Status Badge -->
+				<app-status-badge [status]="tournament().statusTournament" />
+
+				<!-- Start Date -->
+				<span class="font-semibold text-colorGrisClaro">
+					{{ tournament().startTournament | date: 'mediumDate' }}
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-col items-center justify-center gap-4 text-center">
+		<span class="text-sm font-semibold"> {{ tournament().mainCity }}</span>
+
+		<!-- Venue -->
+		<div class="flex w-50 items-center justify-center gap-1">
+			<img class="w-6" src="images/cards/soccer-field.svg" alt="Soccer field" />
+			<span class="font-bold">{{ tournament().fields[0] }}</span>
+		</div>
+	</div>
+
+	<!-- Gender and Format -->
+	<div class="flex flex-col items-center justify-center gap-4 text-center">
+		<!-- Gender -->
+		<p class="min-w-36 rounded-md border border-colorGrisClaro px-2 py-1 text-center">
+			{{ (tournament().gender | titlecase) || '-' }}
+		</p>
+
+		<!-- Format -->
+		<p class="font-bold">
+			{{ tournament().formatSoccer }}
+		</p>
+	</div>
+
+	<div class="flex flex-col items-center justify-center gap-2 text-center">
+		<!-- Favorite Button -->
+		<app-favorite-button size="large"></app-favorite-button>
+		<!-- Fans -->
+		<div class="text-xs text-gray-400">
+			{{ tournament().totalFollowers || '-' }} fans incondicionales
+		</div>
+	</div>
+</div>

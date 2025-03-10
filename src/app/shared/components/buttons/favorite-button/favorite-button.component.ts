@@ -10,10 +10,19 @@ import { MatIconModule } from '@angular/material/icon';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoriteButtonComponent {
-	// Pulic input signals
+	/**
+	 * The size of the button.
+	 * Accepts size 'small', 'medium' or 'large'.
+	 * Defaults to 'medium'.
+	 * @type {'small' | 'medium' | 'large'}
+	 */
 	public size = input<'small' | 'medium' | 'large'>('medium');
 
-	// Public signals
+	/**
+	 * Whether the button is in a favorite state.
+	 * Defaults to false.
+	 * @type {boolean}
+	 */
 	public isFavorite = signal<boolean>(false);
 
 	// -----------------------------------------------------------------------------------------------
