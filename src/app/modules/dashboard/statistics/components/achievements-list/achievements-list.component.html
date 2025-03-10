@@ -1,0 +1,20 @@
+<div class="flex flex-col">
+	@for (achievement of achievements; track $index) {
+		<div class="mb-4">
+			<div class="mb-2 flex items-center justify-between">
+				<span class="text-base font-medium">{{ achievement.title }}</span>
+				<span class="text-2xl font-bold">{{ achievement.value }}</span>
+			</div>
+			<div class="flex items-center gap-2">
+				@for (team of achievement.teams; track $index) {
+					<div class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 text-xs">
+						{{ $index + 1 }}
+					</div>
+				}
+			</div>
+			@if ($index < achievements.length - 1) {
+				<mat-divider class="my-4"></mat-divider>
+			}
+		</div>
+	}
+</div>

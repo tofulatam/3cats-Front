@@ -1,0 +1,31 @@
+<div class="dashboard-card">
+	<h2 class="mb-4 text-xl font-semibold">Estadísticas de tarjetas</h2>
+
+	<!-- Stats -->
+	<div class="mb-4 grid min-h-11 gap-1 sm:grid-cols-2">
+		@for (stat of cardStats; track $index) {
+			<div class="text-adaptive-secondary text-sm">
+				{{ stat.label }}: <span class="font-semibold">{{ stat.value }}</span>
+			</div>
+		}
+	</div>
+
+	<!-- Bar chart -->
+	<div class="flex flex-auto flex-col">
+		<apx-chart
+			class="h-80 w-full flex-auto"
+			[series]="barChartOptions.series"
+			[chart]="barChartOptions.chart"
+			[xaxis]="barChartOptions.xaxis"
+			[yaxis]="barChartOptions.yaxis"
+			[colors]="barChartOptions.colors"
+			[dataLabels]="barChartOptions.dataLabels"
+			[tooltip]="barChartOptions.tooltip"
+			[grid]="barChartOptions.grid"
+			[plotOptions]="barChartOptions.plotOptions"
+			[legend]="barChartOptions.legend"
+			[title]="barChartOptions.title"
+		>
+		</apx-chart>
+	</div>
+</div>

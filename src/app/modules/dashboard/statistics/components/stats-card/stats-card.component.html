@@ -1,0 +1,12 @@
+<div class="dashboard-card flex items-center justify-between">
+	<!-- Title and value -->
+	<div class="flex flex-col">
+		<span class="text-adaptive-secondary text-sm">{{ statsCard().label }}</span>
+		<span class="text-3xl font-bold">{{ statsCard().value }}</span>
+	</div>
+
+	<!-- Icon -->
+	<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
+		<mat-icon class="text-white icon-size-8">{{ statsCard().icon }}</mat-icon>
+	</div>
+</div>

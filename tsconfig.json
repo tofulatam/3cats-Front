@@ -7,6 +7,7 @@
 			"@app/*": ["app/*"],
 			"@core/*": ["app/core/*"],
 			"@modules/*": ["app/modules/*"],
+			"@statistics/*": ["app/modules/dashboard/statistics/*"],
 			"@landing/*": ["app/modules/landing/*"],
 			"@shared/*": ["app/shared/*"]
 		},

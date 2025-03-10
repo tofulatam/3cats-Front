@@ -1,0 +1,30 @@
+<div class="dashboard-card">
+	<h2 class="mb-4 text-xl font-semibold">Estadísticas de partidos</h2>
+
+	<!-- List of match types -->
+	<div class="mb-4 grid min-h-11 gap-1 sm:grid-cols-2">
+		@for (match of matchTypes; track $index) {
+			<div class="text-adaptive-secondary text-sm">
+				{{ match.label }}: <span class="font-semibold">{{ match.value }}</span>
+			</div>
+		}
+	</div>
+
+	<!-- Circular chart -->
+	<div class="flex flex-auto flex-col">
+		<apx-chart
+			class="h-80 w-full flex-auto"
+			[series]="areaChartOptions.series"
+			[chart]="areaChartOptions.chart"
+			[labels]="areaChartOptions.labels"
+			[colors]="areaChartOptions.colors"
+			[dataLabels]="areaChartOptions.dataLabels"
+			[stroke]="areaChartOptions.stroke"
+			[tooltip]="areaChartOptions.tooltip"
+			[plotOptions]="areaChartOptions.plotOptions"
+			[title]="areaChartOptions.title"
+			[legend]="areaChartOptions.legend"
+		>
+		</apx-chart>
+	</div>
+</div>
