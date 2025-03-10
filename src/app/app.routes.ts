@@ -89,7 +89,7 @@ export const appRoutes: Route[] = [
 								path: 'estadisticas',
 								pathMatch: 'full',
 								loadComponent: () =>
-									import('@app/modules/dashboard/statistics/statistics.component').then(
+									import('@app/modules/dashboard/statistics/pages/statistics.component').then(
 										(m) => m.StatisticsComponent
 									)
 							},

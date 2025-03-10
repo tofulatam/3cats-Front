@@ -18,16 +18,9 @@
 		}
 	</div>
 
+	<!-- Charts -->
 	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-		<!-- Lista de logros -->
-		<div class="rounded-lg bg-white p-6 shadow-md">
-			<h2 class="mb-4 text-xl font-bold">Logros realizados</h2>
-			<app-achievements-list [achievements]="achievements"></app-achievements-list>
-		</div>
-
-		<!-- Gráfico de estadísticas -->
-		<div class="rounded-lg bg-white p-6 shadow-md">
-			<app-stats-chart [chartData]="chartData"></app-stats-chart>
-		</div>
+		<!-- Match results chart -->
+		<statistics-match-results [matchResults]="team" />
 	</div>
 </div>
