@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 // Interface
-import { MatchResult } from '../../interfaces/statistics.interface';
+import { Player } from '@app/shared/interfaces/player.interface';
 // Third party libraries
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 
@@ -14,7 +14,7 @@ import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 })
 export class StatisticsMatchResultsComponent {
 	// Inputs
-	public matchResults = input.required<MatchResult>();
+	public player = input.required<Player>();
 
 	// Public
 	public areaChartOptions: ApexOptions;
@@ -41,10 +41,10 @@ export class StatisticsMatchResultsComponent {
 	 */
 	initMatchTypes(): void {
 		this.matchTypes = [
-			{ label: 'Partidos jugados', value: this.matchResults().played },
-			{ label: 'Partidos ganados', value: this.matchResults().won },
-			{ label: 'Partidos empatados', value: this.matchResults().drawn },
-			{ label: 'Partidos perdidos', value: this.matchResults().lost }
+			{ label: 'Partidos jugados', value: this.player().rp_matchPlayedCount },
+			{ label: 'Partidos ganados', value: this.player().rp_matchWonCount },
+			{ label: 'Partidos empatados', value: this.player().rp_matchDrawCount },
+			{ label: 'Partidos perdidos', value: this.player().rp_matchLostCount }
 		];
 	}
 
@@ -67,9 +67,13 @@ export class StatisticsMatchResultsComponent {
 					speed: 500
 				}
 			},
-			colors: ['#4ecdc4', '#facc15', '#ef4444'],
+			colors: ['#4ecdc4', '#F3F781', '#ef4444'],
 			labels: ['Ganados', 'Empatados', 'Perdidos'],
-			series: [this.matchResults().won, this.matchResults().drawn, this.matchResults().lost],
+			series: [
+				this.player().rp_matchWonCount,
+				this.player().rp_matchDrawCount,
+				this.player().rp_matchLostCount
+			],
 			legend: {
 				position: 'bottom',
 				fontSize: '14px'

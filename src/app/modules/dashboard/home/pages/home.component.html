@@ -1,12 +1,12 @@
 <div class="container mx-auto grid h-fit grid-cols-1 gap-6 p-4 md:grid-cols-5">
 	<!-- Match results chart -->
-	<statistics-match-results class="md:col-span-3" [matchResults]="team" />
+	<statistics-match-results class="md:col-span-3" [player]="player" />
 
 	<!-- Fair play chart -->
-	<statistics-fair-play class="md:col-span-2" [cardData]="team" />
+	<statistics-fair-play class="md:col-span-2" [player]="player" />
 
 	<!-- Goal efficiency chart -->
-	<statistics-goal-efficiency class="col-span-full" [matchResults]="team" />
+	<statistics-goal-efficiency class="col-span-full" [player]="player" />
 
 	<!-- Tournaments list -->
 	<app-tournaments-list class="md:col-span-3" />

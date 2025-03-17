@@ -2,15 +2,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 // Interface
+import { Player } from '@app/shared/interfaces/player.interface';
 // Third party libraries
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
-
-interface CardData {
-	reds: number;
-	yellows: number;
-	played: number;
-	fairPlay: number;
-}
 
 @Component({
 	selector: 'statistics-fair-play',
@@ -20,7 +14,7 @@ interface CardData {
 })
 export class StatisticsFairPlayComponent {
 	// Inputs
-	public cardData = input.required<CardData>();
+	public player = input.required<Player>();
 
 	// Public
 	public barChartOptions: ApexOptions;
@@ -47,7 +41,11 @@ export class StatisticsFairPlayComponent {
 	 * Fair Play = 100 - ((3 * red cards + yellow cards) / total matches)
 	 */
 	calculateFairPlay(): number {
-		return 100 - (3 * this.cardData().reds + this.cardData().yellows) / this.cardData().played;
+		return (
+			100 -
+			(3 * this.player().rp_cardssScored.length + this.player().rp_cardssScored.length) /
+				this.player().rp_matchPlayedCount
+		);
 	}
 
 	/**
@@ -55,10 +53,10 @@ export class StatisticsFairPlayComponent {
 	 */
 	initCardStats(): void {
 		this.cardStats = [
-			{ label: 'Partidos jugados', value: this.cardData().played },
-			{ label: 'Fair Play', value: this.cardData().fairPlay + '%' },
-			{ label: 'Tarjetas amarillas', value: this.cardData().yellows },
-			{ label: 'Tarjetas rojas', value: this.cardData().reds }
+			{ label: 'Partidos jugados', value: this.player().rp_matchPlayedCount },
+			{ label: 'Fair Play', value: this.calculateFairPlay().toFixed(2) + '%' },
+			{ label: 'Tarjetas amarillas', value: this.player().rp_cardssScored.length },
+			{ label: 'Tarjetas rojas', value: this.player().rp_cardssScored.length }
 		];
 	}
 
@@ -90,11 +88,20 @@ export class StatisticsFairPlayComponent {
 					distributed: true
 				}
 			},
-			colors: ['#facc15', '#ef4444'],
+			colors: ['#F3F781', '#ef4444'],
 			series: [
 				{
 					name: 'Tarjetas',
-					data: [this.cardData().yellows, this.cardData().reds]
+					data: [
+						this.player().rp_cardssScored.reduce(
+							(acc, card) => acc + (card.cardType === 'Yellow' ? 1 : 0),
+							0
+						),
+						this.player().rp_cardssScored.reduce(
+							(acc, card) => acc + (card.cardType === 'Red' ? 1 : 0),
+							0
+						)
+					]
 				}
 			],
 			grid: {

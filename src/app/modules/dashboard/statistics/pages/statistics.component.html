@@ -21,13 +21,13 @@
 	<!-- Charts -->
 	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3">
 		<!-- Match results chart -->
-		<statistics-match-results [matchResults]="team" />
+		<statistics-match-results [player]="player" />
 
 		<!-- Goal efficiency chart -->
-		<statistics-goal-efficiency [matchResults]="team" />
+		<statistics-goal-efficiency [player]="player" />
 
 		<!-- Fair play chart -->
-		<statistics-fair-play [cardData]="team" />
+		<statistics-fair-play [player]="player" />
 
 		<!-- Compare with other teams -->
 		<construction class="dashboard-card col-span-full" />

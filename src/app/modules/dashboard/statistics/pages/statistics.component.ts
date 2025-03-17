@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TEAMS } from '@app/shared/constants/teams.constant';
+import { PLAYERS } from '@app/shared/constants/players.constant';
 import ConstructionComponent from '@app/shared/pages/construction/construction.component';
 import { StatisticsFairPlayComponent } from '../components/fair-play/fair-play.component';
 import { StatisticsGoalEfficiencyComponent } from '../components/goal-efficiency/goal-efficiency.component';
@@ -20,31 +20,31 @@ import { StatItem } from '../interfaces/statistics.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsComponent {
-	public team = TEAMS[0];
+	public player = PLAYERS[0];
 
 	public statsCards: StatItem[] = [
 		{
 			icon: 'sports_soccer',
 			label: 'Partidos jugados',
-			value: this.team.played,
+			value: this.player.rp_matchPlayedCount,
 			key: 'partidosJugados'
 		},
 		{
 			icon: 'stars',
 			label: 'Partidos ganados',
-			value: this.team.won,
+			value: this.player.rp_matchWonCount,
 			key: 'partidosGanados'
 		},
 		{
 			icon: 'local_fire_department',
 			label: 'Goles totales',
-			value: this.team.goalsFor,
+			value: this.player.rp_goalsCount,
 			key: 'golesTotal'
 		},
 		{
 			icon: 'style',
 			label: 'Tarjetas totales',
-			value: this.team.yellows + this.team.reds,
+			value: this.player.rp_cardssScored.length,
 			key: 'tarjetasTotal'
 		}
 	];

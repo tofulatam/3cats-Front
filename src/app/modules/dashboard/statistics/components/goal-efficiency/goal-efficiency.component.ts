@@ -2,94 +2,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 // Interface
-import { MatchResult } from '../../interfaces/statistics.interface';
+import { Player } from '@app/shared/interfaces/player.interface';
 // Third party libraries
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
-
-interface MatchData {
-	date: string;
-	played: number;
-	won: number;
-	drawn: number;
-	goals: number;
-	redCards: number;
-	yellowCards: number;
-}
-
-const MOCK_MATCH_DATA: MatchData[] = [
-	{
-		date: '17-jun',
-		played: 2,
-		won: 1,
-		drawn: 1,
-		goals: 3,
-		redCards: 0,
-		yellowCards: 1
-	},
-	{
-		date: '12-Ago',
-		played: 3,
-		won: 2,
-		drawn: 0,
-		goals: 4,
-		redCards: 0,
-		yellowCards: 2
-	},
-	{
-		date: '6-Sep',
-		played: 1,
-		won: 1,
-		drawn: 0,
-		goals: 2,
-		redCards: 0,
-		yellowCards: 0
-	},
-	{
-		date: '24-Sep',
-		played: 2,
-		won: 0,
-		drawn: 1,
-		goals: 1,
-		redCards: 1,
-		yellowCards: 1
-	},
-	{
-		date: '13-Oct',
-		played: 2,
-		won: 2,
-		drawn: 0,
-		goals: 5,
-		redCards: 0,
-		yellowCards: 1
-	},
-	{
-		date: '3-Nov',
-		played: 1,
-		won: 0,
-		drawn: 0,
-		goals: 0,
-		redCards: 0,
-		yellowCards: 2
-	},
-	{
-		date: '23-Nov',
-		played: 3,
-		won: 2,
-		drawn: 1,
-		goals: 6,
-		redCards: 0,
-		yellowCards: 1
-	},
-	{
-		date: '12-Dic',
-		played: 2,
-		won: 1,
-		drawn: 0,
-		goals: 3,
-		redCards: 0,
-		yellowCards: 1
-	}
-];
 
 @Component({
 	selector: 'statistics-goal-efficiency',
@@ -99,12 +14,11 @@ const MOCK_MATCH_DATA: MatchData[] = [
 })
 export class StatisticsGoalEfficiencyComponent {
 	// Inputs
-	public matchResults = input.required<MatchResult>();
+	public player = input.required<Player>();
 
 	// Public
 	public lineChartOptions: ApexOptions;
 	public goalStats: { label: string; value: number | string }[] = [];
-	public matchData: MatchData[] = MOCK_MATCH_DATA;
 
 	// -----------------------------------------------------------------------------------------------
 	// @ Lifecycle hooks
@@ -126,29 +40,36 @@ export class StatisticsGoalEfficiencyComponent {
 	 * Calculate fair play
 	 * Fair Play = 100 - ((3 * red cards + yellow cards) / total matches)
 	 */
-	calculateFairPlay(match: MatchData): number {
-		return 100 - (3 * match.redCards + match.yellowCards) / match.played;
+	calculateFairPlay(match: Player): number {
+		return (
+			100 -
+			(3 * match.rp_cardssScored.length + match.rp_cardssScored.length) / match.rp_matchPlayedCount
+		);
 	}
 
 	/**
 	 * Calculate efficiency
 	 * Efficiency (%) = (3 * won + drawn + (2 * goals) + 1.5 * Fair Play) / total matches
 	 */
-	calculateEfficiency(match: MatchData): number {
+	calculateEfficiency(match: Player): number {
 		const fairPlay = this.calculateFairPlay(match);
-		return (3 * match.won + match.drawn + 2 * match.goals + 1.5 * fairPlay) / match.played;
+		return (
+			(3 * match.rp_matchWonCount +
+				match.rp_matchDrawCount +
+				2 * match.rp_goalsCount +
+				1.5 * fairPlay) /
+			match.rp_matchPlayedCount
+		);
 	}
 
 	/**
 	 * Init goal stats
 	 */
 	initGoalStats(): void {
-		const totalGoals = this.matchData.reduce((sum, match) => sum + match.goals, 0);
-		const totalMatches = this.matchData.reduce((sum, match) => sum + match.played, 0);
+		const totalGoals = this.player().rp_goalsScored.reduce((sum, match) => sum + match.goals, 0);
+		const totalMatches = this.player().rp_matchPlayedCount;
 		const avgGoalsPerMatch = totalGoals / totalMatches;
-		const avgEfficiency =
-			this.matchData.reduce((sum, match) => sum + this.calculateEfficiency(match), 0) /
-			this.matchData.length;
+		const avgEfficiency = this.player().rp_efficiency;
 
 		this.goalStats = [
 			{ label: 'Partidos jugados', value: totalMatches },
@@ -183,11 +104,11 @@ export class StatisticsGoalEfficiencyComponent {
 			series: [
 				{
 					name: 'Partidos jugados',
-					data: this.matchData.map((item) => item.played)
+					data: this.player().rp_matchPlayed.map((item) => 1)
 				},
 				{
-					name: 'Partidos ganados',
-					data: this.matchData.map((item) => item.won)
+					name: 'Goles marcados',
+					data: this.player().rp_matchPlayed.map((item) => item.myGoals)
 				}
 			],
 			stroke: {
@@ -217,7 +138,7 @@ export class StatisticsGoalEfficiencyComponent {
 			},
 			xaxis: {
 				type: 'category',
-				categories: this.matchData.map((item) => item.date),
+				categories: this.player().rp_matchPlayed.map((item) => item.matchDay),
 				axisBorder: {
 					show: true
 				},
