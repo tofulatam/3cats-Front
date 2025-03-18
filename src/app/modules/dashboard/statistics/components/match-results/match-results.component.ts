@@ -18,7 +18,7 @@ export class StatisticsMatchResultsComponent {
 
 	// Public
 	public areaChartOptions: ApexOptions;
-	public matchTypes: { label: string; value: number }[] = [];
+	public matchStats: { label: string; value: number }[] = [];
 
 	// -----------------------------------------------------------------------------------------------
 	// @ Lifecycle hooks
@@ -28,7 +28,7 @@ export class StatisticsMatchResultsComponent {
 	 * On init
 	 */
 	ngOnInit(): void {
-		this.initMatchTypes();
+		this.initMatchStats();
 		this.initChartOptions();
 	}
 
@@ -39,8 +39,8 @@ export class StatisticsMatchResultsComponent {
 	/**
 	 * Init match types
 	 */
-	initMatchTypes(): void {
-		this.matchTypes = [
+	initMatchStats(): void {
+		this.matchStats = [
 			{ label: 'Partidos jugados', value: this.player().rp_matchPlayedCount },
 			{ label: 'Partidos ganados', value: this.player().rp_matchWonCount },
 			{ label: 'Partidos empatados', value: this.player().rp_matchDrawCount },

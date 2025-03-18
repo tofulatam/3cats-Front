@@ -3,7 +3,7 @@
 
 	<!-- List of match types -->
 	<div class="mb-4 grid min-h-11 gap-1 sm:grid-cols-2">
-		@for (match of matchTypes; track $index) {
+		@for (match of matchStats; track $index) {
 			<div class="text-adaptive-secondary text-sm">
 				{{ match.label }}: <span class="font-semibold">{{ match.value }}</span>
 			</div>

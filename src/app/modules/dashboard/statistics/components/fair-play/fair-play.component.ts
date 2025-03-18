@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 // Interface
@@ -19,6 +19,17 @@ export class StatisticsFairPlayComponent {
 	// Public
 	public barChartOptions: ApexOptions;
 	public cardStats: { label: string; value: number | string }[] = [];
+
+	private _yellowCardCount = computed(() =>
+		this.player().rp_cardssScored.reduce(
+			(acc, card) => acc + (card.cardType === 'Yellow' ? 1 : 0),
+			0
+		)
+	);
+
+	private _redCardCount = computed(() =>
+		this.player().rp_cardssScored.reduce((acc, card) => acc + (card.cardType === 'Red' ? 1 : 0), 0)
+	);
 
 	// -----------------------------------------------------------------------------------------------
 	// @ Lifecycle hooks
@@ -42,9 +53,7 @@ export class StatisticsFairPlayComponent {
 	 */
 	calculateFairPlay(): number {
 		return (
-			100 -
-			(3 * this.player().rp_cardssScored.length + this.player().rp_cardssScored.length) /
-				this.player().rp_matchPlayedCount
+			100 - (3 * this._redCardCount() + this._yellowCardCount()) / this.player().rp_matchPlayedCount
 		);
 	}
 
@@ -55,8 +64,8 @@ export class StatisticsFairPlayComponent {
 		this.cardStats = [
 			{ label: 'Partidos jugados', value: this.player().rp_matchPlayedCount },
 			{ label: 'Fair Play', value: this.calculateFairPlay().toFixed(2) + '%' },
-			{ label: 'Tarjetas amarillas', value: this.player().rp_cardssScored.length },
-			{ label: 'Tarjetas rojas', value: this.player().rp_cardssScored.length }
+			{ label: 'Tarjetas amarillas', value: this._yellowCardCount() },
+			{ label: 'Tarjetas rojas', value: this._redCardCount() }
 		];
 	}
 
@@ -92,16 +101,7 @@ export class StatisticsFairPlayComponent {
 			series: [
 				{
 					name: 'Tarjetas',
-					data: [
-						this.player().rp_cardssScored.reduce(
-							(acc, card) => acc + (card.cardType === 'Yellow' ? 1 : 0),
-							0
-						),
-						this.player().rp_cardssScored.reduce(
-							(acc, card) => acc + (card.cardType === 'Red' ? 1 : 0),
-							0
-						)
-					]
+					data: [this._yellowCardCount(), this._redCardCount()]
 				}
 			],
 			grid: {

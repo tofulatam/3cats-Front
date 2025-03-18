@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { StatItem } from '@statistics/interfaces/statistics.interface';
 
 @Component({
-	selector: 'app-stats-card',
+	selector: 'statistics-stats-card',
 	imports: [MatIconModule],
 	templateUrl: './stats-card.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush

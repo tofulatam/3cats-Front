@@ -37,28 +37,16 @@ export class StatisticsGoalEfficiencyComponent {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Calculate fair play
-	 * Fair Play = 100 - ((3 * red cards + yellow cards) / total matches)
-	 */
-	calculateFairPlay(match: Player): number {
-		return (
-			100 -
-			(3 * match.rp_cardssScored.length + match.rp_cardssScored.length) / match.rp_matchPlayedCount
-		);
-	}
-
-	/**
 	 * Calculate efficiency
 	 * Efficiency (%) = (3 * won + drawn + (2 * goals) + 1.5 * Fair Play) / total matches
 	 */
-	calculateEfficiency(match: Player): number {
-		const fairPlay = this.calculateFairPlay(match);
+	calculateEfficiency(player: Player): number {
 		return (
-			(3 * match.rp_matchWonCount +
-				match.rp_matchDrawCount +
-				2 * match.rp_goalsCount +
-				1.5 * fairPlay) /
-			match.rp_matchPlayedCount
+			(3 * player.rp_matchWonCount +
+				player.rp_matchDrawCount +
+				2 * player.rp_goalsCount +
+				1.5 * player.rp_fairPlay) /
+			player.rp_matchPlayedCount
 		);
 	}
 
@@ -83,6 +71,15 @@ export class StatisticsGoalEfficiencyComponent {
 	 * Init chart options
 	 */
 	initChartOptions(): void {
+		// Order matches by date
+		const sortedMatches = [...this.player().rp_matchPlayed].sort(
+			(a, b) => new Date(a.matchDay).getTime() - new Date(b.matchDay).getTime()
+		);
+
+		// Days before and after
+		const daysBefore = 7;
+		const daysAfter = 7;
+
 		this.lineChartOptions = {
 			chart: {
 				height: '100%',
@@ -103,17 +100,18 @@ export class StatisticsGoalEfficiencyComponent {
 			colors: ['#4ecdc4', '#ef4444'],
 			series: [
 				{
-					name: 'Partidos jugados',
-					data: this.player().rp_matchPlayed.map((item) => 1)
+					name: 'Goles del equipo',
+					data: sortedMatches.map((match) => match.myTeamGoals)
 				},
 				{
-					name: 'Goles marcados',
-					data: this.player().rp_matchPlayed.map((item) => item.myGoals)
+					name: 'Mis goles',
+					data: sortedMatches.map((match) => match.myGoals)
 				}
 			],
 			stroke: {
 				curve: 'smooth',
-				width: 2
+				width: [3, 3],
+				dashArray: [0, 0]
 			},
 			grid: {
 				borderColor: '#e0e0e0',
@@ -137,8 +135,8 @@ export class StatisticsGoalEfficiencyComponent {
 				}
 			},
 			xaxis: {
-				type: 'category',
-				categories: this.player().rp_matchPlayed.map((item) => item.matchDay),
+				type: 'datetime',
+				categories: sortedMatches.map((match) => new Date(match.matchDay).getTime()),
 				axisBorder: {
 					show: true
 				},
@@ -146,17 +144,30 @@ export class StatisticsGoalEfficiencyComponent {
 					show: true
 				},
 				labels: {
-					rotate: -90,
+					rotate: -45,
 					style: {
 						fontSize: '12px'
+					},
+					datetimeFormatter: {
+						year: 'yyyy',
+						month: 'MMM',
+						day: 'dd'
 					}
-				}
+				},
+				min: new Date(sortedMatches[0].matchDay).getTime() - daysBefore * 24 * 60 * 60 * 1000,
+				max:
+					new Date(sortedMatches[sortedMatches.length - 1].matchDay).getTime() +
+					daysAfter * 24 * 60 * 60 * 1000,
+				tickAmount: 10
 			},
 			yaxis: {
+				title: {
+					text: 'Goles'
+				},
 				min: 0,
-				// max: 100,
+				max: Math.max(...sortedMatches.map((m) => Math.max(m.myTeamGoals, m.myGoals))) + 1,
 				labels: {
-					formatter: (val) => val.toFixed(1)
+					formatter: (val) => Math.round(val).toString()
 				}
 			},
 			legend: {
@@ -165,7 +176,7 @@ export class StatisticsGoalEfficiencyComponent {
 				fontWeight: 500
 			},
 			title: {
-				text: 'Partidos míos y de mi equipo',
+				text: 'Comparación de goles por partido',
 				align: 'center',
 				style: {
 					fontSize: '18px',
@@ -173,9 +184,11 @@ export class StatisticsGoalEfficiencyComponent {
 				}
 			},
 			tooltip: {
-				theme: 'light',
+				x: {
+					format: 'dd MMM yyyy'
+				},
 				y: {
-					formatter: (val) => val.toString()
+					formatter: (val) => val.toString() + ' goles'
 				}
 			}
 		};
