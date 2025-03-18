@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PLAYERS } from '@app/shared/constants/players.constant';
-import ConstructionComponent from '@app/shared/pages/construction/construction.component';
 import { StatisticsFairPlayComponent } from '../components/fair-play/fair-play.component';
 import { StatisticsGoalEfficiencyComponent } from '../components/goal-efficiency/goal-efficiency.component';
 import { StatisticsMatchResultsComponent } from '../components/match-results/match-results.component';
+import { PlayerComparisonComponent } from '../components/player-comparison/player-comparison.component';
 import { StatsCardComponent } from '../components/stats-card/stats-card.component';
 import { StatItem } from '../interfaces/statistics.interface';
 
@@ -14,7 +14,7 @@ import { StatItem } from '../interfaces/statistics.interface';
 		StatisticsMatchResultsComponent,
 		StatisticsGoalEfficiencyComponent,
 		StatisticsFairPlayComponent,
-		ConstructionComponent
+		PlayerComparisonComponent
 	],
 	templateUrl: './statistics.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush

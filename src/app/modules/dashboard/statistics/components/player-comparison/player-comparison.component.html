@@ -1,0 +1,162 @@
+<div class="dashboard-card">
+	<h2 class="mb-4 text-xl font-semibold">Comparación de jugadores</h2>
+
+	<!-- Search panel -->
+	<div class="flex min-h-100 flex-col gap-8 md:flex-row">
+		<div class="w-full md:flex-1">
+			<!-- Radio group for search mode -->
+			<mat-radio-group class="flex flex-col gap-2" aria-label="Selecciona una opción">
+				<!-- Radio button for comparing against a player from the universe 3Cats -->
+				<mat-radio-button
+					aria-label="Comparación contra un jugador del universo 3Cats"
+					value="universe"
+					(change)="onSearchModeChange('universe')"
+					[checked]="searchMode() === 'universe'"
+				>
+					<span class="text-sm">Comparación contra un jugador del universo 3Cats</span>
+				</mat-radio-button>
+
+				<!-- Radio button for comparing against a player from a specific tournament -->
+				<mat-radio-button
+					aria-label="Comparación contra un jugador de un torneo en específico"
+					value="tournament"
+					(change)="onSearchModeChange('tournament')"
+					[checked]="searchMode() === 'tournament'"
+				>
+					<span class="text-sm">Comparación contra un jugador de un torneo en específico</span>
+				</mat-radio-button>
+			</mat-radio-group>
+
+			<!-- Tournament selection -->
+			@if (searchMode() === 'tournament') {
+				<!-- Divider -->
+				<mat-divider class="my-2 bg-colorGris"></mat-divider>
+
+				<!-- Radio group for tournament selection -->
+				<div class="flex flex-col gap-2">
+					<mat-radio-group aria-label="Select an option">
+						@for (tournament of availableTournaments(); track tournament.uidTournament) {
+							<mat-radio-button
+								[value]="tournament.uidTournament"
+								name="tournamentSelect"
+								[checked]="selectedTournament() === tournament.uidTournament"
+								(change)="onTournamentChange(tournament.uidTournament)"
+							>
+								<span class="text-sm">{{ tournament.tournamentName }}</span>
+							</mat-radio-button>
+						}
+					</mat-radio-group>
+				</div>
+			}
+
+			<!-- Search -->
+			<mat-form-field class="mt-2 w-full" [subscriptSizing]="'dynamic'">
+				<input
+					matInput
+					[ngModel]="searchQuery()"
+					(ngModelChange)="onSearchQueryChange($event)"
+					[placeholder]="
+						'Buscar jugador en ' + (searchMode() === 'universe' ? 'el universo 3Cats' : 'el torneo')
+					"
+				/>
+			</mat-form-field>
+
+			<!-- Players list -->
+			@if (filteredPlayers().length > 0) {
+				<div
+					class="bg-card mt-2 flex max-h-48 flex-col gap-1 overflow-y-auto rounded-lg border border-colorGrisClaro"
+				>
+					@for (player of filteredPlayers(); track player.uid) {
+						<button
+							class="flex items-center gap-2 p-2 text-left hover:bg-colorGrisClaro"
+							(click)="selectPlayer(player)"
+						>
+							<img
+								[src]="player.profilePhotoUrl"
+								[alt]="player.userName"
+								class="h-10 w-10 rounded-full"
+							/>
+							<div>
+								<div class="text-sm font-medium">{{ player.userName }}</div>
+								<div class="text-adaptive-secondary text-xs">{{ player.nickname }}</div>
+							</div>
+						</button>
+					}
+				</div>
+			}
+		</div>
+
+		<!-- Comparison panel -->
+		<div class="flex-1 overflow-x-auto">
+			<!-- Stats comparison table -->
+			<table class="min-w-full table-fixed">
+				<!-- Player Photos Row -->
+				<tr class="border-b border-colorGrisClaro">
+					<td class="w-1/3 p-2 text-center md:p-4">
+						<div class="flex flex-col items-center">
+							<img
+								[src]="loggedPlayer().profilePhotoUrl"
+								[alt]="loggedPlayer().userName"
+								class="h-16 w-16 rounded-full"
+							/>
+							<div class="mt-2 text-xs font-medium md:text-sm">{{ loggedPlayer().userName }}</div>
+							<div class="text-adaptive-secondary text-xs">{{ loggedPlayer().nickname }}</div>
+						</div>
+					</td>
+					<td class="w-1/3 text-center text-base font-bold text-gray-400 md:text-xl">VS</td>
+					<td class="w-1/3 p-2 text-center md:p-4">
+						<div class="flex flex-col items-center">
+							@if (selectedPlayer()) {
+								<img
+									[src]="selectedPlayer()?.profilePhotoUrl"
+									[alt]="selectedPlayer()?.userName"
+									class="h-16 w-16 rounded-full"
+								/>
+								<div class="mt-2 text-xs font-medium md:text-sm">
+									{{ selectedPlayer()?.userName }}
+								</div>
+								<div class="text-adaptive-secondary text-xs">{{ selectedPlayer()?.nickname }}</div>
+							} @else {
+								<div class="h-16 w-16 rounded-full bg-colorGrisClaro"></div>
+								<div class="mt-2 text-xs font-medium text-colorGrisClaro md:text-sm">
+									Selecciona un jugador
+								</div>
+							}
+						</div>
+					</td>
+				</tr>
+
+				<!-- Stats -->
+				@for (stat of statsToCompare; track stat.key) {
+					<tr class="border-b border-colorGrisClaro">
+						<td class="px-2 py-2 text-center font-medium md:px-4">
+							{{ getStatValue(loggedPlayer(), stat.key, stat.suffix) }}
+						</td>
+						<td class="text-adaptive-secondary px-2 py-2 text-center text-sm md:px-4">
+							{{ stat.label }}
+						</td>
+						<td class="px-2 py-2 text-center font-medium md:px-4">
+							{{ selectedPlayer() ? getStatValue(selectedPlayer()!, stat.key, stat.suffix) : '-' }}
+						</td>
+					</tr>
+				}
+
+				<!-- Additional Stats -->
+				@if (
+					loggedPlayer().rp_positionPreference === 'GOALKEEPER' ||
+					(selectedPlayer() && selectedPlayer()!.rp_positionPreference === 'GOALKEEPER')
+				) {
+					<tr class="border-b border-colorGrisClaro">
+						<td class="px-2 py-2 text-center md:px-4">{{ loggedPlayer().rp_cleanSheets }}</td>
+						<td class="text-adaptive-secondary px-2 py-2 text-center text-sm md:px-4">
+							Porterías a cero
+						</td>
+						<td class="px-2 py-2 text-center md:px-4">
+							{{ selectedPlayer()?.rp_cleanSheets || '-' }}
+						</td>
+					</tr>
+				}
+			</table>
+		</div>
+	</div>
+</div>
