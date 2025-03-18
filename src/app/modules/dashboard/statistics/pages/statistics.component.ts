@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PLAYERS } from '@app/shared/constants/players.constant';
 import { StatisticsFairPlayComponent } from '../components/fair-play/fair-play.component';
 import { StatisticsGoalEfficiencyComponent } from '../components/goal-efficiency/goal-efficiency.component';
+import { StatisticsMatchResultsLineComponent } from '../components/match-results-line/match-results-line.component';
 import { StatisticsMatchResultsComponent } from '../components/match-results/match-results.component';
 import { PlayerComparisonComponent } from '../components/player-comparison/player-comparison.component';
 import { StatsCardComponent } from '../components/stats-card/stats-card.component';
@@ -12,6 +13,7 @@ import { StatItem } from '../interfaces/statistics.interface';
 	imports: [
 		StatsCardComponent,
 		StatisticsMatchResultsComponent,
+		StatisticsMatchResultsLineComponent,
 		StatisticsGoalEfficiencyComponent,
 		StatisticsFairPlayComponent,
 		PlayerComparisonComponent

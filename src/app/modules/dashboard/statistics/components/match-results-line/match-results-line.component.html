@@ -1,0 +1,31 @@
+<div class="dashboard-card">
+	<h2 class="mb-4 text-xl font-semibold">Estadísticas de partidos</h2>
+
+	<!-- List of match types -->
+	<div class="mb-4 grid min-h-11 gap-1 sm:grid-cols-2">
+		@for (match of matchStats; track $index) {
+			<div class="text-adaptive-secondary text-sm">
+				{{ match.label }}: <span class="font-semibold">{{ match.value }}</span>
+			</div>
+		}
+	</div>
+
+	<!-- Line chart -->
+	<div class="flex flex-auto flex-col">
+		<apx-chart
+			class="h-80 w-full flex-auto"
+			[series]="lineChartOptions.series"
+			[chart]="lineChartOptions.chart"
+			[xaxis]="lineChartOptions.xaxis"
+			[yaxis]="lineChartOptions.yaxis"
+			[colors]="lineChartOptions.colors"
+			[stroke]="lineChartOptions.stroke"
+			[grid]="lineChartOptions.grid"
+			[markers]="lineChartOptions.markers"
+			[tooltip]="lineChartOptions.tooltip"
+			[title]="lineChartOptions.title"
+			[legend]="lineChartOptions.legend"
+		>
+		</apx-chart>
+	</div>
+</div>
