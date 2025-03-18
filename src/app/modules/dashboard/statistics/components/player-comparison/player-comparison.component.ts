@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,13 +33,15 @@ type StatConfig = {
 	templateUrl: './player-comparison.component.html'
 })
 export class PlayerComparisonComponent implements OnInit {
+	// Inputs
+	public loggedPlayer = input.required<Player>();
+
 	// Signals
 	searchMode = signal<'universe' | 'tournament'>('universe');
 	searchQuery = signal<string>('');
 	selectedPlayer = signal<Player | null>(null);
 	selectedTournament = signal<string | null>(null);
 	filteredPlayers = signal<Player[]>([]);
-	loggedPlayer = signal<Player>(PLAYERS[0]);
 	availableTournaments = signal<{ tournamentName: string; uidTournament: string }[]>([]);
 
 	// Stats to compare

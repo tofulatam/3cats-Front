@@ -33,6 +33,9 @@
 		<statistics-fair-play [player]="player" />
 
 		<!-- Player comparison -->
-		<statistics-player-comparison class="col-span-full" />
+		<statistics-player-comparison class="col-span-full" [loggedPlayer]="player" />
+
+		<!-- Player attack stats -->
+		<statistics-player-attack-stats class="col-span-full" [player]="player" />
 	</div>
 </div>

@@ -1,0 +1,215 @@
+<div class="dashboard-card">
+	<h2 class="mb-4 text-xl font-semibold">Estadísticas del Jugador</h2>
+
+	<!-- Información básica del jugador -->
+	<div class="mb-6 flex items-center gap-4">
+		<img
+			[src]="player().profilePhotoUrl"
+			[alt]="player().nickname"
+			class="h-16 w-16 rounded-full object-cover"
+		/>
+		<div>
+			<h3 class="text-lg font-semibold">{{ player().userName }}</h3>
+			<h4 class="text-lg font-semibold text-colorGrisClaro">{{ player().nickname }}</h4>
+			<div class="text-adaptive-secondary flex items-center gap-2 text-sm">
+				<mat-icon class="h-4 w-4 text-sm">sports_soccer</mat-icon>
+				<span>{{ player().rp_positionPreference }}</span>
+				<span class="mx-2">•</span>
+				<mat-icon class="h-4 w-4 text-sm">location_on</mat-icon>
+				<span>{{ player().city }}, {{ player().country }}</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Gráficas -->
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		<!-- Gráfica de resultados -->
+		<div class="flex flex-col items-center">
+			<h4 class="mb-4 font-semibold">Resultados de partidos</h4>
+			<apx-chart
+				[series]="matchResultsChartOptions.series"
+				[chart]="matchResultsChartOptions.chart"
+				[labels]="matchResultsChartOptions.labels"
+				[colors]="matchResultsChartOptions.colors"
+				[legend]="matchResultsChartOptions.legend"
+				[plotOptions]="matchResultsChartOptions.plotOptions"
+				[dataLabels]="matchResultsChartOptions.dataLabels"
+				[responsive]="matchResultsChartOptions.responsive"
+			>
+			</apx-chart>
+		</div>
+
+		<!-- Gráfica de rendimiento -->
+		<div class="flex flex-col items-center">
+			<h4 class="mb-4 font-semibold">
+				@if (isGoalkeeper()) {
+					Estadísticas defensivas
+				} @else {
+					Estadísticas ofensivas
+				}
+			</h4>
+			<apx-chart
+				[series]="performanceChartOptions.series"
+				[chart]="performanceChartOptions.chart"
+				[labels]="performanceChartOptions.labels"
+				[colors]="performanceChartOptions.colors"
+				[legend]="performanceChartOptions.legend"
+				[plotOptions]="performanceChartOptions.plotOptions"
+				[dataLabels]="performanceChartOptions.dataLabels"
+				[responsive]="performanceChartOptions.responsive"
+			>
+			</apx-chart>
+		</div>
+	</div>
+
+	<!-- Estadísticas adicionales -->
+	<div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+		@if (isGoalkeeper()) {
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">
+					{{ stats.goalsReceived }}
+					<div class="text-adaptive-secondary text-sm">
+						({{ stats.goalsPerMatch | number: '1.2-2' }} por partido)
+					</div>
+				</div>
+				<div class="text-adaptive-secondary text-sm">Goles recibidos</div>
+			</div>
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">
+					{{ stats.penaltiesSaved }}/{{ stats.penaltiesFaced }}
+					<div class="text-adaptive-secondary text-sm">
+						({{
+							stats.penaltiesFaced > 0
+								? ((stats.penaltiesSaved / stats.penaltiesFaced) * 100 | number: '1.0-0')
+								: 0
+						}}%)
+					</div>
+				</div>
+				<div class="text-adaptive-secondary text-sm">Penales atajados</div>
+			</div>
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">
+					{{ stats.cleanSheets }}
+					<div class="text-adaptive-secondary text-sm">
+						({{
+							stats.matchesPlayed > 0
+								? ((stats.cleanSheets / stats.matchesPlayed) * 100 | number: '1.0-0')
+								: 0
+						}}%)
+					</div>
+				</div>
+				<div class="text-adaptive-secondary text-sm">Vallas invictas</div>
+			</div>
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">{{ stats.matchesPlayed }}</div>
+				<div class="text-adaptive-secondary text-sm">Partidos jugados</div>
+			</div>
+		} @else {
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">
+					{{ stats.penaltiesScored }}/{{ stats.penaltiesScored + stats.penaltiesMissed }}
+				</div>
+				<div class="text-adaptive-secondary text-sm">Penales convertidos</div>
+			</div>
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">{{ stats.playerOfTheMatch }}</div>
+				<div class="text-adaptive-secondary text-sm">Jugador del partido</div>
+			</div>
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">{{ stats.efficiency }}%</div>
+				<div class="text-adaptive-secondary text-sm">Eficiencia</div>
+			</div>
+			<div class="bg-adaptive-light rounded-lg p-4">
+				<div class="text-lg font-semibold">{{ stats.matchesPlayed }}</div>
+				<div class="text-adaptive-secondary text-sm">Partidos jugados</div>
+			</div>
+		}
+	</div>
+
+	<!-- Estadísticas detalladas -->
+	<div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		<!-- Tarjetas y Fair Play -->
+		<div class="bg-adaptive-light rounded-lg p-4">
+			<h4 class="mb-3 font-semibold">Disciplina</h4>
+			<div class="space-y-2">
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-yellow-400">square</mat-icon>
+						<span class="text-sm">Tarjetas amarillas</span>
+					</div>
+					<span class="font-semibold">{{ yellowCardCount() }}</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-red-500">square</mat-icon>
+						<span class="text-sm">Tarjetas rojas</span>
+					</div>
+					<span class="font-semibold">{{ redCardCount() }}</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">thumb_up</mat-icon>
+						<span class="text-sm">Fair Play</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_fairPlay }}</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Torneos y Equipos -->
+		<div class="bg-adaptive-light rounded-lg p-4">
+			<h4 class="mb-3 font-semibold">Participación</h4>
+			<div class="space-y-2">
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">emoji_events</mat-icon>
+						<span class="text-sm">Torneos jugados</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_tournamentPlayed?.length || 0 }}</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">groups</mat-icon>
+						<span class="text-sm">Equipos</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_teamPlayed?.length || 0 }}</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">military_tech</mat-icon>
+						<span class="text-sm">Premios ganados</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_awardsPlayerWon?.length || 0 }}</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Datos físicos -->
+		<div class="bg-adaptive-light rounded-lg p-4">
+			<h4 class="mb-3 font-semibold">Datos físicos</h4>
+			<div class="space-y-2">
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">height</mat-icon>
+						<span class="text-sm">Altura</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_Height }} m</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">monitor_weight</mat-icon>
+						<span class="text-sm">Peso</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_Weight }} kg</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<mat-icon class="text-primary">star</mat-icon>
+						<span class="text-sm">Popularidad</span>
+					</div>
+					<span class="font-semibold">{{ player().rp_popularityScore }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
