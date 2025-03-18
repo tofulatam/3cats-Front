@@ -30,5 +30,11 @@ export class IconsService {
 			'logo',
 			this._domSanitizer.bypassSecurityTrustResourceUrl('images/logo/logo.svg')
 		);
+
+		// Tournament icons
+		this._matIconRegistry.addSvgIcon(
+			'tournament-icon',
+			this._domSanitizer.bypassSecurityTrustResourceUrl('images/cards/tournament.svg')
+		);
 	}
 }

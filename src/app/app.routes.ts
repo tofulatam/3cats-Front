@@ -73,7 +73,8 @@ export const appRoutes: Route[] = [
 					{
 						path: 'home',
 						pathMatch: 'full',
-						loadComponent: () => import('@app/modules/dashboard/home/pages/home.component')
+						loadComponent: () =>
+							import('@app/modules/dashboard/home/pages/player/home-player.component')
 					},
 
 					// Player routes
@@ -111,10 +112,24 @@ export const appRoutes: Route[] = [
 					{
 						path: 'organizador',
 						children: [
-							// {
-							// 	path: 'tournaments',
-							// 	loadChildren: () => import('@app/modules/dashboard/home/pages/home/home.component')
-							// }
+							{
+								path: 'home',
+								pathMatch: 'full',
+								loadComponent: () =>
+									import('@app/modules/dashboard/home/pages/organizer/home-organizer.component')
+							},
+							{
+								path: 'crear-torneo',
+								pathMatch: 'full',
+								loadComponent: () =>
+									import('@app/modules/dashboard/create-tournaments/create-tournaments.component')
+							},
+							{
+								path: 'torneos',
+								pathMatch: 'full',
+								loadComponent: () =>
+									import('@app/modules/dashboard/my-tournaments/my-tournaments.component')
+							}
 						]
 					},
 

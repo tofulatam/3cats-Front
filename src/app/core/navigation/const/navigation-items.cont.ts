@@ -66,7 +66,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 				title: 'Dashboard',
 				type: 'basic',
 				fontIcon: 'dashboard',
-				link: '/dashboard/organizador/dashboard'
+				link: '/dashboard/organizador/home'
 			},
 			{
 				id: 'organizer.create-tournament',

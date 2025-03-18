@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 // Componentes
-import { TournamentsListComponent } from '../components/tournaments-list/tournaments-list.component';
-import { UpcomingMatchesComponent } from '../components/upcoming-matches/upcoming-matches.component';
+import { TournamentsListComponent } from '../../components/tournaments-list/tournaments-list.component';
+import { UpcomingMatchesComponent } from '../../components/upcoming-matches/upcoming-matches.component';
 // Const
 import { PLAYERS } from '@app/shared/constants/players.constant';
 import { StatisticsFairPlayComponent } from '@statistics/components/fair-play/fair-play.component';
@@ -9,7 +9,7 @@ import { StatisticsGoalEfficiencyComponent } from '@statistics/components/goal-e
 import { StatisticsMatchResultsComponent } from '@statistics/components/match-results/match-results.component';
 
 @Component({
-	selector: 'home',
+	selector: 'home-player',
 	imports: [
 		StatisticsMatchResultsComponent,
 		StatisticsGoalEfficiencyComponent,
@@ -17,9 +17,9 @@ import { StatisticsMatchResultsComponent } from '@statistics/components/match-re
 		TournamentsListComponent,
 		UpcomingMatchesComponent
 	],
-	templateUrl: './home.component.html',
+	templateUrl: './home-player.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class HomeComponent {
+export default class HomePlayerComponent {
 	public player = PLAYERS[0];
 }
