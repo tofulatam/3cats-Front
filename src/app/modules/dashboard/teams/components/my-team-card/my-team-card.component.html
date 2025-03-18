@@ -6,7 +6,13 @@
 
 	<!-- Tournament Logo -->
 	<div class="h-32 w-32">
-		<img [src]="team().urlTeamPhoto" [alt]="team().teamName" class="h-full w-full object-contain" />
+		<img
+			[src]="team().urlTeamPhoto"
+			[alt]="team().teamName"
+			class="h-full w-full object-contain"
+			appHandleImageError
+			fallbackImage="images/placeholder/equipo-portrait.jpeg"
+		/>
 	</div>
 
 	<!-- Tournament Name -->

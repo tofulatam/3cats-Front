@@ -8,6 +8,8 @@
 				[src]="team().urlTeamPhoto || '/assets/images/default-shield.png'"
 				[alt]="team().teamName"
 				class="h-24 w-24 object-contain"
+				appHandleImageError
+				fallbackImage="images/placeholder/equipo-portrait.jpeg"
 			/>
 		</div>
 
