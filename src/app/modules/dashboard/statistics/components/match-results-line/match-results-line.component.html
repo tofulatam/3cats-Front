@@ -10,6 +10,20 @@
 		}
 	</div>
 
+	<!-- Time grouping selector -->
+	<div class="mb-4 flex items-center gap-2">
+		<label class="text-adaptive-secondary text-sm">Ver por:</label>
+		<select
+			class="rounded border border-gray-300 bg-white px-3 py-1 text-sm"
+			[ngModel]="selectedTimeGroup"
+			(ngModelChange)="onTimeGroupChange($event)"
+		>
+			<option value="week">Semana</option>
+			<option value="fortnight">Quincena</option>
+			<option value="month">Mes</option>
+		</select>
+	</div>
+
 	<!-- Line chart -->
 	<div class="flex flex-auto flex-col">
 		<apx-chart

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 // Interface
@@ -6,9 +7,11 @@ import { Player } from '@app/shared/interfaces/player.interface';
 // Third party libraries
 import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 
+type TimeGroup = 'week' | 'fortnight' | 'month';
+
 @Component({
 	selector: 'statistics-match-results-line',
-	imports: [MatIconModule, NgApexchartsModule],
+	imports: [MatIconModule, NgApexchartsModule, FormsModule],
 	templateUrl: './match-results-line.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -19,6 +22,7 @@ export class StatisticsMatchResultsLineComponent {
 	// Public
 	public lineChartOptions: ApexOptions;
 	public matchStats: { label: string; value: number }[] = [];
+	public selectedTimeGroup: TimeGroup = 'fortnight';
 
 	// -----------------------------------------------------------------------------------------------
 	// @ Lifecycle hooks
@@ -37,23 +41,60 @@ export class StatisticsMatchResultsLineComponent {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Get fortnight period key
+	 * Handle time group change
 	 */
-	private getFortnight(date: Date): string {
-		const year = date.getFullYear();
-		const month = date.getMonth();
-		const day = date.getDate();
-		const fortnight = day <= 15 ? '1' : '2';
-		return `${year}-${(month + 1).toString().padStart(2, '0')}-${fortnight}`;
+	onTimeGroupChange(value: TimeGroup): void {
+		this.selectedTimeGroup = value;
+		this.initChartOptions();
 	}
 
 	/**
-	 * Get middle date of fortnight
+	 * Get period key based on selected time group
 	 */
-	private getFortnightMiddleDate(key: string): number {
-		const [year, month, fortnight] = key.split('-').map((n) => parseInt(n));
-		const day = fortnight === 1 ? 8 : 23; // Día medio de cada quincena
-		return new Date(year, month - 1, day).getTime();
+	private getPeriodKey(date: Date): string {
+		const year = date.getFullYear();
+		const month = (date.getMonth() + 1).toString().padStart(2, '0');
+
+		switch (this.selectedTimeGroup) {
+			case 'week': {
+				// Get week number
+				const weekNumber = Math.ceil(
+					(date.getDate() + new Date(date.getFullYear(), date.getMonth(), 1).getDay()) / 7
+				);
+				return `${year}-${month}-W${weekNumber}`;
+			}
+			case 'fortnight': {
+				const fortnight = date.getDate() <= 15 ? '1' : '2';
+				return `${year}-${month}-${fortnight}`;
+			}
+			case 'month': {
+				return `${year}-${month}`;
+			}
+		}
+	}
+
+	/**
+	 * Get middle date of period
+	 */
+	private getPeriodMiddleDate(key: string): number {
+		const [year, month, period] = key.split('-');
+		const yearNum = parseInt(year);
+		const monthNum = parseInt(month);
+
+		switch (this.selectedTimeGroup) {
+			case 'week': {
+				const weekNum = parseInt(period.replace('W', ''));
+				const dayOffset = (weekNum - 1) * 7 + 3; // Middle of the week
+				return new Date(yearNum, monthNum - 1, dayOffset).getTime();
+			}
+			case 'fortnight': {
+				const day = parseInt(period) === 1 ? 8 : 23;
+				return new Date(yearNum, monthNum - 1, day).getTime();
+			}
+			case 'month': {
+				return new Date(yearNum, monthNum - 1, 15).getTime();
+			}
+		}
 	}
 
 	/**
@@ -72,28 +113,28 @@ export class StatisticsMatchResultsLineComponent {
 	 * Init chart options
 	 */
 	initChartOptions(): void {
-		// Ordenar los partidos por fecha
+		// Sort matches by date
 		const sortedMatches = [...this.player().rp_matchPlayed].sort(
 			(a, b) => new Date(a.matchDay).getTime() - new Date(b.matchDay).getTime()
 		);
 
-		// Agrupar partidos por quincena
-		const matchesByFortnight = new Map();
+		// Group matches by selected period
+		const matchesByPeriod = new Map();
 		sortedMatches.forEach((match) => {
 			const date = new Date(match.matchDay);
-			const fortnightKey = this.getFortnight(date);
+			const periodKey = this.getPeriodKey(date);
 
-			if (!matchesByFortnight.has(fortnightKey)) {
-				matchesByFortnight.set(fortnightKey, {
+			if (!matchesByPeriod.has(periodKey)) {
+				matchesByPeriod.set(periodKey, {
 					total: 0,
 					wins: 0,
 					draws: 0,
 					losses: 0,
-					timestamp: this.getFortnightMiddleDate(fortnightKey)
+					timestamp: this.getPeriodMiddleDate(periodKey)
 				});
 			}
 
-			const stats = matchesByFortnight.get(fortnightKey);
+			const stats = matchesByPeriod.get(periodKey);
 			stats.total++;
 			switch (match.result) {
 				case 'WIN':
@@ -108,25 +149,33 @@ export class StatisticsMatchResultsLineComponent {
 			}
 		});
 
-		// Convertir el Map a arrays para el gráfico
+		// Convert Map to arrays for the chart
 		const dates = [];
 		const totalMatches = [];
 		const wins = [];
 		const draws = [];
 		const losses = [];
 
-		// Ordenar por fecha antes de convertir a arrays
-		const sortedFortnights = Array.from(matchesByFortnight.entries()).sort(([keyA], [keyB]) =>
+		// Sort by date before converting to arrays
+		const sortedPeriods = Array.from(matchesByPeriod.entries()).sort(([keyA], [keyB]) =>
 			keyA.localeCompare(keyB)
 		);
 
-		sortedFortnights.forEach(([key, stats]) => {
+		sortedPeriods.forEach(([key, stats]) => {
 			dates.push(stats.timestamp);
 			totalMatches.push(stats.total);
 			wins.push(stats.wins);
 			draws.push(stats.draws);
 			losses.push(stats.losses);
 		});
+
+		// Determine title based on selected period
+		const titlePrefix =
+			this.selectedTimeGroup === 'week'
+				? 'semanal'
+				: this.selectedTimeGroup === 'fortnight'
+					? 'quincenal'
+					: 'mensual';
 
 		// Set chart options
 		this.lineChartOptions = {
@@ -229,7 +278,7 @@ export class StatisticsMatchResultsLineComponent {
 				fontWeight: 500
 			},
 			title: {
-				text: 'Evolución quincenal de resultados',
+				text: `Evolución ${titlePrefix} de resultados`,
 				align: 'center',
 				style: {
 					fontSize: '18px',
