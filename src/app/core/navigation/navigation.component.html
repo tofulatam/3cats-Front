@@ -11,10 +11,7 @@
 
 		<!-- Items -->
 		@for (item of navigation; track trackByFn($index, item)) {
-			<!-- Skip the hidden items -->
-			@if ((item.hidden && !item.hidden(item)) || !item.hidden) {
-				<app-navigation-group-item [item]="item" [name]="name" />
-			}
+			<app-navigation-group-item [item]="item" />
 		}
 
 		<!-- Content footer -->

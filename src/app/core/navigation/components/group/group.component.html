@@ -1,50 +1,32 @@
 <!-- Item wrapper -->
-@if (item.title) {
+@if (item().title) {
 	<div
 		class="app-navigation-item-wrapper"
-		[class.app-navigation-item-has-subtitle]="!!item.subtitle"
-		[ngClass]="item.classes?.wrapper"
+		[class.app-navigation-item-has-subtitle]="!!item().subtitle"
 	>
 		<div class="app-navigation-item">
 			<!-- Title & Subtitle -->
 			<div class="app-navigation-item-title-wrapper">
-				<div class="app-navigation-item-title opacity-100">
-					<span [ngClass]="item.classes?.title">
-						{{ item.title }}
-					</span>
-				</div>
-				@if (item.subtitle) {
-					<div class="app-navigation-item-subtitle">
-						<span [ngClass]="item.classes?.subtitle">
-							{{ item.subtitle }}
-						</span>
-					</div>
+				<!-- Title -->
+				<div class="app-navigation-item-title">{{ item().title }}</div>
+
+				<!-- Subtitle -->
+				@if (item().subtitle) {
+					<div class="app-navigation-item-subtitle">{{ item().subtitle }}</div>
 				}
 			</div>
-
-			<!-- Badge -->
-			@if (item.badge) {
-				<div class="app-navigation-item-badge">
-					<div class="app-navigation-item-badge-content" [ngClass]="item.badge.classes">
-						{{ item.badge.title }}
-					</div>
-				</div>
-			}
 		</div>
 	</div>
 }
 
-@for (item of item.children; track trackByFn($index, item)) {
-	<!-- Skip the hidden items -->
-	@if ((item.hidden && !item.hidden(item)) || !item.hidden) {
-		<!-- Basic -->
-		@if (item.type === 'basic') {
-			<app-navigation-basic-item [item]="item" [name]="name" />
-		}
+@for (item of item().children; track $index) {
+	<!-- Basic -->
+	@if (item.type === 'basic') {
+		<app-navigation-basic-item [item]="item" />
+	}
 
-		<!-- Group -->
-		@if (item.type === 'group') {
-			<app-navigation-group-item [item]="item" [name]="name" />
-		}
+	<!-- Group -->
+	@if (item.type === 'group') {
+		<app-navigation-group-item [item]="item" />
 	}
 }

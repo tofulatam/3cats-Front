@@ -15,7 +15,6 @@ import { appRoutes } from './app.routes';
 import { provideAuth } from './core/auth/auth.provider';
 import { provideIcons } from './core/icons/icons.provider';
 import { provideMediaWatcher } from './core/media-watcher/media-watcher.provider';
-import { provideUtils } from './core/utils/utils.provider';
 
 registerLocaleData(localeEsCo);
 
@@ -33,7 +32,6 @@ export const appConfig: ApplicationConfig = {
 		provideAuth(),
 		provideIcons(),
 		provideMediaWatcher(),
-		provideUtils(),
 		{
 			// Use the 'fill' appearance on Angular Material form fields by default
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

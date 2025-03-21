@@ -128,41 +128,23 @@ app-navigation {
 				text-decoration: none;
 				border-radius: 6px;
 
-				/* Disabled state */
-				&.app-navigation-item-disabled {
-					cursor: default;
-					opacity: 0.4;
-				}
-
 				.app-navigation-item-icon {
+					display: flex;
+					align-items: center;
+					justify-content: center;
 					margin-right: 16px;
 					border-radius: 12px !important;
-					width: 28px;
-					height: 28px;
+					width: 32px;
+					height: 32px;
 				}
 
 				.app-navigation-item-title-wrapper {
 					.app-navigation-item-subtitle {
-						font-size: 12 px;
+						font-size: 12px;
 						line-height: 1.5;
 					}
 				}
 
-				.app-navigation-item-badge {
-					margin-left: auto;
-
-					.app-navigation-item-badge-content {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						font-size: 10px;
-						font-weight: 600;
-						white-space: nowrap;
-						height: 20px;
-
-						@apply px-2 bg-primary text-white rounded-full;
-					}
-				}
 			}
 		}
 	}
@@ -184,15 +166,11 @@ app-navigation {
 		}
 	}
 
-	/* Basic */
-	app-navigation-basic-item {}
-
 	/* Group */
 	app-navigation-group-item {
 		>.app-navigation-item-wrapper {
 			.app-navigation-item {
 
-				.app-navigation-item-badge,
 				.app-navigation-item-icon {
 					display: none !important;
 				}
@@ -236,18 +214,13 @@ app-navigation-group-item {
 			color: currentColor;
 
 			.app-navigation-item-icon {
-				// @apply text-current opacity-60;
-				@apply text-primary-600 bg-white dark:bg-slate-600 p-1;
+				@apply text-current opacity-60;
+				@apply text-primary-600 bg-white dark:bg-slate-600;
 			}
 
 			.app-navigation-item-title-wrapper {
 				.app-navigation-item-title {
-					// @apply text-current opacity-80;
 					@apply opacity-50;
-				}
-
-				.app-navigation-item-subtitle {
-					// @apply text-current opacity-50;
 				}
 			}
 		}
@@ -262,64 +235,33 @@ app-navigation-basic-item {
 			/* Active state */
 			&:not(.app-navigation-item-disabled) {
 
-				&.app-navigation-item-active,
-				&.app-navigation-item-active-forced {
+				&.app-navigation-item-active {
 					@apply bg-white dark:bg-slate-900 shadow-md;
 
 					.app-navigation-item-icon {
 						@apply opacity-100;
-						@apply text-white bg-primary-500 rounded-md p-1;
+						@apply text-white bg-primary;
 					}
 
 					.app-navigation-item-title {
-						// @apply opacity-100 text-white;
 						@apply font-bold opacity-100;
-					}
-
-					.app-navigation-item-subtitle {
-						// @apply opacity-100 text-white;
 					}
 				}
 			}
 
 			/* Hover state */
-			&:not(.app-navigation-item-active-forced):not(.app-navigation-item-active):not(.app-navigation-item-disabled) {
+			&:not(.app-navigation-item-active) {
 				&:hover {
 					@apply bg-white dark:bg-slate-900 shadow-md;
 
 					.app-navigation-item-icon {
 						@apply opacity-100;
-						@apply text-white bg-primary-500 rounded-md p-1;
+						@apply text-white bg-primary;
 					}
 
 					.app-navigation-item-title {
-						// @apply opacity-100 text-white;
 						@apply font-bold opacity-100;
 					}
-
-					.app-navigation-item-subtitle {
-						// @apply opacity-100;
-					}
-
-					.app-navigation-item-badge {
-						.app-navigation-item-badge-content {
-							@apply bg-white text-primary;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-/* Group */
-app-navigation-group-item {
-	>.app-navigation-item-wrapper {
-		.app-navigation-item {
-			.app-navigation-item-title-wrapper {
-				.app-navigation-item-title {
-					// @apply opacity-100 text-primary-600 dark:text-primary-400;
-					@apply font-bold;
 				}
 			}
 		}

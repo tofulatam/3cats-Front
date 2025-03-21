@@ -2,6 +2,7 @@ import { NavigationItem } from '../interfaces/navigation.interface';
 
 /**
  * Navigation items for the sidebar
+ * @description This is the navigation items for the sidebar used to build the sidebar
  */
 export const NAVIGATION_ITEMS: NavigationItem[] = [
 	{
@@ -19,6 +20,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 			}
 		]
 	},
+	// Player
 	{
 		id: 'player',
 		title: 'Jugador',
@@ -55,6 +57,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 			}
 		]
 	},
+	// Organizer
 	{
 		id: 'organizer',
 		title: 'Organizador',
