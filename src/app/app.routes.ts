@@ -73,6 +73,9 @@ export const appRoutes: Route[] = [
 					{
 						path: 'home',
 						pathMatch: 'full',
+						data: {
+							breadcrumb: 'Inicio'
+						},
 						loadComponent: () =>
 							import('@app/modules/dashboard/home/pages/player/home-player.component')
 					},
@@ -84,11 +87,17 @@ export const appRoutes: Route[] = [
 							{
 								path: 'equipos',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Equipos'
+								},
 								loadComponent: () => import('@app/modules/dashboard/teams/pages/teams.component')
 							},
 							{
 								path: 'estadisticas',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Estadísticas'
+								},
 								loadComponent: () =>
 									import('@app/modules/dashboard/statistics/pages/statistics.component').then(
 										(m) => m.StatisticsComponent
@@ -97,12 +106,18 @@ export const appRoutes: Route[] = [
 							{
 								path: 'torneos',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Torneos'
+								},
 								loadComponent: () =>
 									import('@app/modules/dashboard/tournaments/pages/tournaments.component')
 							},
 							{
 								path: 'partidos',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Partidos'
+								},
 								loadComponent: () => import('@app/modules/dashboard/matches/matches.component')
 							}
 						]
@@ -115,18 +130,27 @@ export const appRoutes: Route[] = [
 							{
 								path: 'home',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Dashboard Organizador'
+								},
 								loadComponent: () =>
 									import('@app/modules/dashboard/home/pages/organizer/home-organizer.component')
 							},
 							{
 								path: 'crear-torneo',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Crear Torneo'
+								},
 								loadComponent: () =>
 									import('@app/modules/dashboard/create-tournaments/create-tournaments.component')
 							},
 							{
 								path: 'torneos',
 								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Mis Torneos'
+								},
 								loadComponent: () =>
 									import('@app/modules/dashboard/my-tournaments/my-tournaments.component')
 							}
