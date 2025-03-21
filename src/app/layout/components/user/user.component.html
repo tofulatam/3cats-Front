@@ -4,7 +4,7 @@
 		@if (user.avatar) {
 			<img class="h-7 w-7 rounded-full" [src]="user.avatar" />
 		} @else {
-			<mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+			<mat-icon>account_circle</mat-icon>
 		}
 	</span>
 </button>
@@ -12,26 +12,26 @@
 <mat-menu [xPosition]="'before'" #userActions="matMenu">
 	<button mat-menu-item (click)="$event.stopPropagation()">
 		<span class="flex flex-col leading-none">
-			<span class="mt-1.5 text-md font-medium">{{ user.email }}</span>
+			<span class="text-md mt-1.5 font-medium">{{ user.email }}</span>
 		</span>
 	</button>
 
 	<mat-divider class="my-2"></mat-divider>
 
 	<button mat-menu-item>
-		<mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+		<mat-icon>account_circle</mat-icon>
 		<span>Perfil</span>
 	</button>
 
 	<button mat-menu-item>
-		<mat-icon [svgIcon]="'heroicons_outline:cog-6-tooth'"></mat-icon>
+		<mat-icon>settings</mat-icon>
 		<span>Configuración</span>
 	</button>
 
 	<mat-divider class="my-2"></mat-divider>
 
 	<button mat-menu-item (click)="signOut()">
-		<mat-icon [svgIcon]="'heroicons_outline:arrow-right-on-rectangle'"></mat-icon>
+		<mat-icon>logout</mat-icon>
 		<span>Cerrar sesión</span>
 	</button>
 </mat-menu>

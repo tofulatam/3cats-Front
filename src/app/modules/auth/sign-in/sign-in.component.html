@@ -20,7 +20,7 @@
 				</div>
 
 				<div
-					class="text-colorBlancoMenta relative z-80 max-w-96 space-y-4 max-md:text-center md:mb-12"
+					class="relative z-80 max-w-96 space-y-4 text-colorBlancoMenta max-md:text-center md:mb-12"
 				>
 					<div class="text-3xl font-bold leading-none md:text-5xl">
 						El lugar donde el fútbol vive contigo
@@ -100,11 +100,11 @@
 						matSuffix
 					>
 						@if (passwordField.type === 'password') {
-							<mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+							<mat-icon class="icon-size-6"> visibility </mat-icon>
 						}
 
 						@if (passwordField.type === 'text') {
-							<mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye-slash'"></mat-icon>
+							<mat-icon class="icon-size-6"> visibility_off </mat-icon>
 						}
 					</button>
 					<mat-error> Contraseña es requerida </mat-error>

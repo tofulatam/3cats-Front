@@ -39,10 +39,7 @@ module.exports = plugin(
 				12: '3rem',
 				14: '3.5rem',
 				16: '4rem',
-				18: '4.5rem',
-				20: '5rem',
-				22: '5.5rem',
-				24: '6rem'
+				18: '4.5rem'
 			}
 		}
 	}

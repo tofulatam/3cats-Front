@@ -11,20 +11,6 @@ export class IconsService {
 	 * Constructor
 	 */
 	constructor() {
-		// Register heroicons icon sets
-		this._matIconRegistry.addSvgIconSetInNamespace(
-			'heroicons_outline',
-			this._domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-outline.svg')
-		);
-		this._matIconRegistry.addSvgIconSetInNamespace(
-			'heroicons_solid',
-			this._domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-solid.svg')
-		);
-		this._matIconRegistry.addSvgIconSetInNamespace(
-			'heroicons_mini',
-			this._domSanitizer.bypassSecurityTrustResourceUrl('icons/heroicons/heroicons-mini.svg')
-		);
-
 		// Register logo
 		this._matIconRegistry.addSvgIcon(
 			'logo',
