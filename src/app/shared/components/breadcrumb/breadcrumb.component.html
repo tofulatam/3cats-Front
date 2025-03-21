@@ -1,0 +1,32 @@
+<nav class="flex px-4 py-2" aria-label="Breadcrumb">
+	<!-- Breadcrumb -->
+	<ol class="inline-flex items-center space-x-1 md:space-x-3">
+		<!-- Home -->
+		<li class="inline-flex items-center">
+			<a
+				routerLink="/"
+				class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary"
+			>
+				Inicio
+			</a>
+		</li>
+
+		<!-- Breadcrumbs -->
+		@for (breadcrumb of breadcrumbs; track breadcrumb.url) {
+			<li class="text-colorGris dark:text-colorBlancoMenta">
+				<div class="flex items-center">
+					<!-- Separator -->
+					<mat-icon class="h-6 w-6 text-gray-400">chevron_right</mat-icon>
+
+					<!-- Breadcrumb -->
+					<a
+						[routerLink]="breadcrumb.url"
+						class="ml-1 text-sm font-medium hover:text-primary md:ml-2"
+					>
+						{{ breadcrumb.label }}
+					</a>
+				</div>
+			</li>
+		}
+	</ol>
+</nav>

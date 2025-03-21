@@ -9,12 +9,20 @@ import { MediaWatcherService } from '@app/core/media-watcher/media-watcher.servi
 // Components
 import { NavigationComponent, NavigationService } from '@app/core/navigation';
 import { UserComponent } from '@app/layout/components/user/user.component';
+import { BreadcrumbComponent } from '@app/shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
 	selector: 'classic-layout',
 	templateUrl: './classic.component.html',
 	encapsulation: ViewEncapsulation.None,
-	imports: [NavigationComponent, MatButtonModule, MatIconModule, UserComponent, RouterOutlet]
+	imports: [
+		NavigationComponent,
+		MatButtonModule,
+		MatIconModule,
+		UserComponent,
+		RouterOutlet,
+		BreadcrumbComponent
+	]
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy {
 	// Public
