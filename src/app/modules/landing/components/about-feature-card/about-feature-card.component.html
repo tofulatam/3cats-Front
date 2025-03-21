@@ -7,7 +7,7 @@
 			>
 				@if (feature.comingSoon) {
 					<span
-						class="bg-card dark:text-colorBlancoMenta rounded-full px-2 py-1 font-semibold text-[#B5B5B5]"
+						class="bg-card rounded-full px-2 py-1 font-semibold text-[#B5B5B5] dark:text-colorBlancoMenta"
 					>
 						Próximamente
 					</span>
@@ -17,11 +17,12 @@
 					class="text-lg font-semibold"
 					[class.text-primary]="!feature.comingSoon"
 					[class.text-slate-500]="feature.comingSoon"
+					[class.h-14]="feature.comingSoon"
 				>
 					{{ feature.title }}
 				</h3>
 
-				<p class="dark:text-colorBlancoMenta text-sm text-[#B5B5B5]">
+				<p class="text-sm text-[#B5B5B5] dark:text-colorBlancoMenta">
 					{{ feature.description }}
 				</p>
 			</div>

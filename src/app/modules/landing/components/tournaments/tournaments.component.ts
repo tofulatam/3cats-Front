@@ -10,5 +10,5 @@ import { LandingTournamentCardComponent } from '../tournament-card/tournament-ca
 	imports: [LandingTournamentCardComponent]
 })
 export class LandingTournamentsComponent {
-	tournaments: Tournament[] = TOURNAMENTS.slice(0, 4);
+	tournaments: Tournament[] = TOURNAMENTS.slice(0, 6);
 }
