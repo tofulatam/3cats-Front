@@ -24,7 +24,7 @@ import { StatItem } from '../interfaces/statistics.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsComponent {
-	public player = PLAYERS[2];
+	public player = PLAYERS[0];
 
 	public statsCards: StatItem[] = [
 		{
