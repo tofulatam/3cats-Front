@@ -31,7 +31,7 @@ export class LandingHeaderComponent implements OnInit, OnDestroy {
 		{ id: 'torneos', href: '#torneos', label: 'Torneos' },
 		{ id: 'equipos', href: '#equipos', label: 'Equipos' },
 		// { id: 'organizar', href: '#organizar', label: 'Organizar' },
-		{ id: 'sobre-nosotros', href: '#sobre-nosotros', label: 'Sobre 3cats' }
+		{ id: 'sobre-nosotros', href: '#sobre-nosotros', label: 'Sobre 3Cats' }
 	];
 
 	/**

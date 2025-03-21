@@ -36,17 +36,17 @@ export class LandingFaqsComponent {
 		{
 			question: '¿Cómo puedo acceder a mis estadísticas como jugador en 3Cats?',
 			answer:
-				'Al registrarte en 3Cats, obtendrás un perfil personal donde se actualizarán automáticamente tus estadísticas, como goles, eficiencia y fair play, a medida que participas en torneos.'
+				'Al registrarte en 3Cats, obtendrás un perfil personal donde se actualizarán automáticamente tus estadísticas, como goles, eficiencia y fair play, a medida que participas en torneos. Puedes consultarlas desde la sección "Mi Perfil".'
 		},
 		{
 			question: '¿Puedo personalizar mis torneos en 3Cats?',
 			answer: `<p>¡Por supuesto! 3Cats te permite personalizar tus torneos de manera sencilla y profesional. Puedes:</p>
       <ul class="list-disc space-y-2 ml-6">
-        <li>Centraliza toda la gestión del torneo en una sola plataforma fácil de usar.</li>
-        <li>Ofrece resultados y clasificaciones actualizados en tiempo real, eliminando la necesidad de cálculos manuales.</li>
-        <li>Incrementa la visibilidad de equipos y jugadores con perfiles personalizados y estadísticas destacadas.</li>
-        <li>Proporciona herramientas avanzadas para mejorar el rendimiento, planificar estrategias y analizar datos clave.</li>
-        <li>Facilita la interacción entre jugadores, aficionados y equipos, fomentando una comunidad activa y comprometida.</li>
+        <li>Configurar múltiples formatos de competición, como todos contra todos, eliminación directa o combinaciones de fases.</li>
+        <li>Diseñar el torneo con detalles únicos, incluyendo el logo, colores y reglas específicas.</li>
+        <li>Gestionar equipos y jugadores inscritos, con opciones para personalizar uniformes y escudos.</li>
+        <li>Establecer calendarios y horarios de partidos adaptados a tus necesidades.</li>
+        <li>Agregar anuncios o patrocinios específicos para generar ingresos o mayor visibilidad.</li>
       </ul>`
 		},
 		{
@@ -57,7 +57,13 @@ export class LandingFaqsComponent {
 		{
 			question: '¿Puedo crear mi equipo en 3Cats?',
 			answer:
-				'¡Por supuesto! En 3Cats puedes crear tu equipo de manera sencilla. Registrar tu cuenta: Accede a la plataforma y crea un perfil personal. Desde tu dashboard, selecciona la opción "Crear Equipo". Completar los detalles: Ingresa el nombre del equipo, sube un escudo, define los colores del uniforme y personaliza los roles de tus jugadores. Invitar jugadores: Envía invitaciones a tus compañeros o agrega sus datos manualmente. Una vez creado, podrás gestionar a tus jugadores, inscribir a tu equipo en torneos y hacer un seguimiento detallado de su rendimiento. ¡Haz que tu equipo destaque en la comunidad de fútbol amateur!'
+				'<p>¡Por supuesto! En 3Cats puedes crear tu equipo de manera sencilla. </p>' +
+				'<p>Registrar tu cuenta: Accede a la plataforma y crea un perfil personal. </p>' +
+				'<p>Desde tu dashboard, selecciona la opción "Crear Equipo". </p>' +
+				'<p>Completar los detalles: Ingresa el nombre del equipo, sube un escudo, define los colores del uniforme y personaliza los roles de tus jugadores. </p>' +
+				'<p>Invitar jugadores: Envía invitaciones a tus compañeros o agrega sus datos manualmente. </p>' +
+				'<p>Una vez creado, podrás gestionar a tus jugadores, inscribir a tu equipo en torneos y hacer un seguimiento detallado de su rendimiento. </p>' +
+				'<p>¡Haz que tu equipo destaque en la comunidad de fútbol amateur!</p>'
 		}
 	];
 }
