@@ -54,6 +54,9 @@ export class LandingAboutFeatureCardComponent implements AfterViewInit {
 
 	constructor(private cdr: ChangeDetectorRef) {}
 
+	/**
+	 * After view init
+	 */
 	ngAfterViewInit(): void {
 		setTimeout(() => {
 			const scrollContainer = this.aboutScroll?.nativeElement;
@@ -66,6 +69,10 @@ export class LandingAboutFeatureCardComponent implements AfterViewInit {
 		}, 100);
 	}
 
+	/**
+	 * Check scroll buttons
+	 * @param container - The container element
+	 */
 	private checkScrollButtons(container: HTMLElement): void {
 		const scrollPosition = Math.round(container.scrollLeft);
 		const maxScroll = container.scrollWidth - container.clientWidth - 1;
@@ -75,6 +82,9 @@ export class LandingAboutFeatureCardComponent implements AfterViewInit {
 		this.cdr.detectChanges();
 	}
 
+	/**
+	 * Handle scroll left
+	 */
 	handleScrollLeft(): void {
 		const container = this.aboutScroll?.nativeElement;
 		if (container) {
@@ -85,6 +95,9 @@ export class LandingAboutFeatureCardComponent implements AfterViewInit {
 		}
 	}
 
+	/**
+	 * Handle scroll right
+	 */
 	handleScrollRight(): void {
 		const container = this.aboutScroll?.nativeElement;
 		if (container) {

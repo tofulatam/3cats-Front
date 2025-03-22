@@ -28,7 +28,7 @@ export const appRoutes: Route[] = [
 		},
 		children: [
 			{
-				path: 'sign-in',
+				path: 'iniciar-sesion',
 				loadComponent: () => import('app/modules/auth/sign-in/sign-in.component')
 			}
 		]
@@ -45,7 +45,7 @@ export const appRoutes: Route[] = [
 		},
 		children: [
 			{
-				path: 'sign-out',
+				path: 'cerrar-sesion',
 				loadComponent: () => import('app/modules/auth/sign-out/sign-out.component')
 			}
 		]

@@ -15,31 +15,38 @@
 		<!-- Right Column -->
 		<div class="space-y-4">
 			@for (faq of faqs; track $index) {
+				<!-- FAQ -->
 				<div class="bg-card overflow-hidden rounded-xl">
 					<button
 						class="flex w-full items-center justify-between p-6 text-left text-black"
 						(click)="faq.isOpen = !faq.isOpen"
 					>
+						<!-- Question -->
 						<span class="text-lg font-bold text-colorSecundario dark:text-primary">
 							{{ faq.question }}
 						</span>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5 transform text-slate-600 transition-transform dark:text-colorBlancoMenta"
-							[class.rotate-180]="faq.isOpen"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
+
+						<!-- Arrow -->
+						<div class="flex items-center justify-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5 transform text-colorGris transition-transform dark:text-colorBlancoMenta"
+								[class.rotate-180]="faq.isOpen"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="3"
+									d="M19 9l-7 7-7-7"
+								/>
+							</svg>
+						</div>
 					</button>
 
+					<!-- Answer -->
 					<div
 						class="overflow-hidden transition-all duration-300"
 						[class.h-0]="!faq.isOpen"

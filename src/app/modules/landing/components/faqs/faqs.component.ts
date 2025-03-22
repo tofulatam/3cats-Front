@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { Component } from '@angular/core';
+// Interfaces
 import { Faq } from '@landing/interfaces/faq.interface';
 
 @Component({
@@ -7,7 +8,7 @@ import { Faq } from '@landing/interfaces/faq.interface';
 	templateUrl: './faqs.component.html'
 })
 export class LandingFaqsComponent {
-	faqs: Faq[] = [
+	public faqs: Faq[] = [
 		{
 			question: '¿Qué es 3Cats?',
 			answer:

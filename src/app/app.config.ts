@@ -1,9 +1,11 @@
 import localeEsCo from '@angular/common/locales/es-CO';
 import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import {
+	PreloadAllModules,
 	provideRouter,
 	withComponentInputBinding,
 	withInMemoryScrolling,
+	withPreloading,
 	withViewTransitions
 } from '@angular/router';
 
@@ -23,6 +25,7 @@ export const appConfig: ApplicationConfig = {
 		provideZoneChangeDetection({ eventCoalescing: true }),
 		provideRouter(
 			appRoutes,
+			withPreloading(PreloadAllModules),
 			withComponentInputBinding(),
 			withViewTransitions(),
 			withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })

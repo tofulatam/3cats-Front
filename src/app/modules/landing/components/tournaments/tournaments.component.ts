@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+// Constants
 import { TOURNAMENTS } from '@shared/constants/tournaments.constant';
+// Interfaces
 import { Tournament } from '@shared/interfaces/tournament.interface';
+// Components
 import { LandingTournamentCardComponent } from '../tournament-card/tournament-card.component';
 
 @Component({

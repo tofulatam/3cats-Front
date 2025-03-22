@@ -1,5 +1,6 @@
 <!-- Tournaments Section -->
 <section id="torneos" class="p-6 lg:p-16">
+	<!-- Header -->
 	<div class="flex flex-col items-center justify-center text-center">
 		<h2 class="mb-4 text-3xl font-bold text-colorSecundario sm:text-5xl dark:text-primary">
 			Torneos que están en boca de todos
@@ -9,12 +10,14 @@
 		</p>
 	</div>
 
+	<!-- Tournament Cards -->
 	<div class="grid gap-8 md:grid-flow-row md:grid-cols-[repeat(auto-fill,23rem)] md:justify-center">
 		@for (tournament of tournaments; track $index) {
 			<landing-tournament-card [tournament]="tournament" />
 		}
 	</div>
 
+	<!-- Buttons -->
 	<div class="mt-10 flex justify-center gap-3">
 		<button class="btn-landing-outline">Saber más</button>
 

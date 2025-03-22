@@ -12,7 +12,7 @@ interface Feature {
 	styleUrl: './organize.component.scss'
 })
 export class LandingOrganizeComponent {
-	features: Feature[] = [
+	public features: Feature[] = [
 		{
 			icon: 'images/landing/rayo.png',
 			title: 'Fácil y rápido',

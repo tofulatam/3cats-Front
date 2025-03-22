@@ -2,6 +2,7 @@
 	id="equipos"
 	class="rounded-[2rem] bg-gradient-to-br from-[#151920] to-colorSecundario p-20 max-lg:px-12 2xs:rounded-[6rem]"
 >
+	<!-- Header -->
 	<div class="mb-24 max-w-200 space-y-3 text-center text-colorBlancoMenta sm:text-start">
 		<p class="font-semibold sm:text-lg">
 			¿Prefieres liderar o unirte? Aquí, cada jugador encuentra su lugar.
@@ -14,11 +15,13 @@
 			plataforma. ¡Juntos llegamos más lejos!
 		</p>
 
+		<!-- Create Team Button -->
 		<button class="btn-landing-outline">
 			<span class="text-xl font-extrabold">Crea tu equipo</span>
 		</button>
 	</div>
 
+	<!-- Teams Container -->
 	<div class="teams-container">
 		<div #teamsScroll class="teams-scroll">
 			@for (team of teams; track $index) {
@@ -26,6 +29,7 @@
 			}
 		</div>
 
+		<!-- Scroll Buttons -->
 		<scroll-buttons
 			[showLeftButton]="showLeftButton"
 			[showRightButton]="showRightButton"

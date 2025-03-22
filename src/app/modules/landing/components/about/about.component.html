@@ -1,16 +1,19 @@
 <section id="sobre-nosotros" class="px-4 py-16 text-center">
 	<div class="mx-auto flex max-w-200 flex-col items-center justify-center">
 		<div class="mx-auto mb-4 flex max-w-lg flex-col items-center justify-center">
+			<!-- Title -->
 			<h2 class="mb-4 text-3xl font-bold text-colorSecundario sm:text-5xl dark:text-primary">
 				Lo que nos mueve
 			</h2>
 
+			<!-- Description -->
 			<p class="text-base sm:text-xl">
 				No somos solo una plataforma, somos ese impulso que necesitas para llevar tu pasión al
 				siguiente nivel.
 			</p>
 		</div>
 
+		<!-- Image -->
 		<div class="mb-12 flex flex-col items-center justify-center p-8">
 			<div class="h-auto w-full sm:h-128 sm:w-116">
 				<img
@@ -33,6 +36,7 @@
 		</div>
 	</div>
 
+	<!-- Cards -->
 	<div class="flex flex-wrap items-center justify-center gap-10">
 		@for (card of aboutCards; track card) {
 			<landing-about-card [card]="card" />
