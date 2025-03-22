@@ -12,7 +12,7 @@
 	</div> -->
 
 	<!-- Stats cards -->
-	<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+	<div class="mb-8 grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-4">
 		@for (card of statsCards; track $index) {
 			<statistics-stats-card [statsCard]="card" />
 		}

@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 // Material
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,9 @@ export interface TournamentFilter {
 	imports: [MatIconModule, MatButtonModule, MatInputModule, MatSelectModule, FormsModule]
 })
 export class FilterComponent {
+	// Inputs
+	public placeholder = input.required<string>();
+
 	// Outputs
 	public filterChange = output<TournamentFilter>();
 	public clearFilter = output<void>();

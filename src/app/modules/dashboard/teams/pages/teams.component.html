@@ -6,6 +6,7 @@
 
 		<!-- Filter -->
 		<app-dashboard-filter
+			[placeholder]="'Nombre del equipo'"
 			(filterChange)="onFilterMyTeamsChange($event)"
 			(clearFilter)="onClearMyTeamsFilter()"
 		/>
@@ -29,6 +30,7 @@
 
 		<!-- Filter -->
 		<app-dashboard-filter
+			[placeholder]="'Nombre del equipo'"
 			(filterChange)="onFilterNewTeamsChange($event)"
 			(clearFilter)="onClearNewTeamsFilter()"
 		/>

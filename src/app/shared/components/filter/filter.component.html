@@ -5,12 +5,12 @@
 
 	<!-- Search -->
 	<mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
-		<mat-icon matPrefix class="text-gray-400">search</mat-icon>
+		<mat-icon matPrefix class="text-colorGrisClaro">search</mat-icon>
 		<input
 			matInput
 			[(ngModel)]="filter.search"
 			(ngModelChange)="onFilterChange()"
-			placeholder="Nombre"
+			[placeholder]="placeholder()"
 		/>
 	</mat-form-field>
 
