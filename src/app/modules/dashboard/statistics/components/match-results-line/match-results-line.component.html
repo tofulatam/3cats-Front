@@ -14,7 +14,7 @@
 	<div class="mb-4 flex items-center gap-2">
 		<label class="text-adaptive-secondary text-sm">Ver por:</label>
 		<select
-			class="rounded border border-colorGrisClaro bg-white px-3 py-1 text-sm"
+			class="bg-card rounded border border-colorGrisClaro px-3 py-1 text-sm"
 			[ngModel]="selectedTimeGroup"
 			(ngModelChange)="onTimeGroupChange($event)"
 		>
@@ -26,6 +26,11 @@
 
 	<!-- Line chart -->
 	<div class="flex flex-auto flex-col">
+		<!-- Chart title -->
+		<h3 class="text-center text-lg font-semibold">
+			Evolución {{ getTitlePrefix() }} de resultados
+		</h3>
+
 		<apx-chart
 			class="h-80 w-full flex-auto"
 			[series]="lineChartOptions.series"
@@ -37,7 +42,6 @@
 			[grid]="lineChartOptions.grid"
 			[markers]="lineChartOptions.markers"
 			[tooltip]="lineChartOptions.tooltip"
-			[title]="lineChartOptions.title"
 			[legend]="lineChartOptions.legend"
 		>
 		</apx-chart>

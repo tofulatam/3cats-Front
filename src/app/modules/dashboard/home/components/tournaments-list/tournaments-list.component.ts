@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { EmptyTournamentsComponent } from '@app/shared/components/empty-tournaments/empty-tournaments.component';
 
@@ -45,6 +45,10 @@ const ELEMENT_DATA: Tournament[] = [
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TournamentsListComponent {
-	displayedColumns: string[] = ['logo', 'nombre', 'fase', 'ciudad', 'proximo'];
-	dataSource = ELEMENT_DATA;
+	// Inputs
+	public title = input.required<string>();
+
+	// Public
+	public displayedColumns: string[] = ['logo', 'nombre', 'fase', 'ciudad', 'proximo'];
+	public dataSource = ELEMENT_DATA;
 }

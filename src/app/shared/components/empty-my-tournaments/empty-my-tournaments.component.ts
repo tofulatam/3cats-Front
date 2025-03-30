@@ -7,8 +7,9 @@ import { EmptyStateCardComponent } from '../empty-state-card/empty-state-card.co
 	imports: [EmptyStateCardComponent, MatIconModule],
 	template: `
 		<app-empty-state-card
+			section="Torneos creados"
 			title="Haz que todo comience"
-			description="Da vida a tu visión. Organiza y crea momentos inolvidables.h"
+			description="Da vida a tu visión. Organiza y crea momentos inolvidables"
 		>
 			<mat-icon icon svgIcon="tournament-icon" class="text-colorGrisClaro icon-size-18"></mat-icon>
 			<button action class="btn-primary mt-2 w-fit text-base font-semibold">Crear torneo</button>

@@ -146,14 +146,6 @@ export class StatisticsFairPlayComponent {
 			legend: {
 				show: false
 			},
-			title: {
-				text: 'Tarjetas Recibidas',
-				align: 'center',
-				style: {
-					fontSize: '18px',
-					fontWeight: 600
-				}
-			},
 			dataLabels: {
 				enabled: true,
 				style: {

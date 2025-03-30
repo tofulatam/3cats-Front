@@ -41,6 +41,17 @@ export class StatisticsMatchResultsLineComponent {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
+	 * Get title prefix based on selected time group
+	 */
+	public getTitlePrefix(): string {
+		return this.selectedTimeGroup === 'week'
+			? 'semanal'
+			: this.selectedTimeGroup === 'fortnight'
+				? 'quincenal'
+				: 'mensual';
+	}
+
+	/**
 	 * Handle time group change
 	 */
 	onTimeGroupChange(value: TimeGroup): void {
@@ -169,14 +180,6 @@ export class StatisticsMatchResultsLineComponent {
 			losses.push(stats.losses);
 		});
 
-		// Determine title based on selected period
-		const titlePrefix =
-			this.selectedTimeGroup === 'week'
-				? 'semanal'
-				: this.selectedTimeGroup === 'fortnight'
-					? 'quincenal'
-					: 'mensual';
-
 		// Set chart options
 		this.lineChartOptions = {
 			chart: {
@@ -276,14 +279,6 @@ export class StatisticsMatchResultsLineComponent {
 				position: 'bottom',
 				fontSize: '14px',
 				fontWeight: 500
-			},
-			title: {
-				text: `Evolución ${titlePrefix} de resultados`,
-				align: 'center',
-				style: {
-					fontSize: '18px',
-					fontWeight: 600
-				}
 			},
 			tooltip: {
 				shared: true,

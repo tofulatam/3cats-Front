@@ -1,8 +1,9 @@
 <div class="dashboard-card overflow-hidden">
 	<h2 class="mb-2 text-xl font-semibold">Torneos</h2>
+
 	<p class="mb-6 flex items-center gap-2 text-sm text-colorGrisClaro">
 		<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-		Estos son todos los torneos que estás participando
+		{{ title() }}
 	</p>
 
 	@if (dataSource.length === 0) {

@@ -175,14 +175,6 @@ export class StatisticsGoalEfficiencyComponent {
 				fontSize: '14px',
 				fontWeight: 500
 			},
-			title: {
-				text: 'Comparación de goles por partido',
-				align: 'center',
-				style: {
-					fontSize: '18px',
-					fontWeight: 600
-				}
-			},
 			tooltip: {
 				x: {
 					format: 'dd MMM yyyy'
