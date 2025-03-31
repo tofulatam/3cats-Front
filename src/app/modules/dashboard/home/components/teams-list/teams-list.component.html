@@ -1,0 +1,86 @@
+<div class="dashboard-card">
+	<h2 class="mb-4 text-xl font-semibold">Próximos Partidos</h2>
+
+	@if (teams.length === 0) {
+		<app-empty-teams />
+	} @else {
+		<div class="space-y-3">
+			@for (team of teams; track $index) {
+				<div class="dashboard-card dark:bg-dark-card rounded-lg bg-white p-3">
+					<div class="flex flex-wrap gap-3">
+						<!-- Team Info -->
+						<div class="flex items-center gap-3">
+							<img
+								[src]="team.urlTeamPhoto || '/assets/images/default-shield.png'"
+								[alt]="team.teamName"
+								class="h-10 w-10 object-contain"
+								appHandleImageError
+								fallbackImage="images/placeholder/equipo-portrait.jpeg"
+							/>
+							<div class="min-w-0">
+								<span class="text-adaptive-secondary text-xs"
+									>Est. {{ team.createdSince | date: 'yyyy' }}</span
+								>
+								<h3 class="line-clamp-1 text-sm font-medium">{{ team.teamName }}</h3>
+							</div>
+						</div>
+
+						<!-- Stats -->
+						<div class="flex flex-1 flex-wrap items-center justify-center gap-3">
+							<!-- Tournament count -->
+							<div
+								class="flex items-center gap-1 rounded border border-colorGris px-2 py-1 text-xs dark:border-colorBlancoMenta"
+							>
+								<span class="font-medium">{{ team.played }}</span>
+								<span class="text-adaptive-secondary">torneos</span>
+							</div>
+
+							<!-- Medals -->
+							<div class="flex items-center gap-3">
+								<div class="flex items-center gap-1">
+									<img
+										src="images/cards/trophy_dark.svg"
+										alt="Trophy"
+										class="h-5 w-5 dark:hidden"
+									/>
+									<img
+										src="images/cards/trophy.svg"
+										alt="Trophy"
+										class="hidden h-5 w-5 dark:block"
+									/>
+									<span class="text-sm font-medium">{{ team.won || '-' }}</span>
+								</div>
+								<div class="flex items-center gap-1">
+									<img
+										src="images/cards/second_dark.svg"
+										alt="Medalla segunda posición"
+										class="h-4 w-4 dark:hidden"
+									/>
+									<img
+										src="images/cards/second.svg"
+										alt="Medalla segunda posición"
+										class="hidden h-4 w-4 dark:block"
+									/>
+									<span class="text-xs">{{ team.goalsFor || '-' }}</span>
+								</div>
+								<div class="flex items-center gap-1">
+									<img
+										src="images/cards/third_dark.svg"
+										alt="Medalla tercera posición"
+										class="h-4 w-4 dark:hidden"
+									/>
+									<img
+										src="images/cards/third.svg"
+										alt="Medalla tercera posición"
+										class="hidden h-4 w-4 dark:block"
+									/>
+									<span class="text-xs">{{ team.goalsAgainst || '-' }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	}
+</div>
