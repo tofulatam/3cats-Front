@@ -7,7 +7,7 @@
 		<div class="space-y-3">
 			@for (team of teams; track $index) {
 				<div class="dashboard-card rounded-lg p-3 dark:bg-slate-900">
-					<div class="flex flex-wrap gap-3">
+					<div class="flex flex-wrap justify-between gap-3 max-xs:flex-col">
 						<!-- Team Info -->
 						<div class="flex items-center gap-3">
 							<img
@@ -26,7 +26,9 @@
 						</div>
 
 						<!-- Stats -->
-						<div class="flex flex-1 flex-wrap items-center justify-center gap-3">
+						<div
+							class="flex flex-1 flex-wrap items-center justify-center gap-3 max-xs:flex-col max-xs:justify-start"
+						>
 							<!-- Tournament count -->
 							<div
 								class="flex items-center gap-1 rounded border border-colorGris px-2 py-1 text-xs dark:border-colorBlancoMenta"
@@ -81,6 +83,8 @@
 					</div>
 				</div>
 			}
+
+			<button class="btn-primary w-fit self-start" routerLink="/">Ver más</button>
 		</div>
 	}
 </div>

@@ -11,5 +11,5 @@ import { Team } from '@app/shared/interfaces/team.interface';
 })
 export class TeamsListComponent {
 	// Mock data
-	public teams: Team[] = TEAMS.slice(0, 2);
+	public teams: Team[] = TEAMS.slice(0, 3);
 }

@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<div class="dashboard-card flex h-full w-full flex-col">
-			<h2 class="mb-4 text-lg font-bold">{{ section() }}</h2>
+			<h2 class="mb-4 text-xl font-semibold">{{ section() }}</h2>
 
 			<div class="flex flex-1 flex-col items-center justify-center gap-3">
 				<ng-content select="[icon]"></ng-content>

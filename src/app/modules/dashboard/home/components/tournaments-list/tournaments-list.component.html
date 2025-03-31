@@ -9,7 +9,7 @@
 	@if (dataSource.length === 0) {
 		<app-empty-tournaments></app-empty-tournaments>
 	} @else {
-		<div class="mt-2 flex flex-auto flex-col overflow-x-auto">
+		<div class="mt-2 flex flex-auto flex-col gap-4 overflow-x-auto">
 			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 				<!-- logo Column -->
 				<ng-container matColumnDef="logo">
@@ -49,6 +49,8 @@
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 				<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 			</table>
+
+			<button class="btn-primary w-fit self-start" routerLink="/">Ver más</button>
 		</div>
 	}
 </div>
