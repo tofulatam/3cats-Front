@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { BackButtonComponent } from '@app/shared/components/buttons/back-button/back-button.component';
 import { EmptyTeamsComponent } from '@app/shared/components/empty-teams/empty-teams.component';
 import { FilterComponent } from '@app/shared/components/filter/filter.component';
 import { PaginatorComponent } from '@app/shared/components/paginator/paginator.component';
@@ -9,7 +10,13 @@ import { TeamCardComponent } from '../../components/team-card/team-card.componen
 
 @Component({
 	selector: 'teams-new-teams',
-	imports: [FilterComponent, PaginatorComponent, EmptyTeamsComponent, TeamCardComponent],
+	imports: [
+		FilterComponent,
+		PaginatorComponent,
+		EmptyTeamsComponent,
+		TeamCardComponent,
+		BackButtonComponent
+	],
 	templateUrl: './new-teams.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

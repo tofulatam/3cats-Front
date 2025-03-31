@@ -1,7 +1,11 @@
 <div class="container mx-auto p-4">
 	<section>
-		<!-- Title -->
-		<h2 class="mb-4 text-xl font-bold">Nuevos torneos</h2>
+		<div class="mb-4 flex items-center justify-start gap-4">
+			<!-- Back Button -->
+			<app-back-button [text]="'Volver a torneos'" />
+			<!-- Title -->
+			<h2 class="text-xl font-bold">Nuevos torneos</h2>
+		</div>
 
 		<!-- Filter -->
 		<app-dashboard-filter

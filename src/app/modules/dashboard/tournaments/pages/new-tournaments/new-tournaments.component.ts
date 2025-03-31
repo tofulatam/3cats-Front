@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { BackButtonComponent } from '@app/shared/components/buttons/back-button/back-button.component';
 import { EmptyTournamentsComponent } from '@app/shared/components/empty-tournaments/empty-tournaments.component';
 import { FilterComponent } from '@app/shared/components/filter/filter.component';
 import { PaginatorComponent } from '@app/shared/components/paginator/paginator.component';
 import { TOURNAMENTS } from '@app/shared/constants/tournaments.constant';
 import { Tournament } from '@app/shared/interfaces/tournament.interface';
 import { DashboardTournamentCardComponent } from '../../components/tournament-card/tournament-card.component';
-
 @Component({
 	selector: 'app-new-tournaments',
 	imports: [
+		BackButtonComponent,
 		DashboardTournamentCardComponent,
 		EmptyTournamentsComponent,
 		FilterComponent,
