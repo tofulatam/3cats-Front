@@ -36,13 +36,19 @@
 		/>
 
 		<!-- New Tournaments List -->
-		<div class="mt-4 grid grid-cols-1 gap-4">
-			@for (tournament of newTournaments; track $index) {
-				<!-- Tournament Card -->
-				<app-dashboard-tournament-card [tournament]="tournament" />
-			} @empty {
-				<!-- Empty Tournaments -->
-				<app-empty-tournaments class="col-span-full" />
+		<div class="mb-4 flex flex-col gap-6">
+			<div class="mt-4 grid grid-cols-1 gap-4">
+				@for (tournament of newTournaments; track $index) {
+					<!-- Tournament Card -->
+					<app-dashboard-tournament-card [tournament]="tournament" />
+				} @empty {
+					<!-- Empty Tournaments -->
+					<app-empty-tournaments class="col-span-full" />
+				}
+			</div>
+
+			@if (newTournaments.length > 0) {
+				<button class="btn-outline w-fit self-end" routerLink="nuevo">Mostrar todos</button>
 			}
 		</div>
 	</section>

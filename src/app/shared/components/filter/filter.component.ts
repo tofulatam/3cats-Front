@@ -1,7 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 // Material
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,7 +14,7 @@ export interface TournamentFilter {
 @Component({
 	selector: 'app-dashboard-filter',
 	templateUrl: './filter.component.html',
-	imports: [MatIconModule, MatButtonModule, MatInputModule, MatSelectModule, FormsModule]
+	imports: [MatIconModule, MatInputModule, MatSelectModule, FormsModule]
 })
 export class FilterComponent {
 	// Inputs

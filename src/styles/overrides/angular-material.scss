@@ -1,65 +1,4 @@
 /* -------------------------------------------------------------------------- */
-/*  @ Accordion
-/* -------------------------------------------------------------------------- */
-.mat-accordion {
-	.mat-expansion-panel {
-		margin-bottom: 24px;
-		border-radius: 8px !important;
-		transition: box-shadow 225ms cubic-bezier(0.4, 0, 0.2, 1);
-		@apply shadow #{'!important'};
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		&.mat-expanded,
-		&:hover {
-			@apply shadow-lg #{'!important'};
-		}
-
-		&:not(.mat-expanded) {
-			.mat-expansion-panel-header {
-				&:not([aria-disabled='true']) {
-
-					&.cdk-keyboard-focused,
-					&.cdk-program-focused,
-					&:hover {
-						background: transparent !important;
-					}
-				}
-			}
-		}
-
-		.mat-expansion-panel-header {
-			font-size: 14px;
-
-			&[aria-disabled='true'] {
-				.mat-expansion-panel-header-description {
-					margin-right: 28px;
-				}
-			}
-
-			.mat-expansion-indicator {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				width: 12px;
-				height: 12px;
-
-				/* Do not override the border color of the expansion panel indicator */
-				&:after {
-					border-color: currentColor !important;
-				}
-			}
-		}
-
-		.mat-expansion-panel-body {
-			// @apply text-secondary #{'!important'};
-		}
-	}
-}
-
-/* -------------------------------------------------------------------------- */
 /*  @ Buttons
 /* -------------------------------------------------------------------------- */
 .mat-mdc-button,
@@ -109,204 +48,6 @@
 		height: auto !important;
 	}
 }
-
-/* FAB buttons */
-.mat-mdc-fab {
-	max-height: 56px;
-	border-radius: 16px !important;
-
-	&:not(.mdc-fab--extended) .mdc-fab__ripple {
-		border-radius: 16px !important;
-	}
-}
-
-/* Mini FAB buttons */
-.mat-mdc-mini-fab {
-	border-radius: 12px !important;
-
-	&:not(.mdc-fab--extended) .mdc-fab__ripple {
-		border-radius: 12px !important;
-	}
-}
-
-/* Rounded design */
-.mat-mdc-button,
-.mat-mdc-raised-button,
-.mat-mdc-outlined-button,
-.mat-mdc-unelevated-button {
-	padding: 0 20px !important;
-	border-radius: 9999px !important;
-}
-
-/* Fix the alignment of icons when used within buttons */
-.mat-mdc-button,
-.mat-mdc-raised-button,
-.mat-mdc-outlined-button,
-.mat-mdc-unelevated-button {
-	&>.mat-icon {
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-	}
-}
-
-/* Adjust the color of mat-progress-spinner when used within buttons */
-.mat-mdc-button,
-.mat-mdc-raised-button,
-.mat-mdc-outlined-button,
-.mat-mdc-unelevated-button,
-.mat-mdc-icon-button,
-.mat-mdc-fab,
-.mat-mdc-mini-fab {
-	.mat-mdc-progress-spinner {
-		.mdc-circular-progress__indeterminate-container {
-			circle {
-				stroke: currentColor !important;
-				animation-duration: 6000ms;
-			}
-		}
-	}
-}
-
-/* Adjust the focus, ripple and icon colors of colored background buttons */
-.mat-mdc-raised-button,
-.mat-mdc-unelevated-button,
-.mat-mdc-fab,
-.mat-mdc-mini-fab {
-	--mat-mdc-button-persistent-ripple-color: theme('colors.gray[400]') !important;
-	--mat-mdc-button-ripple-color: rgba(0, 0, 0, 0.1) !important;
-
-	.dark & {
-		--mat-mdc-button-persistent-ripple-color: theme('colors.black') !important;
-		--mat-mdc-button-ripple-color: rgba(0, 0, 0, 0.1) !important;
-	}
-
-	.mat-icon {
-		color: currentColor !important;
-	}
-
-	.mat-ripple-element {
-		@apply bg-black/10 #{'!important'};
-	}
-}
-
-/* Color the icons of transparent background buttons */
-.mat-mdc-button,
-.mat-mdc-icon-button,
-.mat-mdc-outlined-button {
-	&:not([disabled='true']) {
-
-		/* Apply primary color */
-		&.mat-primary {
-			.mat-icon {
-				@apply text-primary #{'!important'};
-			}
-		}
-
-		/* Apply accent color */
-		&.mat-accent {
-			.mat-icon {
-				@apply text-colorSecundario #{'!important'};
-			}
-		}
-
-		/* Apply warn color */
-		&.mat-warn {
-			.mat-icon {
-				@apply text-warn #{'!important'};
-			}
-		}
-	}
-}
-
-/* Adjust the border color of outlined buttons */
-.mat-mdc-outlined-button {
-
-	/* Not disabled */
-	&:not([disabled='true']) {
-		@apply border-gray-300 dark:border-gray-500 #{'!important'};
-	}
-
-	/* Disabled */
-	&[disabled='true'] {
-		@apply border-gray-300/70 dark:border-gray-600 #{'!important'};
-	}
-}
-
-/* Don't wrap the button label text */
-.mdc-button {
-	.mdc-button__label {
-		white-space: nowrap;
-	}
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Button Toggle
-/* -------------------------------------------------------------------------- */
-.mat-button-toggle-group {
-	border: none !important;
-	@apply space-x-1;
-
-	&.mat-button-toggle-group-appearance-standard {
-		.mat-button-toggle+.mat-button-toggle {
-			background-clip: padding-box;
-		}
-	}
-
-	.mat-button-toggle {
-		border-radius: 9999px;
-		overflow: hidden;
-		border: none !important;
-		font-weight: 500;
-
-		&.mat-button-toggle-checked {
-			.mat-button-toggle-label-content {
-				// @apply text-default #{'!important'};
-			}
-		}
-
-		.mat-button-toggle-label-content {
-			padding: 0 20px;
-			line-height: 40px !important;
-			// @apply text-secondary;
-		}
-	}
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Checkbox
-/* -------------------------------------------------------------------------- */
-.mat-mdc-checkbox {
-	display: inline-flex !important;
-
-	.mdc-form-field {
-		padding-right: 12px;
-	}
-}
-
-.mdc-checkbox__native-control {
-	opacity: 0 !important;
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Chip
-/* -------------------------------------------------------------------------- */
-.mat-mdc-chip {
-	font-weight: 500 !important;
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Dialog
-/* -------------------------------------------------------------------------- */
-.mat-mdc-dialog-container {
-	.mdc-dialog__surface {
-		border-radius: 16px !important;
-		padding: 24px;
-	}
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Drawer
-/* -------------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------------- */
 /*  @ Form fields
@@ -358,31 +99,6 @@
 		/* Border color */
 		.mat-mdc-text-field-wrapper {
 			@apply border-primary dark:border-primary #{'!important'};
-		}
-	}
-
-	/* Remove the default arrow for native select */
-	&.mat-mdc-form-field-type-mat-native-select {
-		.mat-mdc-form-field-infix {
-			select {
-				top: auto;
-				margin-top: 0;
-				margin-bottom: 0;
-				padding-top: 0;
-				padding-right: 18px;
-				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2364748B' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-				background-repeat: no-repeat;
-				background-position: right -7px center;
-				background-size: 24px;
-
-				.dark & {
-					background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2397a6ba' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-				}
-			}
-
-			&:after {
-				display: none;
-			}
 		}
 	}
 
@@ -613,10 +329,6 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/*  @ Datepicker
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
 /*  @ Icon
 /* -------------------------------------------------------------------------- */
 .mat-icon {
@@ -718,48 +430,10 @@
 /* -------------------------------------------------------------------------- */
 .mat-mdc-paginator {
 	.mat-mdc-paginator-container {
-		padding: 8px 16px;
-		justify-content: space-between;
+		@apply bg-white dark:bg-[#1e293b] rounded-xl #{'!important'};
 
-		@screen sm {
-			justify-content: normal;
-		}
-
-		/* Page size select */
-		.mat-mdc-paginator-page-size {
-			align-items: center;
-			min-height: 40px;
-			margin: 8px;
-
-			.mat-mdc-paginator-page-size-label {
-				display: none;
-				margin-right: 12px;
-
-				@screen sm {
-					display: block;
-				}
-			}
-
-			.mat-mdc-paginator-page-size-select {
-				margin: 0;
-
-				.mat-mdc-text-field-wrapper {
-					padding: 0 10px;
-
-					.mat-form-field-flex {
-						min-height: 32px;
-					}
-				}
-			}
-		}
-
-		/* Range actions */
-		.mat-mdc-paginator-range-actions {
-			margin: 8px 0;
-
-			.mat-mdc-paginator-range-label {
-				margin-right: 16px;
-			}
+		.mat-mdc-paginator-range-label {
+			@apply text-colorGris dark:text-colorBlancoMenta font-medium text-sm #{'!important'};
 		}
 	}
 }
@@ -804,18 +478,6 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/*  @ Slide Toggle
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
-/*  @ Snack bar
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
-/*  @ Stepper
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
 /*  @ Table
 /* -------------------------------------------------------------------------- */
 .mat-mdc-table {
@@ -823,33 +485,3 @@
 		background: none !important;
 	}
 }
-
-/* -------------------------------------------------------------------------- */
-/*  @ Tabs
-/* -------------------------------------------------------------------------- */
-.mat-mdc-tab-group {
-	.mat-mdc-tab-header {
-		.mat-mdc-tab-label-container {
-			margin: 0 24px;
-		}
-	}
-
-	.mat-mdc-tab-body-content {
-		padding: 24px;
-	}
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Textarea
-/* -------------------------------------------------------------------------- */
-textarea.mat-mdc-input-element {
-	box-sizing: content-box !important;
-}
-
-/* -------------------------------------------------------------------------- */
-/*  @ Toolbar
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
-/*  @ Tooltip
-/* -------------------------------------------------------------------------- */

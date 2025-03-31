@@ -90,7 +90,17 @@ export const appRoutes: Route[] = [
 								data: {
 									breadcrumb: 'Equipos'
 								},
-								loadComponent: () => import('@app/modules/dashboard/teams/pages/teams.component')
+								loadComponent: () =>
+									import('@app/modules/dashboard/teams/pages/teams/teams.component')
+							},
+							{
+								path: 'equipos/nuevo',
+								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Nuevo Equipo'
+								},
+								loadComponent: () =>
+									import('@app/modules/dashboard/teams/pages/new-teams/new-teams.component')
 							},
 							{
 								path: 'estadisticas',
@@ -110,7 +120,20 @@ export const appRoutes: Route[] = [
 									breadcrumb: 'Torneos'
 								},
 								loadComponent: () =>
-									import('@app/modules/dashboard/tournaments/pages/tournaments.component')
+									import(
+										'@app/modules/dashboard/tournaments/pages/tournaments/tournaments.component'
+									)
+							},
+							{
+								path: 'torneos/nuevo',
+								pathMatch: 'full',
+								data: {
+									breadcrumb: 'Nuevo Torneo'
+								},
+								loadComponent: () =>
+									import(
+										'@app/modules/dashboard/tournaments/pages/new-tournaments/new-tournaments.component'
+									)
 							},
 							{
 								path: 'partidos',

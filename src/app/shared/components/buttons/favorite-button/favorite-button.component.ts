@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 // Material
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
 	selector: 'app-favorite-button',
-	imports: [MatButtonModule, MatIconModule],
+	imports: [MatIconModule],
 	templateUrl: './favorite-button.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

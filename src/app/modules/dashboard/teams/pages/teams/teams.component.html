@@ -36,13 +36,19 @@
 		/>
 
 		<!-- New Teams List -->
-		<div class="mt-4 grid grid-cols-1 gap-4">
-			@for (team of newTeams; track $index) {
-				<!-- Team Card -->
-				<app-team-card [team]="team" />
-			} @empty {
-				<!-- Empty Teams -->
-				<app-empty-teams class="col-span-full" />
+		<div class="mb-4 flex flex-col gap-6">
+			<div class="mt-4 grid grid-cols-1 gap-4">
+				@for (team of newTeams; track $index) {
+					<!-- Team Card -->
+					<app-team-card [team]="team" />
+				} @empty {
+					<!-- Empty Teams -->
+					<app-empty-teams class="col-span-full" />
+				}
+			</div>
+
+			@if (newTeams.length > 0) {
+				<button class="btn-outline w-fit self-end" routerLink="nuevo">Mostrar todos</button>
 			}
 		</div>
 	</section>
