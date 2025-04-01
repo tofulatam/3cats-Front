@@ -1,4 +1,6 @@
-export const ORGANIZER_DATA = [
+import { Organizer } from '../interfaces/organizer.interface';
+
+export const ORGANIZER_DATA: Organizer[] = [
 	{
 		uid: 'organizer1_6416',
 		userName: 'Carlos Ramírez',
